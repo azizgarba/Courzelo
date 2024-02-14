@@ -32,6 +32,7 @@ private float scoreXp;
 private String badge;
 private String resume;
 private Speciality speciality;
+private String level;
 @DBRef
     private List<FeedbackTeacher> feedbackTeachers;
 @DBRef

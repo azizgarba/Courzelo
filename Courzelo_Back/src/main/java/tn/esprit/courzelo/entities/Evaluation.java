@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,8 +21,8 @@ public class Evaluation {
     private int  AttendanceGrade;
     private int QuizGrade;
     private int finaltest_grade;
-    private int mention;
+    private int honors;
     private int rank;
     @DBRef
-    private FinalQuizTest finalQuizTest;
+    private List<FinalQuizTest> finalQuizTests;
 }

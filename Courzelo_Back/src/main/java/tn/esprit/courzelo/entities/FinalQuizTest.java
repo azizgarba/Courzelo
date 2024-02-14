@@ -33,4 +33,6 @@ public class FinalQuizTest {
     private User_c student;
     @DBRef
     private User_c teacher;
+    @DBRef
+    private List<Evaluation> evaluations;
 }
