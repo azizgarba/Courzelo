@@ -1,0 +1,32 @@
+package tn.esprit.courzelo.entities;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Document(collection = "Class")
+public class Class {
+    @Id
+    private long id;
+    private String name;
+    @DBRef
+    private Level level;
+    @DBRef
+    private List<ExamSession> examSessions;
+    @DBRef
+    private List<Session> sessions;
+    @DBRef
+    private List<User_c> students;
+    @DBRef
+    private List<User_c> teachers;
+}
