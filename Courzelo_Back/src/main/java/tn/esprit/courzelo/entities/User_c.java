@@ -33,6 +33,13 @@ private String badge;
 private String resume;
 private Speciality speciality;
 private String level;
+private boolean approved=false;
+private int validVoteCount=0;
+private boolean canVote=true;
+private int nbVoteForIncentives;
+private int nbPrimeVoteForBadges;
+private String PaymentDay;
+private String CentreOffIntrest;
 @DBRef
     private List<FeedbackTeacher> feedbackTeachers;
 @DBRef

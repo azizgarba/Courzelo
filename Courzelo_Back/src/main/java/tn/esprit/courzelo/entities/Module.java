@@ -23,6 +23,7 @@ public class Module {
     private int nbHeurePerWeek;
     private int nbHeureTotal;
     private String image;
+    private Float couef;
     @DBRef
     private List<Course> courses;
  @DBRef
