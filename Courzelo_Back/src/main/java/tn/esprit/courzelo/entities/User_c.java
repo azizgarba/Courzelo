@@ -40,6 +40,7 @@ private int nbVoteForIncentives;
 private int nbPrimeVoteForBadges;
 private String PaymentDay;
 private String CentreOffIntrest;
+private Float overAll_average;
 @DBRef
     private List<FeedbackTeacher> feedbackTeachers;
 @DBRef
