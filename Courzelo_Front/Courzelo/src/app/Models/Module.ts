@@ -1,12 +1,18 @@
 import { EducationalProgram } from "./EducationalProgram";
+import { QuestionForum } from "./QuestionForum";
 
 export class Module{
-    id!:number;
+    id!:string;
     name!:string;
     description!:string;
-    totalNbHours!:number;
+    nbHeurePerWeek!:number;
+    nbHeureTotal!:number;
     Image!:string;
-    coef!:number;
+    coef!:number ;
     program!:EducationalProgram;
+
+    questionForums:QuestionForum[]=[]
+
+    
     
 }

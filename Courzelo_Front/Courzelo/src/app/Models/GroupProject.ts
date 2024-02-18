@@ -1,5 +1,5 @@
 import { Project } from "./Project";
-import { User } from "./User";
+import { User } from "./UserCourzelo";
 
 export class GroupProject{
     id!:number;

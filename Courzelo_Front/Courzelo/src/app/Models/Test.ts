@@ -1,5 +1,5 @@
 import { QuestionTest } from "./QuestionTest";
-import { User } from "./User";
+import { User } from "./UserCourzelo";
 
 export class Test{
     id!:number;

@@ -1,9 +1,14 @@
 package tn.esprit.courzelo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.ForumEntities.Answer;
+import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
+import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
+import tn.esprit.courzelo.entities.ForumEntities.Votes;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "User_c")
+@JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums", "answers", "votes"})
 public class User_c {
 @Id
 private long id;

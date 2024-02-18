@@ -1,4 +1,4 @@
-import { User } from "./User";
+import { User } from "./UserCourzelo";
 
 export class Session{
     id!:number;

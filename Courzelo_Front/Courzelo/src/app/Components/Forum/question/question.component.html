@@ -1,0 +1,82 @@
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box page-title-box-alt">
+                        <div class="d-flex justify-content-between">
+                            <div class="page-title-right mb-3">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    sort<i class="mdi mdi-chevron-down"></i>
+                                    
+                                </button>
+
+                            </div>
+                            <div class="page-title-left mt-3">
+                                <a class="btn btn-primary btn-add-question" (click)="OpenDialog('1000ms','500ms','')"><i class="mdi mdi-plus"></i> Add  </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end page title -->
+
+
+            <div class="row">
+                <div *ngFor="let p of listQuestion, let i=index " class="col-sm-12">
+                    <div class="card">
+                        <div class="bg-picture card-body">
+                            <div class="d-flex align-items-top">
+                                <img src="../assets/images/users/profile.jpg" class="flex-shrink-0 rounded-circle avatar-xl img-thumbnail float-start me-3" alt="profile-image">
+
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h4 class="m-0">{{ p.student.firstName}}</h4>
+
+                                    <p class="text-muted"><i>{{p.date}}</i></p>
+                                    <p class="font-13">{{p.title}}</p>
+
+                                    <ul class="social-list list-inline mt-3 mb-0">
+
+                                        <li class="list-inline-item">
+                                            <a routerLink="/forumAnswers" class="social-list-item border-info text-info"><i class="fe-list"></i></a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a href="javascript:void(0);" class="social-list-item border-secondary text-secondary">
+                                                <i class="mdi mdi-robot"></i>
+
+                                            </a>
+                                        </li>
+
+
+                                    </ul>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ meta -->
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- container -->
+
+    </div>
+    <!-- content -->
+
+    <!-- Footer Start -->
+
+    <!-- end Footer -->
+
+</div>

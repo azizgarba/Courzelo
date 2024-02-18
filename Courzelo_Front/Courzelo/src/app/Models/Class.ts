@@ -1,5 +1,5 @@
 import { Session } from "./Session";
-import { User } from "./User";
+import { User } from "./UserCourzelo";
 
 export class Class{
     id!:number;

@@ -1,6 +1,8 @@
-export class User{
+import { QuestionForum } from "./QuestionForum";
 
-    id!: number;
+export class UserCourzelo{
+
+    id!: string;    
     firstName!: string;
     lastName!: string;
     email!: string;
@@ -8,6 +10,7 @@ export class User{
     image!: string;
     sexe!:string;
     dateOfBirth!:Date;
+    dateOfCreation!:Date;
     nbHoursMaxPerWeek!:number;
     nbHoursPerWeek = 0;
     role!:Role;
@@ -18,13 +21,16 @@ export class User{
     level!:number;
     overAllAverage!:number;
     speciality!:Speciality;
-    approved = false;
+    approved:boolean = false;
     validVoteCount: number = 0;
     canVote : boolean = true;
     nbVoteForIncentives!:number;
     nbPrimeVoteForBadge!:number;
     PaymentDay!: Date;
     Hobbies!:string;
+   
+    questionForums:QuestionForum[]=[]
+
 }
 export enum Role{
    Teacher,

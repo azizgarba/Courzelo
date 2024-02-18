@@ -1,5 +1,6 @@
 package tn.esprit.courzelo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "Answer")
+@JsonIgnoreProperties({ "votes"})
 public class Answer {
     @Id
     private long id;
