@@ -5,8 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.Date;
 import java.util.List;
@@ -18,21 +20,27 @@ import java.util.List;
 @Document(collection = "FinalQuizTest")
 public class FinalQuizTest {
     @Id
-    private long id;
+    private  String id;
+    @Indexed
     private Type type;
+    @Indexed
     private String duration;
+    @Indexed
     private Date date;
+    @Indexed
     private int mark;
+    @Indexed
     private int nbQst;
+    @Indexed
     private int rank;
     @DBRef
     private List<QuestionTest> questions;
     @DBRef
     private Module module;
     @DBRef
-    private User_c student;
+    private UserCourzelo student;
     @DBRef
-    private User_c teacher;
+    private UserCourzelo teacher;
     @DBRef
     private List<Evaluation> evaluations;
 }

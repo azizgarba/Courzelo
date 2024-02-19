@@ -1,4 +1,4 @@
-package tn.esprit.courzelo.entities;
+package tn.esprit.courzelo.entities.ForumEntities;
 
 public enum VoteType {
     UPVOTE(1),

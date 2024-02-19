@@ -1,12 +1,14 @@
-package tn.esprit.courzelo.entities;
+package tn.esprit.courzelo.entities.ForumEntities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.List;
 
@@ -17,13 +19,15 @@ import java.util.List;
 @Document(collection = "ChatRoom")
 public class ChatRoom {
     @Id
-    private long id;
-    private User_c sender;
-    private User_c receiver;
+    private String id;
+    @Indexed
+    private UserCourzelo sender;
+    @Indexed
+    private UserCourzelo receiver;
     @DBRef
     private List<Message> messages;
     @DBRef
-    private List<User_c> senders;
+    private List<UserCourzelo> senders;
     @DBRef
-    private List<User_c> receivers;
+    private List<UserCourzelo> receivers;
 }

@@ -1,4 +1,4 @@
-package tn.esprit.courzelo.entities;
+package tn.esprit.courzelo.entities.ForumEntities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -6,9 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -19,12 +22,18 @@ import java.util.List;
 @JsonIgnoreProperties({ "answers"})
 public class QuestionForum {
     @Id
-    private long id;
+    private String id;
+    @Indexed
     private String title;
+    @Indexed
     private String description;
+    @Indexed
+    private Date date ;
     @DBRef
-    private User_c student;
+    @Indexed
+    private UserCourzelo student;
     @DBRef
+    @Indexed
     private Module module;
     @DBRef
     private List<Answer> answers;
