@@ -10,12 +10,13 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import tn.esprit.courzelo.entities.*;
+import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
 import tn.esprit.courzelo.entities.ForumEntities.Answer;
 import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
 import tn.esprit.courzelo.entities.ForumEntities.Votes;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
-import tn.esprit.courzelo.entities.Class ;
+import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
+import tn.esprit.courzelo.entities.ProjectEntities.Project;
 
 import java.util.Date;
 import java.util.List;
@@ -80,7 +81,7 @@ import java.util.List;
         @Indexed
         private Float overAll_average;
         @DBRef
-        private List<FeedbackTeacher> feedbackTeachers;
+        private List<Feedback> feedback;
         @DBRef
         private List<Class> classes;
         @DBRef
