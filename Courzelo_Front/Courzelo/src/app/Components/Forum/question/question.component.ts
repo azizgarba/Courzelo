@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { QuestionForum } from 'src/app/Models/QuestionForum';
 import { ConsumerQuestionServiceService } from 'src/app/Services/ForumService/consumer-question-service.service';
 import { ModalpopupComponentComponent } from '../modalpopup-component/modalpopup-component.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-question',
@@ -12,7 +13,7 @@ import { ModalpopupComponentComponent } from '../modalpopup-component/modalpopup
 })
 export class QuestionComponent {
   listQuestion:QuestionForum[]=[]
-  constructor(private questionService :ConsumerQuestionServiceService ,private route:Router, private dialog: MatDialog){}
+  constructor(private questionService :ConsumerQuestionServiceService ,private route:Router,private modalService: MdbModalService){}
  
 
   ngOnInit(){
@@ -22,20 +23,17 @@ export class QuestionComponent {
   
     }
     
-    OpenDialog(enteranimation: any, exitanimation: any,code:any) {
+    modalRef: MdbModalRef<ModalpopupComponentComponent> | null = null;
 
-      this.dialog.open(ModalpopupComponentComponent, {
-        enterAnimationDuration: enteranimation,
-        exitAnimationDuration: exitanimation,
-        width: "50%",
-        data:{
-          empcode:code
-        }
-      })
+
+
+  openModal() {
+    this.modalRef = this.modalService.open(ModalpopupComponentComponent)
+  }
     }
   
   
-}
+
 
 
 

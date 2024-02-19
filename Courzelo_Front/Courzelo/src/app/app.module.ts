@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalpopupComponentComponent } from './Components/Forum/modalpopup-component/modalpopup-component.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms'; // Import FormsModule here
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatDialogModule
- 
+    MatDialogModule,
+    MatSelectModule,
+    FormsModule,
+    MdbModalModule
 
   
   ],
