@@ -1,4 +1,4 @@
-package tn.esprit.courzelo.Services;
+package tn.esprit.courzelo.Services.ForumService;
 
 
 import lombok.AllArgsConstructor;

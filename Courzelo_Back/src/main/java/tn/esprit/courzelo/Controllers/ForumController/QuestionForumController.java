@@ -1,4 +1,4 @@
-package tn.esprit.courzelo.Controllers;
+package tn.esprit.courzelo.Controllers.ForumController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
