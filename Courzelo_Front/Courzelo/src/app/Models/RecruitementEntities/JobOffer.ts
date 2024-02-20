@@ -1,4 +1,5 @@
-import { Speciality } from "./UserCourzelo";
+import { Speciality } from "../UserCorzelo/UserCourzelo";
+
 
 export class JobOffer{
 

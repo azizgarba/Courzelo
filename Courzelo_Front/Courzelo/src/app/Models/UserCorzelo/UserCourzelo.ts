@@ -1,4 +1,6 @@
-import { QuestionForum } from "./QuestionForum";
+import { QuestionForum } from "../ForumEntities/QuestionForum";
+
+
 
 export class UserCourzelo{
 

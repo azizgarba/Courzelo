@@ -1,5 +1,7 @@
+
+import { QuestionForum } from "../ForumEntities/QuestionForum";
 import { EducationalProgram } from "./EducationalProgram";
-import { QuestionForum } from "./QuestionForum";
+
 
 export class Module{
     id!:string;

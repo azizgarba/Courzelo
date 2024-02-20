@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent {
-  isDone: boolean = false;
 
-  markDone() {
-    this.isDone = true; // Set the task state to 'done'
-  }
 
 }

@@ -1,5 +1,6 @@
-import { Module } from "./Module";
-import {UserCourzelo } from "./UserCourzelo";
+import { Module } from "../AcademicProgramEntities/Module";
+import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
+
 
 export class QuestionForum{
 
