@@ -6,4 +6,5 @@ import tn.esprit.courzelo.entities.RecruitementEntities.JobOffer;
 
 @Repository
 public interface JobOfferRepo extends MongoRepository<JobOffer, String> {
+    JobOffer findByTitle(String title);
 }
