@@ -1,6 +1,11 @@
+import { Media } from "./Media";
+
 export class Message{
-    id!:number;
-    time!:any;
-    replyMessage!:string;
-    senderEmail!:string;
+  
+    time!:Date;
+    replymessage!:string;   
+   sendermessage!:string;
+   replyMediaContent!:Media ;
+   replyMedia!:string 
+   
 }

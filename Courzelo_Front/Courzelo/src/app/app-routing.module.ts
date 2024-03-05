@@ -6,7 +6,7 @@ import { ChatComponent } from './Components/Forum/chat/chat.component';
 
 const routes: Routes = [
   {path:'forumQuestion', component:QuestionComponent},
-  {path:'forumAnswers', component:AnswerComponent},
+  {path:'forumAnswers/:id', component:AnswerComponent},
   {path:'forumChat', component:ChatComponent},
 ];
 

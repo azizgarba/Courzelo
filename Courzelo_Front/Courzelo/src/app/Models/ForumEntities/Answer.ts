@@ -1,7 +1,16 @@
+import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
+import { QuestionForum } from "./QuestionForum";
+import { Vote } from "./Votes";
+
 export class Answer{
-    id!:number;
+    id!:string;
     message!:string;
-    nbvote!:number;
+    nbrVote!:number;
     getBudget!:Boolean;
+    date!:Date;
+    user!:UserCourzelo;
+    question!:QuestionForum;
+    votes:Vote[]=[] ;
+ 
     
 }

@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { ModalConfirmationComponent } from './Components/Forum/modal-confirmation/modal-confirmation.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     QuestionComponent,
     AnswerComponent,
     ChatComponent,
-    ModalpopupComponentComponent
+    ModalpopupComponentComponent,
+    ModalConfirmationComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     MatDialogModule,
     MatSelectModule,
     FormsModule,
-    MdbModalModule
+    MdbModalModule,
+    NgbModule
+    
 
   
   ],
