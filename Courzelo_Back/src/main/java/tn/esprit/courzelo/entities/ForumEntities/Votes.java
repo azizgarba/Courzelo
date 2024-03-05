@@ -22,7 +22,7 @@ public class Votes {
     @Id
     private String id;
     @Indexed
-    private VoteType voteType;
+    private int voteType;
     @Indexed
     private Date date ;
     @DBRef

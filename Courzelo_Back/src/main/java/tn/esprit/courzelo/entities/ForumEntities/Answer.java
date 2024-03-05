@@ -9,9 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 import tn.esprit.courzelo.entities.UserCorzelo.*;
-import tn.esprit.courzelo.entities.ForumEntities.*;
 
 import java.util.Date;
 import java.util.List;
@@ -28,7 +26,7 @@ public class Answer {
     @Indexed
     private String message;
     @Indexed
-    private int nbr_vote;
+    private int nbrVote;
     @Indexed
     private boolean getBudget;
     @Indexed
@@ -39,7 +37,7 @@ public class Answer {
     @Indexed
     @DBRef
     private UserCourzelo user;
-
+ 
     @DBRef
     private List<Votes> votes;
 }

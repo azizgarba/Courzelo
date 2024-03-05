@@ -5,4 +5,5 @@ import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 public interface UserRepo  extends MongoRepository<UserCourzelo,String> {
+    UserCourzelo findUserCourzeloById(String id);
 }

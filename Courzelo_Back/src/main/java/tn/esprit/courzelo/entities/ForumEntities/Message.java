@@ -1,5 +1,6 @@
 package tn.esprit.courzelo.entities.ForumEntities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,23 +9,31 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
+
+
+import java.util.Date;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "Message")
-public class Message {
-    @Id
-    private String id;
-    @Indexed
-    private String time;
-    @Indexed
-    private String replyMessage;
-    @Indexed
-    private String senderEmail;
 
-    @DBRef
-    @Indexed
-    private ChatRoom chatRoom;
+
+public class Message {
+
+
+    private Date time ;
+
+    private String replymessage;
+
+
+    private String sendermessage;
+    private String replyMedia;
+    private Media replyMediaContent ;
+
+
+
+
+
 }

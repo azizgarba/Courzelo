@@ -1,6 +1,7 @@
-package com.codreal.chatservice.model;
+package tn.esprit.courzelo.entities.ForumEntities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "chats_database_sequences")
@@ -8,8 +9,8 @@ public class DatabaseSequence {
 
     @Id
     private String id;
-    private int seq;
 
+    private int seq;
     public DatabaseSequence() {
     }
 

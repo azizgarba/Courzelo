@@ -11,10 +11,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
-import tn.esprit.courzelo.entities.ForumEntities.Answer;
-import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
-import tn.esprit.courzelo.entities.ForumEntities.Votes;
-import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
+import tn.esprit.courzelo.entities.ForumEntities.*;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
 
@@ -25,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "UserCourzelo")
-@JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums", "answers", "votes"})
+@JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums","answers", "votes"})
         public class UserCourzelo {
 
         @Id
@@ -87,7 +84,8 @@ import java.util.List;
         @DBRef
         private List<Project> projects;
         @DBRef
-        private ChatRoom chatRoom;
+        private List<ChatRoom> chatRoom;
+
         @DBRef
         private List<QuestionForum> questionForums;
         @DBRef

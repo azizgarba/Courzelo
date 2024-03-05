@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.Date;
@@ -19,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "QuestionForum")
-@JsonIgnoreProperties({ "answers"})
+@JsonIgnoreProperties({ "answers","rates"})
 public class QuestionForum {
     @Id
     private String id;
@@ -29,6 +30,8 @@ public class QuestionForum {
     private String description;
     @Indexed
     private Date date ;
+    @Indexed
+    private int totalNbRate ;
     @DBRef
     @Indexed
     private UserCourzelo student;
@@ -37,4 +40,6 @@ public class QuestionForum {
     private Module module;
     @DBRef
     private List<Answer> answers;
+    @DBRef
+    private List<RateQuestion> rates;
 }
