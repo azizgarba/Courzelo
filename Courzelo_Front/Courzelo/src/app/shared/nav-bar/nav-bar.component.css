@@ -1,0 +1,5 @@
+.my-centered-dialog .mat-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
