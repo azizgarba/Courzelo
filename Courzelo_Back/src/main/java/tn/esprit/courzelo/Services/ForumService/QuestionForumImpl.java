@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.ForumRepo.AnswerRepository;
 import tn.esprit.courzelo.Repositories.ForumRepo.QuestionForumRepo;
 import tn.esprit.courzelo.Repositories.ForumRepo.RateQuestionRepo;
+import tn.esprit.courzelo.Repositories.ForumRepo.VoteRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
 import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
@@ -31,6 +32,7 @@ public class QuestionForumImpl  {
     ModuleRepo moduleRepo ;
     UserRepo userRepo ;
     RateQuestionRepo rateQuestionRepo;
+    VoteRepo voteRepo;
 
 
     // Create or Update
@@ -86,9 +88,19 @@ public class QuestionForumImpl  {
         List<Answer> a=answerRepository.findAnswerByQuestionForumOrderByDateDesc(q);
         List<RateQuestion> qr= rateQuestionRepo.findRateQuestionByQuestionForum(q);
 
+
+
+        //List<Votes> v = voteRepo.findVotesByAnswer()
+
         if (q != null) {
 
             if ( a!=null)  {
+                for (Answer answer : a) {
+                    List<Votes> v = voteRepo.findVotesByAnswer(answer);
+                    if ( v!=null){
+                        voteRepo.deleteAll(v);
+                    }
+                }
                 // Utilisez une boucle for each pour itérer sur les votes
                 answerRepository.deleteAll(a);
 

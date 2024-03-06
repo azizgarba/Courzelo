@@ -31,8 +31,6 @@ public class RateQuestionServiceImpl {
             RateQuestion rated = rateQuestionRepo.save(rate);
             QuestionForum question = new QuestionForum();
             question.setId(q.getId());
-            question.setModule(q.getModule());
-            question.setStudent(q.getStudent());
             question.setTotalNbRate(q.getTotalNbRate()+rate.getRateNumber());
             questionForumimpl.updateQuestionRate(question);
            return  rated;
