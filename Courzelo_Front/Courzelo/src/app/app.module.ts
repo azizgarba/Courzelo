@@ -15,9 +15,13 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from "@angular/material/select";
 import { FormsModule } from "@angular/forms"; // Import FormsModule here
 import { MdbModalModule } from "mdb-angular-ui-kit/modal";
-import { JobOfferComponent } from './Components/RecruitementComponents/job-offer/job-offer.component';
-import { AddjobOfferComponent } from './Components/RecruitementComponents/addjob-offer/addjob-offer.component';
-import { UpdatejobOfferComponent } from './Components/RecruitementComponents/updatejob-offer/updatejob-offer.component';
+import { JobOfferComponent } from "./Components/RecruitementComponents/job-offer/job-offer.component";
+import { AddjobOfferComponent } from "./Components/RecruitementComponents/addjob-offer/addjob-offer.component";
+import { UpdatejobOfferComponent } from "./Components/RecruitementComponents/updatejob-offer/updatejob-offer.component";
+import { DeleteConfirmationModelPopupComponent } from './Components/RecruitementComponents/delete-confirmation-model-popup/delete-confirmation-model-popup.component';
+import { CandidancyComponent } from './Components/RecruitementComponents/candidancy/candidancy.component';
+import { CandidancyFormComponent } from './Components/RecruitementComponents/candidancy-form/candidancy-form.component';
+import { UpdateCandidancyComponent } from './Components/RecruitementComponents/update-candidancy/update-candidancy.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { UpdatejobOfferComponent } from './Components/RecruitementComponents/upd
     JobOfferComponent,
     AddjobOfferComponent,
     UpdatejobOfferComponent,
+    DeleteConfirmationModelPopupComponent,
+    CandidancyComponent,
+    CandidancyFormComponent,
+    UpdateCandidancyComponent,
   ],
   imports: [
     BrowserModule,

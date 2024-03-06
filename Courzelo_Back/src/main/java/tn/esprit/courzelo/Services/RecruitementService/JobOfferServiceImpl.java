@@ -14,10 +14,28 @@ import java.util.List;
 public class JobOfferServiceImpl implements IJobOfferService{
     @Autowired
     JobOfferRepo jobOfferRepo;
+    @Autowired
+    IResumeParserService resumeParserService;
+    @Autowired
+    IJobMatcherService jobMatcherService;
+    String path = "D:\\Esprit\\3eme\\documents internship\\test3.pdf";
     @Override
     public List<JobOffer> getAlljobOffer() {
     try{
-        return jobOfferRepo.findAll();
+        List<String> parsedEntities=resumeParserService.parseResume(path);
+        // Get all available jobs
+        List<JobOffer> availableJobs = jobOfferRepo.findAll();
+        //debugging available jobs
+        System.out.println(availableJobs);
+        // list of skills
+        System.out.println(resumeParserService.identifySkills(parsedEntities));
+        // list of specialities
+        System.out.println(resumeParserService.identifySpecialities(parsedEntities));
+        // Match jobs
+        List<JobOffer> matchedJobs = jobMatcherService.matchJobs(resumeParserService.identifySkills(parsedEntities),resumeParserService.identifySpecialities(parsedEntities), availableJobs);
+        //debugging matched jobs
+        System.out.println(matchedJobs);
+        return matchedJobs;
         } catch (Exception e){
         log.error(e.getMessage());
         return null;

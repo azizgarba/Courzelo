@@ -12,6 +12,8 @@
                 <p class="card-text">Speciality: {{joboffer.speciality}}</p>
                 <button [routerLink]="['/updatejobOffer',joboffer.id]" class="btn btn-primary">Edit</button>
                 <button class="btn btn-danger" (click)="deletejobOffer(joboffer.id)">Delete</button>
+                <button class="btn btn-success" (click)="onApplyButtonClick(joboffer.id)">Apply</button>
+                <!--<button class="btn btn-success" (click)="viewjobOffer(joboffer.id)">Apply</button>-->
             </div>
 
         </div><!-- end col -->
