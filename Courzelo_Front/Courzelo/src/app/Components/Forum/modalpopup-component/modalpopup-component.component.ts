@@ -50,14 +50,7 @@ export class ModalpopupComponentComponent {
     
 
     });
-    this.registerForm= new FormGroup({
-      id:new FormControl(),
-      title: new FormControl('',[Validators.required,Validators.minLength(5)]),
-      description: new FormControl('',[Validators.required,Validators.minLength(5)]),
-      module:new FormControl('',Validators.required)
-    
 
-    });
    
     
      //pour avoir tous les module 
@@ -189,15 +182,15 @@ export class ModalpopupComponentComponent {
       }
     );   
   }
-  save(){
+  // save(){
     
-  if(this.update==false){
-    this.ajouter()
-  }
-  else
-  this.updatepop()
+  // if(this.update==false){
+  //   this.ajouter()
+  // }
+  // else
+  // this.updatepop()
 
-  }
+  // }
 
   checkProfanity(text: string): Observable<boolean> {
     return new Observable<boolean>(observer => {
@@ -215,6 +208,21 @@ export class ModalpopupComponentComponent {
     });
   }
   
+  isMessageValid = false;
+  isMessageValid2= false;
+
+  messageInput(event: any) {
+    const title = event.target.value;
+    const isWhitespace = (title || '').trim().length === 0;
   
+    this.isMessageValid = !isWhitespace && title.length >= 5;
+  }
+  messageInput2(event: any) {
+    const description = event.target.value;
+    const isWhitespace = (description || '').trim().length === 0;
+  
+    this.isMessageValid2 = !isWhitespace && description.length >= 5;
+  }
+
  
 }

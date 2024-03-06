@@ -10,7 +10,7 @@ export class VoteConsumerService {
 
   constructor(private http:HttpClient) { }
   AddVote(v:Vote,idAnswer: string){
-    return  this.http.post('http://localhost:8081/ForumVote/create/65d3909715939e88eb26bd3d'+'/'+ idAnswer,v);
+    return  this.http.post('http://localhost:8081/ForumVote/create/65d3909015939e88eb26bd3c'+'/'+ idAnswer,v);
   }
   //http://localhost:8081/ForumVote/update
 
@@ -22,7 +22,7 @@ export class VoteConsumerService {
   }
 //65d3902c15939e88eb26bd3b
   getVotesByUserAndAnswer(idAnswer: string){
-    return  this.http.get<Vote>('http://localhost:8081/ForumVote/getvoteByUseAndAnswer/65d3909715939e88eb26bd3d'+'/'+ idAnswer);
+    return  this.http.get<Vote>('http://localhost:8081/ForumVote/getvoteByUseAndAnswer/65d3909015939e88eb26bd3c'+'/'+ idAnswer);
  
   }
   getVoteAnswerById(id:string){

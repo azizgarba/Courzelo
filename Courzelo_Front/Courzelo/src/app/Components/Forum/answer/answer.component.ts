@@ -36,13 +36,12 @@ export class AnswerComponent {
   module:any
  vote!:Vote;
  ans!:Answer;
+ //Vote pour la coloration bleu lors de vote 
  upVoted: { [id: string]: boolean } = {};
  downVoted: { [id: string]: boolean } = {};
- couleurs: { [id: string]: boolean } = {};
- downVoteCouleurs: { [id: string]: boolean } = {};
+
  voteNumber!:number;
- pollingInterval: any;
- couleur:boolean=false ;
+
  containsProfanity = false;
  //Rate 
  ratingcontrol=new FormControl(0);
@@ -76,6 +75,9 @@ export class AnswerComponent {
     
 
     });
+
+  
+ 
   
     this.answerService.getAnswerByQuestion(this.id).pipe(
       tap((answers) => {
@@ -96,16 +98,7 @@ export class AnswerComponent {
       })
     ).subscribe();
 
-    // this.pollingInterval =setInterval(() => {
-    // this.answerService.getAnswerById(this.id).subscribe(
-    //   (data) => {
-    //     const answer = this.listAnswers.find(answer => answer.id === this.id);
-    //     if (answer) {
-    //       answer.nbr_vote = data.nbr_vote;
-    //     }
-    //   }
-    // );
-    // },1000);
+
     this.questionService.getRateByqIdAndUser(this.id).subscribe(
       (data) => {
         this.rate = data;
@@ -117,7 +110,14 @@ export class AnswerComponent {
   }
 
 
+  isMessageValid = false;
 
+  messageInput(event: any) {
+    const message = event.target.value;
+    const isWhitespace = (message || '').trim().length === 0;
+  
+    this.isMessageValid = !isWhitespace && message.length >= 5;
+  }
 
 modalRef: MdbModalRef<ModalConfirmationComponent> | null = null;
 
@@ -308,7 +308,7 @@ upVote(idAnswer:string){
       })
       this.upVoted[idAnswer] = true;
       this.downVoted[idAnswer] = false;
-      this.downVoteCouleurs[idAnswer] = false;
+      
     }
     else if(this.vote!=null && this.vote.voteType==1) {
       console.log("****************************vote",this.vote.id)
@@ -332,7 +332,7 @@ upVote(idAnswer:string){
     })
     this.upVoted[idAnswer] = true;
             this.downVoted[idAnswer] = false;
-            this.downVoteCouleurs[idAnswer] = false;
+           
       })
 
 }}
@@ -357,7 +357,7 @@ downVote(idAnswer:string){
       })
       this.downVoted[idAnswer] = true;
       this.upVoted[idAnswer] = false;
-      this.couleurs[idAnswer] = false;
+   
     }
     else if(this.vote!=null && this.vote.voteType==-1) {
       console.log("****************************vote",this.vote.id)
@@ -380,7 +380,7 @@ downVote(idAnswer:string){
     })
     this.downVoted[idAnswer] = true;
     this.upVoted[idAnswer] = false;
-    this.couleurs[idAnswer] = false;
+ 
       })
 
 }}
@@ -392,14 +392,15 @@ upVoteCouleur(answerId:string) {
     (data) => {
       this.vote = data;
       if (this.vote != null && this.vote.voteType == 1) {
-        this.couleur = true;
-        this.couleurs[answerId] = true;
-        this.downVoteCouleurs[answerId] = false;
+      
+        this.upVoted[answerId] = true;
+        this.downVoted[answerId] = false;
+      
       } else {
-        this.couleur = false;
-        this.couleurs[answerId] = false;
+        this.upVoted[answerId] = false;
+       
       }
-      console.log("*********couleur dans upVoteCouleur", this.couleur);
+     
     }
   );
 }
@@ -408,10 +409,11 @@ downVoteCouleur(answerId:string) {
     (data) => {
       this.vote = data;
       if (this.vote != null && this.vote.voteType == -1) {
-        this.downVoteCouleurs[answerId] = true;
-        this.couleurs[answerId] = false;
+        
+        this.upVoted[answerId] = false;
+        this.downVoted[answerId] = true;
       } else {
-        this.downVoteCouleurs[answerId] = false;
+        this.downVoted[answerId] = false;
       }
     }
   );
@@ -492,3 +494,4 @@ AnswersOrderByVote(){
 
 
 }
+

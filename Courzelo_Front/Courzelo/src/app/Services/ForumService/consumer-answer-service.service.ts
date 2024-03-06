@@ -21,7 +21,7 @@ export class ConsumerAnswerServiceService {
     );
   }
   AddAnswer(a:Answer ,idQuestion: string){
-    return  this.http.post('http://localhost:8081/answers/create/65d3902c15939e88eb26bd3b'+'/'+ idQuestion,a);
+    return  this.http.post('http://localhost:8081/answers/create/65d3909015939e88eb26bd3c'+'/'+ idQuestion,a);
   }
   deleteAnswer( id:string){
     return this.http.delete('http://localhost:8081/answers'+'/'+ id);

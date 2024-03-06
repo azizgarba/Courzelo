@@ -71,7 +71,7 @@ export class QuestionComponent implements OnInit{
     )
     this.searchValueChangeSubscription = this.searchForm.get('searchValue')?.valueChanges
     .pipe(
-      debounceTime(400), // wait 400ms after the last event before emitting last event
+      debounceTime(400), // nestana 400ms after the last event before emitting last event
       distinctUntilChanged() // only emit if value is different from previous value
     )
     .subscribe(() => {

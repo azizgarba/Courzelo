@@ -10,7 +10,7 @@
                 <!-- Title -->
                 <div class="form-group mb-4">
                     <label style="margin-left: 0px;">Title</label>
-                    <input type="text" formControlName="title" class="form-control" placeholder="Title">
+                    <input type="text" formControlName="title" class="form-control" placeholder="Title" (input)="messageInput($event)">
                     <div class="form-notch">
                         <div class="form-notch-leading" style="width: 9px;"></div>
                         <div class="form-notch-middle" style="width: 114.4px;"></div>
@@ -29,7 +29,7 @@
                 <!-- Description -->
                 <div class="form-group mb-4">
                     <label style="margin-left: 0px;">Description</label>
-                    <input type="text" formControlName="description" class="form-control" placeholder="Description">
+                    <input type="text" formControlName="description" class="form-control" placeholder="Description" (input)="messageInput2($event)">
                     <div class="form-notch">
                         <div class="form-notch-leading" style="width: 9px;"></div>
                         <div class="form-notch-middle" style="width: 114.4px;"></div>
@@ -67,7 +67,8 @@
                 <!-- Submit button -->
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" (click)="close()">Close</button>
-                    <button type="submit" class="btn btn-primary" (click)="save()">Save</button>
+                    <button *ngIf="update==false" type="submit" class="btn btn-primary" (click)="ajouter()" [disabled]="!isMessageValid ||!isMessageValid2 ">Add</button>
+                    <button *ngIf="update==true" type="submit" class="btn btn-primary" (click)="updatepop()" [disabled]="!isMessageValid ||!isMessageValid2 ">Update</button>
                 </div>
 
                 <!-- Register buttons -->
