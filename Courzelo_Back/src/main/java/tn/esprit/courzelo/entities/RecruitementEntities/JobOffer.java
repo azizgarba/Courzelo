@@ -34,4 +34,6 @@ public class JobOffer {
     private UserCourzelo recruiter;
     @DBRef
     private List<Candidacy> candidacies;
+    @Indexed
+    private int matchingScore;
 }

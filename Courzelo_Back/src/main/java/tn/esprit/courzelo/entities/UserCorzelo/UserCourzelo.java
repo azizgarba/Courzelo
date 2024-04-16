@@ -29,6 +29,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Document(collection = "UserCourzelo")
 @JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums","answers", "votes"})
+
         public class UserCourzelo {
 
         @Id
@@ -105,6 +106,7 @@ import java.util.Set;
                 this.email = email;
                 this.password = password;
         }
+
 
         @Override
         public String toString() {

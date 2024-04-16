@@ -11,6 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,6 +25,14 @@ public class Feedback {
     private String description;
     @Indexed
     private TypeFeedback typeFeedback;
+    @Indexed
+    private int stateOfClass;
+    @Indexed
+    private int CourseContent;
+    @Indexed
+    private int audioVisualConnectivity;
+    @Indexed
+    private int classLecture;
     @DBRef
     private UserCourzelo student;
     @DBRef
@@ -30,5 +40,5 @@ public class Feedback {
     @DBRef
     private Module module;
     @DBRef
-    private QuestionFeedback questionFeedback;
+    private List<QuestionFeedback> questionFeedbacks;
 }
