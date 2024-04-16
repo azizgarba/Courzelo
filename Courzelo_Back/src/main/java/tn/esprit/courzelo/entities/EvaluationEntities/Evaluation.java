@@ -8,6 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.List;
 
@@ -26,17 +28,26 @@ public class Evaluation {
     @Indexed
     private int finaltest_grade;
     @Indexed
-    private int honors;
+    private String honors;
     @Indexed
     private int rank;
     @Indexed
     private int rankClass;
     @Indexed
-    private float ModuleAverage;
+    private double ModuleAverage;
+    @Indexed
+    private double finalAverage;
     @Indexed
     private EvaluationType evaluationType;
+    @Indexed
+    private String comments;
     @Indexed
     private int rankModule;
     @DBRef
     private List<Test> tests;
+    @DBRef
+    private UserCourzelo student;
+    @DBRef
+    private Module module;
+
 }

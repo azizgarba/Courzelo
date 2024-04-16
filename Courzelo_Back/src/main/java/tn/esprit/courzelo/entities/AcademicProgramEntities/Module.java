@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import tn.esprit.courzelo.entities.EvaluationEntities.Evaluation;
+import tn.esprit.courzelo.entities.EvaluationEntities.Test;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 
 import java.util.List;
@@ -34,13 +35,20 @@ public class Module {
     @Indexed
     private String image;
     @Indexed
-    private Float couef;
+    private Float coeff;
     @DBRef
     private List<Course> courses;
  @DBRef
- private List<Evaluation> evaluation;
+ private Evaluation evaluation;
  @DBRef
     private List<EducationalProgram> educationalPrograms;
  @DBRef
     private List<QuestionForum> questionForums;
+ @DBRef
+       private List<Test> tests ;
+    @DBRef
+    private List<Class> classes ;
+    @DBRef
+    private Level level;
+
 }

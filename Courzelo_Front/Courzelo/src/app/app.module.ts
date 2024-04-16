@@ -16,10 +16,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ModalConfirmationComponent } from './Components/Forum/modal-confirmation/modal-confirmation.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IncentivesComponent } from './Components/Forum/incentives/incentives.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 import { ChartComponentComponent } from './Components/Forum/chart-component/chart-component.component';
 import { ChartModule } from 'angular-highcharts';
@@ -39,6 +39,26 @@ import { NavBarOUTComponent } from './shared/nav-bar-out/nav-bar-out.component';
 
 
 
+import { AddTestComponent } from './components/EvaluationComponent/add-test/add-test.component';
+import { AddQuestionComponent } from './components/EvaluationComponent/add-question/add-question.component';
+import { CommonModule } from '@angular/common';
+import { AllTestsComponent } from './components/EvaluationComponent/all-tests/all-tests.component';
+import { EditTestComponent } from 'src/app/Components/EvaluationComponent/edit-test/edit-test.component';
+import { TakeTestComponent } from 'src/app/Components/EvaluationComponent/take-test/take-test.component';
+import { AllModulesComponent } from 'src/app/Components/EvaluationComponent/all-modules/all-modules.component';
+import { TestOptionsDialogComponent } from 'src/app/Components/EvaluationComponent/test-options-dialog/test-options-dialog.component';
+import { GradesComponent } from 'src/app/Components/EvaluationComponent/grades/grades.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RewardsComponent } from 'src/app/Components/EvaluationComponent/rewards/rewards.component';
+import { RewardsStatisticsComponent } from './components/EvaluationComponent/rewards-statistics/rewards-statistics.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SuccesComponent } from './components/EvaluationComponent/succes/succes.component';
+import { FinalEvaluationComponent } from './components/EvaluationComponent/final-evaluation/final-evaluation.component';
+import { RevisionComponent } from './components/EvaluationComponent/revision/revision.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,9 +81,23 @@ import { NavBarOUTComponent } from './shared/nav-bar-out/nav-bar-out.component';
     BoardUserComponent,
     EmptyComponentComponent,
     AcceuilPrimComponent,
-    NavBarOUTComponent
+    NavBarOUTComponent,
   
     
+    AddTestComponent,
+    AddQuestionComponent,
+    AllTestsComponent,
+    EditTestComponent,
+    TakeTestComponent,
+    AllModulesComponent,
+    TestOptionsDialogComponent,
+    GradesComponent,
+    RewardsComponent,
+    RewardsStatisticsComponent,
+    SuccesComponent,
+    FinalEvaluationComponent,
+    RevisionComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -77,10 +111,20 @@ import { NavBarOUTComponent } from './shared/nav-bar-out/nav-bar-out.component';
     NgbModule,
     MatIconModule,
     MatProgressBarModule,
-    ChartModule
-    
+    ChartModule,
+    MdbModalModule, CommonModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+        MatCardModule,
+        MatProgressBarModule,
+        
+        
 
-  
+
   ],
   providers: [authInterceptorProviders , AuthGuard],
   bootstrap: [AppComponent]

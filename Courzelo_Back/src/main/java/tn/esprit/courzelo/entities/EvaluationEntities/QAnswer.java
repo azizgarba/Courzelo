@@ -14,7 +14,7 @@ import tn.esprit.courzelo.entities.EvaluationEntities.QuestionTest;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Options")
+@Document(collection = "Qanswer")
 public class QAnswer {
     @Id
     private String id;
@@ -22,6 +22,5 @@ public class QAnswer {
     private String name;
     @Indexed
     private String description;
-    @DBRef
-    private QuestionTest questionTest;
+
 }

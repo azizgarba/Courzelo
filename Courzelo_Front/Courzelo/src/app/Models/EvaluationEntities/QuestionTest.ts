@@ -1,8 +1,10 @@
+import { Answer } from "../ForumEntities/Answer";
 import { QAnswer } from "./QAnswer";
 
 export class QuestionTest{
-    id!:number;
+    id!:string;
     name!:string;
     description!:string;
-    correctAnswers!: Array<QAnswer>;
+    answers!:Array<QAnswer> ;
+    correctAnswer!: string;
 }
