@@ -12,6 +12,7 @@ public interface ChatRepository extends MongoRepository<ChatRoom, Integer> {
 
     HashSet<ChatRoom> findChatRoomByReceiver(UserCourzelo receiver);
     HashSet<ChatRoom> findChatRoomBySender(UserCourzelo receiver);
+    HashSet<ChatRoom> findBySenderOrReceiver(UserCourzelo sender, UserCourzelo receiver);
 
     ChatRoom findChatRoomBySenderAndReceiver(UserCourzelo sender,UserCourzelo receiver);
     ChatRoom findChatRoomByReceiverAndSender(UserCourzelo receiver,UserCourzelo sender);

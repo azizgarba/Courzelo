@@ -16,7 +16,10 @@ import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,6 +32,8 @@ import java.util.List;
         private  String id;
         @Indexed
         private String firstName;
+        @Indexed
+        private String username;
         @Indexed
         private String lastName;
         @Indexed
@@ -45,8 +50,8 @@ import java.util.List;
         private int nbMaxHeurePerWeek;
         @Indexed
         private int nbHourPerWeek=0;
-        @Indexed
-        private Role role;
+        @DBRef
+        private Set<Role> roles = new HashSet<>();
         @Indexed
         private String companyName;
         @Indexed
@@ -68,11 +73,11 @@ import java.util.List;
         @Indexed
         private boolean canVote=true;
         @Indexed
-        private int nbVoteForIncentives;
+        private int nbVoteForIncentives=0;
         @Indexed
         private int nbPrimeVoteForBadges;
         @Indexed
-        private String PaymentDay;
+        private int PaymentDay;
         @Indexed
         private String CentreOffIntrest;
         @Indexed
@@ -92,6 +97,11 @@ import java.util.List;
         private List<Answer> answers;
         @DBRef
         private List<Votes> votes;
+        public UserCourzelo(String username, String email, String password) {
+                this.username = username;
+                this.email = email;
+                this.password = password;
+        }
 
         }
 

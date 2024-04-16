@@ -1,3 +1,5 @@
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
 <div class="content-page">
     <div class="content">
 
@@ -42,8 +44,8 @@
 
                                     <div class="row align-items-center ">
                                         <div class="col ">
-                                            <ngb-rating *ngIf="question.student.id!='65d3909015939e88eb26bd3c'" [max]="5" (click)="GetRating()" [formControl]="ratingcontrol" [rate]="rateNumber"></ngb-rating>
-                                            <ul *ngIf="question.student.id=='65d3909015939e88eb26bd3c'" class="social-list list-inline mt-3 mb-0 ">
+                                            <ngb-rating *ngIf="question.student.id!=idUser" [max]="5" (click)="GetRating()" [formControl]="ratingcontrol" [rate]="rateNumber"></ngb-rating>
+                                            <ul *ngIf="question.student.id==idUser" class="social-list list-inline mt-3 mb-0 ">
                                                 <li class="list-inline-item">
                                                     <a href="javascript:void(0);" class="social-list-item border-secondary text-secondary">
                                                         <i class="mdi mdi-robot"></i>
@@ -61,7 +63,7 @@
 
                                             </ul>
                                         </div>
-                                        <div class="col-auto  mt-4  mb-1">
+                                        <div *ngIf="roles.includes('Teacher')" class="col-auto  mt-4  mb-1">
                                             <a (click)="goToChat()" href="javascript:void(0); " class="social-list-item border-success text-success "><i class="mdi mdi-chat "></i> </a>
                                         </div>
 
@@ -116,20 +118,20 @@
                             <div class="d-flex align-items-top mb-2 ">
                                 <img src="../assets/images/users/user-1.jpg " alt=" " class="flex-shrink-0 comment-avatar avatar-sm rounded me-2 ">
                                 <div class="flex-grow-1 ">
-                                    <h5 class="mt-0 "><a href="# " class="text-dark ">{{p.user.firstName}}</a><small class="ms-1 text-muted ">{{p.date | date : "MMMM d, yyyy, h:mm a"}}</small></h5>
+                                    <h5 class="mt-0 "><a href="# " class="text-dark ">{{p.user.username}}</a><small class="ms-1 text-muted ">{{p.date | date : "MMMM d, yyyy, h:mm a"}}</small></h5>
                                     <p class="font-16">{{p.message}}</p>
 
                                     <div class="comment-footer pt-1 mb-3 d-flex justify-content-between align-items-center">
                                         <div class="d-flexx">
 
 
-                                            <a *ngIf="p.user.id!='65d3909015939e88eb26bd3c'" [class.voted]="upVoted[p.id]" (click)="upVote(p.id)" [ngClass]="{'icon-blue': upVoted[p.id]}" class="mr-2 icon"><i class="far fa-thumbs-up"></i></a>
+                                            <a *ngIf="p.user.id!=idUser && canVote==true" [class.voted]="upVoted[p.id]" (click)="upVote(p.id)" [ngClass]="{'icon-blue': upVoted[p.id]}" class="mr-2 icon"><i class="far fa-thumbs-up"></i></a>
                                             <p class="large-text spaced">{{p.nbrVote}}</p>
 
-                                            <a *ngIf="p.user.id!='65d3909015939e88eb26bd3c'" [class.voted]="downVoted[p.id]" (click)="downVote(p.id)" [ngClass]="{'icon-blue': downVoted[p.id]}" class="icon"><i class="far fa-thumbs-down"></i></a>
+                                            <a *ngIf="p.user.id!=idUser  && canVote==true" [class.voted]="downVoted[p.id]" (click)="downVote(p.id)" [ngClass]="{'icon-blue': downVoted[p.id]}" class="icon"><i class="far fa-thumbs-down"></i></a>
 
                                         </div>
-                                        <a (click)="openModal(p.id,false)" *ngIf="p.user.id=='65d3909015939e88eb26bd3c'" class="social-list-item border-info text-info">
+                                        <a (click)="openModal(p.id,false)" *ngIf="p.user.id==idUser" class="social-list-item border-info text-info">
                                             <i class="mdi mdi-trash-can"></i>
                                         </a>
                                     </div>

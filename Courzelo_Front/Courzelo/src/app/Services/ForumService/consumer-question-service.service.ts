@@ -1,3 +1,5 @@
+
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -14,8 +16,20 @@ import { RateQuestion } from 'src/app/Models/ForumEntities/RateQuestion';
   providedIn: 'root'
 })
 export class ConsumerQuestionServiceService {
+  username!:string;
+  roles:any ={} ;
+  id!:string;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { 
+    let user = sessionStorage.getItem('auth-user');
+    if (user) {
+      let userData = JSON.parse(user);
+      this.id = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+    }
+  }
+
   private readonly baseUrl = 'https://www.purgomalum.com/service';
 
   getAllQuestion():Observable<QuestionForum[]>{
@@ -39,8 +53,9 @@ export class ConsumerQuestionServiceService {
   getModuleId(name: string) {
     return this.http.get<Module>('http://localhost:8081/answers/getModuleByName' + '/' + name);
   }
-  AddQuestion(question: QuestionForum,idModule: string){
-    return  this.http.post('http://localhost:8081/questions/create/65d3909015939e88eb26bd3c'+'/'+ idModule,question);
+  AddQuestion(id: string ,question: QuestionForum,idModule: string){
+    console.log("le id **********************",this.id)
+    return  this.http.post('http://localhost:8081/questions/create/'+id+'/'+ idModule,question);
   }
   getQuestionById(id: string){
     return  this.http.get<QuestionForum>('http://localhost:8081/questions'+'/'+ id);
@@ -53,14 +68,14 @@ export class ConsumerQuestionServiceService {
     return this.http.put('http://localhost:8081/questions/update', p);
   }
   //rating 
-  AddRating(question: RateQuestion,idQuestion: string){
-    return  this.http.post('http://localhost:8081/questions/Rating/create'+'/'+ idQuestion+'/65d3909015939e88eb26bd3c',question);
+  AddRating(question: RateQuestion,idQuestion: string,idUser: string){
+    return  this.http.post('http://localhost:8081/questions/Rating/create'+'/'+ idQuestion+'/'+idUser,question);
   }
   updateRate(p:RateQuestion){
     return this.http.put('http://localhost:8081/questions/Rate/update', p);
   }
-  getRateByqIdAndUser(idq: string){
-    return  this.http.get<RateQuestion>('http://localhost:8081/questions/Rate'+'/'+ idq +'/65d3909015939e88eb26bd3c');
+  getRateByqIdAndUser(idq: string,iduser: string){
+    return  this.http.get<RateQuestion>('http://localhost:8081/questions/Rate'+'/'+ idq +'/'+ iduser);
   }
   getRatesAverage(idq: string){
     return  this.http.get<number>('http://localhost:8081/questions/getTotalRateAverage'+'/'+ idq +'/' );
@@ -165,3 +180,4 @@ setuser(user :UserCourzelo) {
   
 
 }
+

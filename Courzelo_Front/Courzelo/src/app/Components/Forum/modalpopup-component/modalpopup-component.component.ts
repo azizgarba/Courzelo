@@ -31,6 +31,8 @@ export class ModalpopupComponentComponent {
   public subscription!: Subscription;
   question!: QuestionForum;
   containsProfanity = false;
+  idUser!: string;
+  roles:any ={} ;
 
  
 
@@ -40,6 +42,15 @@ export class ModalpopupComponentComponent {
     this.modalRef.close(closeMessage)
   }
   ngOnInit(){
+    //session
+    let user = sessionStorage.getItem('auth-user');
+    if (user) {
+      let userData = JSON.parse(user);
+      this.idUser= userData.id;
+      //this.username = userData.username;
+      this.roles = userData.roles;
+    }
+    //
  
 
     this.registerForm= new FormGroup({
@@ -153,29 +164,35 @@ export class ModalpopupComponentComponent {
         const question: QuestionForum = new QuestionForum();
         question.title = title;
         question.description = description;
-        
-        forkJoin({
-          titleProfanity: this.checkProfanity(question.title),
-          descriptionProfanity: this.checkProfanity(question.description)
-        }).subscribe(results => {
-          if (results.titleProfanity == false && results.descriptionProfanity == false) {
-            // Call the service method with the combinedObject and idModule
-            this.questionService.AddQuestion(question, this.moduleb.id).subscribe({
-              next: () => {
-                this.questionService.emitQuestionAddedEvent();
-              }
-            });
-            this.close();
-          } else {
-            // Call the service method with the combinedObject and idModule
-            console.log("There is a bad word here ****************");
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Your question contains prohibited words. Please revise your input.',
-            });
+        this.questionService.AddQuestion(this.idUser,question, this.moduleb.id).subscribe({
+          next: () => {
+            this.questionService.emitQuestionAddedEvent();
           }
         });
+        this.close();
+        
+        // forkJoin({
+        //   titleProfanity: this.checkProfanity(question.title),
+        //   descriptionProfanity: this.checkProfanity(question.description)
+        // }).subscribe(results => {
+        //   if (results.titleProfanity == false && results.descriptionProfanity == false) {
+        //     // Call the service method with the combinedObject and idModule
+        //     this.questionService.AddQuestion(question, this.moduleb.id).subscribe({
+        //       next: () => {
+        //         this.questionService.emitQuestionAddedEvent();
+        //       }
+        //     });
+        //     this.close();
+        //   } else {
+        //     // Call the service method with the combinedObject and idModule
+        //     console.log("There is a bad word here ****************");
+        //     Swal.fire({
+        //       icon: 'error',
+        //       title: 'Oops...',
+        //       text: 'Your question contains prohibited words. Please revise your input.',
+        //     });
+        //   }
+        // });
       },
       (error: any) => {
         console.error('Error fetching module ID:', error);

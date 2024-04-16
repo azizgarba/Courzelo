@@ -1,7 +1,8 @@
 <!-- ============================================================== -->
 <!-- Start Page Content here -->
 <!-- ============================================================== -->
-
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
 <div class="content-page">
     <div class="content">
 
@@ -14,15 +15,17 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <button *ngIf="!isDone" type="button" class="btn btn-success waves-effect waves-light  mark-done-btn" (click)="markDone()">
+                                <button *ngIf="approved == false && roles.includes('Student') " type="button" class="btn btn-success waves-effect waves-light  mark-done-btn" (click)="ApprouvedExolication()">
                                     Approved <span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                                  
-                                </button>
+                                  </button>
                                 <i *ngIf="isDone" class="fas fa-check-circle done-icon"></i>
 
                             </ol>
+
                         </div>
+
                         <h4 class="page-title">Chat</h4>
+
                     </div>
                 </div>
             </div>
@@ -41,8 +44,8 @@
                                 </div>
                                 <div class="flex-grow-1">
 
-                                    <h5 *ngIf="idq==userStorage" class="mt-0 mb-1">{{chatRoom.receiver.firstName}}</h5>
-                                    <h5 *ngIf="idq!=userStorage" class="mt-0 mb-1 text-truncate">{{chatRoom.sender.firstName}}</h5>
+                                    <h5 *ngIf="idq==userStorage" class="mt-0 mb-1">{{username}}</h5>
+                                    <h5 *ngIf="idq!=userStorage" class="mt-0 mb-1 text-truncate">{{username}}</h5>
 
                                     <p class="font-13 text-muted mb-0"> Student</p>
                                 </div>
@@ -76,7 +79,7 @@
                                 <ul class="list-unstyled chat-list mb-0" style="max-height: 413px;" data-simplebar>
                                     <li class="active">
                                         <!--je vais la faire ave ngIf si le session user a le meme userid que sener onva passer chat.reciever et laakes-->
-                                        <a (click)="getChatBy2Users(chattt.receiver.id)">
+                                        <a (click)="getChatBy2Users(chattt.receiver.id)" (click)="getChatBy2UsersOpp(chattt.sender.id)">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 chat-user-img active align-self-center me-2">
                                                     <img src="../assets/images/users/user-2.jpg" class="rounded-circle avatar-sm" alt="">
@@ -85,8 +88,9 @@
                                                 <div class="flex-grow-1 overflow-hidden">
 
 
-                                                    <h5 *ngIf="idq!=userStorage" class="text-truncate font-14 mt-0 mb-1">{{chattt.receiver.firstName}}</h5>
-                                                    <h5 *ngIf="idq==userStorage" class="text-truncate font-14 mt-0 mb-1">{{chattt.sender.firstName}}</h5>
+                                                    <h5 *ngIf="username==chattt.receiver.username" class="text-truncate font-14 mt-0 mb-1">{{chattt.sender.username}}</h5>
+                                                    <h5 *ngIf="username==chattt.sender.username" class="text-truncate font-14 mt-0 mb-1">{{chattt.receiver.username}}</h5>
+
                                                     <p class="text-truncate mb-0">I've finished it! See you so...</p>
                                                 </div>
                                                 <div class="font-11">05 min</div>
@@ -108,8 +112,8 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <h5 *ngIf="idq!=userStorage" class="mt-0 mb-1 text-truncate">{{reeiver1}}</h5>
-                                    <h5 *ngIf="idq==userStorage" class="mt-0 mb-1 text-truncate">{{sender1}}</h5>
+                                    <h5 *ngIf="username!=reeiver1" class="mt-0 mb-1 text-truncate">{{reeiver1}}</h5>
+                                    <h5 *ngIf="username!=sender1" class="mt-0 mb-1 text-truncate">{{sender1}}</h5>
                                     <p class="font-13 text-muted mb-0"><i class="mdi mdi-circle text-success me-1 font-11"></i> Active</p>
                                 </div>
                                 <div class="dropdown">
@@ -149,8 +153,12 @@
                                                             {{chatt.replymessage }}
                                                         </p>
 
+                                                        <mat-icon (click)="speak(chatt.replymessage , this.sourceLanguage)" color="accent" class="icon" style="font-size: 18px;">volume_up</mat-icon>
+
+
                                                     </div>
                                                     <span class="time">{{chatt.time| date : "h:mm a" }}</span>
+
 
                                                 </div>
                                                 <p><span class="bold-word"></span></p>
@@ -185,7 +193,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="position-relative">
-                                            <textarea name="" id="ta" class="form-control type_msg" placeholder="Type your message..." formControlName="replymessage" (keyup.enter)="sendMessage()" style="resize: none"></textarea>
+                                            <textarea name="replymessage" id="ta" class="form-control type_msg" matInput placeholder="Type your message..." formControlName="replymessage" (keyup.enter)="sendMessage()" style="resize: none"></textarea>
 
                                             <ul class="nav nav-pills profile-pills mt-1">
                                                 <li>
@@ -193,8 +201,20 @@
                                                     <button mat-raised-button class="input-group-text send_btn" (click)="sendMessage()">
                                                         <i class="fa fa-location-arrow"></i>
                                                       </button>
+
                                                 </li>
                                                 <br>
+                                                <div class="input-icons">
+                                                    <div class="mic-container">
+                                                        <button mat-icon-button (click)="voiceInput()">
+                                                        <mat-icon color="primary" class="icon">mic</mat-icon>
+                                                      </button>
+                                                        <ng-container *ngIf="this.recognition.isListening">
+                                                            <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+                                                        </ng-container>
+                                                    </div>
+
+                                                </div>
                                                 <li>
 
 
@@ -205,6 +225,7 @@
                                                 </li>
                                             </ul>
 
+
                                         </div>
 
 
@@ -214,6 +235,7 @@
 
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

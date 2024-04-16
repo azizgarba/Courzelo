@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.ForumRepo.QuestionForumRepo;
 import tn.esprit.courzelo.Repositories.ForumRepo.RateQuestionRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 import tn.esprit.courzelo.entities.ForumEntities.RateQuestion;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
@@ -20,10 +20,10 @@ public class RateQuestionServiceImpl {
     RateQuestionRepo rateQuestionRepo;
     QuestionForumRepo questionForumRepo;
     QuestionForumImpl questionForumimpl ;
-    UserRepo userRepo;
+    UserRepository userRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(RateQuestionServiceImpl.class);
     public RateQuestion rateQuestion(RateQuestion rate,String questionId, String userId)  {
-        UserCourzelo u= userRepo.findUserCourzeloById(userId);
+        UserCourzelo u= userRepository.findUserCourzeloById(userId);
         QuestionForum q= questionForumRepo.findQuestionForumById(questionId);
         if (u!= null && q!=null) {
             rate.setQuestionForum(q);
@@ -63,7 +63,7 @@ public class RateQuestionServiceImpl {
         return null;
     }
     public RateQuestion getRateQuestionByQuestionAndUser(String idQ,String idu) {
-        UserCourzelo u= userRepo.findUserCourzeloById(idu);
+        UserCourzelo u= userRepository.findUserCourzeloById(idu);
         QuestionForum q= questionForumRepo.findQuestionForumById(idQ);
         return rateQuestionRepo.findRateQuestionByQuestionForumAndUser(q,u);
     }

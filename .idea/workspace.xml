@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1c977447-2e4d-4927-bbec-40fb34d6ef7b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/UserController/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/UserController/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/ForumRepo/BadgeForumTeacherRepos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/ForumRepo/IncentivesRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/UserRepo/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/SentimentAnalysisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/UserService/UserDetailsImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/UserService/UserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/UserService/UserDetailsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/configurations/DBInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/configurations/Pipeline.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/configurations/SentimentAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/ForumEntities/BadgeForumTeacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/ForumEntities/Incentives.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/ForumEntities/IncentivesType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/ERole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/MessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/UserInfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/request/SignUpRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/security/AuthEntryPointJwt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/security/AuthTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/security/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/ForumController/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/ForumController/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/ForumController/VoteCotroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Controllers/ForumController/VoteCotroller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/ForumRepo/ChatRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/ForumRepo/ChatRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/UserRepo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Repositories/UserRepo/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/AnswerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/AnswerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/ChatServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/ChatServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/QuestionForumImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/QuestionForumImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/RateQuestionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/RateQuestionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/VoteServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/Services/ForumService/VoteServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/configurations/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/configurations/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/UserCourzelo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/java/tn/esprit/courzelo/entities/UserCorzelo/UserCourzelo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Back/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Back/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/answer/answer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/answer/answer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/answer/answer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/answer/answer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/chat/chat.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/modalpopup-component/modalpopup-component.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/modalpopup-component/modalpopup-component.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/question/question.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/Forum/question/question.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Components/UserCorzelo/ev" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Models/ForumEntities/Incentives.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Models/ForumEntities/Incentives.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Models/UserCorzelo/UserCourzelo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Models/UserCorzelo/UserCourzelo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/WebSocketAPI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/WebSocketAPI.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/chat-consumer-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/chat-consumer-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/consumer-answer-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/consumer-answer-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/consumer-question-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/consumer-question-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/vote-consumer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/ForumService/vote-consumer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/Services/UserCorzeloServices/ev" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/shared/nav-bar/nav-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/shared/nav-bar/nav-bar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/shared/nav-bar/nav-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/app/shared/nav-bar/nav-bar.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Courzelo_Front/Courzelo/src/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2f6jzpQtLaff6jxC66pmueX9HXw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Najiba",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1c977447-2e4d-4927-bbec-40fb34d6ef7b" name="Changes" comment="" />
+      <created>1713128691535</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713128691535</updated>
+      <workItem from="1713128694558" duration="18000" />
+    </task>
+    <servers />
+  </component>
+</project>

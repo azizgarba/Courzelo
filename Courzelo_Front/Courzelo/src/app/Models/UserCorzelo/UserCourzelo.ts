@@ -4,7 +4,8 @@ import { QuestionForum } from "../ForumEntities/QuestionForum";
 
 export class UserCourzelo{
 
-    id!: string;    
+    id!: string;  
+    username!: string;  
     firstName!: string;
     lastName!: string;
     email!: string;
@@ -15,7 +16,7 @@ export class UserCourzelo{
     dateOfCreation!:Date;
     nbHoursMaxPerWeek!:number;
     nbHoursPerWeek = 0;
-    role!:Role;
+    role!:ERole;
     companyName!:string;
     descriptionRecruiter!:string;
     scoreXp!:number;
@@ -34,7 +35,7 @@ export class UserCourzelo{
     questionForums:QuestionForum[]=[]
 
 }
-export enum Role{
+export enum ERole{
    Teacher,
    Student,
    Moderator,

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.courzelo.Repositories.ForumRepo.ChatRepository;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 
 import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
 import tn.esprit.courzelo.entities.ForumEntities.MediaType;
@@ -21,14 +21,17 @@ import org.slf4j.LoggerFactory;
 @AllArgsConstructor
 public class ChatServiceImpl {
     private SequenceGeneratorService sequenceGeneratorService;
-    private UserRepo userRepo;
+    private UserRepository userRepository;
     private ChatRepository chatRepository;
     private MediaServiceImpl mediaService ;
+    private SentimentAnalysisService sentimentAnalysisService;
+  // private String text= "hello this jhon. you should work more . we are happy to see you. but i dont understand this. and i hate the way you act  ";
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ChatServiceImpl.class);
 
     public ChatRoom addChat(ChatRoom chat, String idSender, String idReceiver) {
-        UserCourzelo sender = userRepo.findUserCourzeloById(idSender);
-        UserCourzelo receiver = userRepo.findUserCourzeloById(idReceiver);
+        UserCourzelo sender = userRepository.findUserCourzeloById(idSender);
+        UserCourzelo receiver = userRepository.findUserCourzeloById(idReceiver);
         chat.setId(sequenceGeneratorService.generateSequence(ChatRoom.SEQUENCE_NAME));
         if (sender != null && receiver != null) {
             chat.setSender(sender);
@@ -45,10 +48,12 @@ public class ChatServiceImpl {
     public ChatRoom getChatById(int id) {
         return chatRepository.findById(id).orElse(null);
 
+
+
     }
 
     public HashSet<ChatRoom> getChatsByUser(String userId) throws ChatNotFoundException {
-        UserCourzelo u= userRepo.findUserCourzeloById(userId);
+        UserCourzelo u= userRepository.findUserCourzeloById(userId);
         HashSet<ChatRoom> chat = chatRepository.findChatRoomByReceiver(u);
         HashSet<ChatRoom> chat1 = chatRepository.findChatRoomBySender(u);
 
@@ -62,16 +67,21 @@ public class ChatServiceImpl {
             return chat1;
         }
     }
+    public HashSet<ChatRoom> getChatsByUSenderIOrrReciver(String userId,String id) throws ChatNotFoundException {
+        UserCourzelo u= userRepository.findUserCourzeloById(userId);
+        UserCourzelo u2= userRepository.findUserCourzeloById(id);
+        return chatRepository.findBySenderOrReceiver(u,u2);
+    }
 
     public ChatRoom getChatBySenderAndReceiver(String idSender, String idReceiver) {
-        UserCourzelo sender = userRepo.findUserCourzeloById(idSender);
-        UserCourzelo receiver = userRepo.findUserCourzeloById(idReceiver);
+        UserCourzelo sender = userRepository.findUserCourzeloById(idSender);
+        UserCourzelo receiver = userRepository.findUserCourzeloById(idReceiver);
         return chatRepository.findChatRoomBySenderAndReceiver(sender, receiver);
 
     }
     public ChatRoom getChatBySenderAndReceiver2( String idReceiver,String idSender) {
-        UserCourzelo sender = userRepo.findUserCourzeloById(idSender);
-        UserCourzelo receiver = userRepo.findUserCourzeloById(idReceiver);
+        UserCourzelo sender = userRepository.findUserCourzeloById(idSender);
+        UserCourzelo receiver = userRepository.findUserCourzeloById(idReceiver);
         return chatRepository.findChatRoomByReceiverAndSender(receiver,sender);
 
     }
@@ -79,11 +89,11 @@ public class ChatServiceImpl {
 
     public ChatRoom addMessage(Message message, int chatId, String idSender) throws ChatNotFoundException, UserNotFoundException {
         // Récupérer l'utilisateur expéditeur
-        UserCourzelo sender = userRepo.findUserCourzeloById(idSender);
+        UserCourzelo sender = userRepository.findUserCourzeloById(idSender);
         if (sender == null) {
             throw new UserNotFoundException("User not found with ID: " + idSender);
         }
-        if (chatId== 0) {
+        if (chatId == 0) {
             throw new UserNotFoundException("chat not found with ID: " + chatId);
         }
 
@@ -92,7 +102,6 @@ public class ChatServiceImpl {
         ChatRoom chatRoom = chatOptional.orElseThrow(ChatNotFoundException::new);
 
         // Assurer que le message a un expéditeur et une heure valide
-       
 
 
         // Ajouter le message à la salle de discussion
@@ -100,13 +109,14 @@ public class ChatServiceImpl {
         if (messages == null) {
             messages = new ArrayList<>();
         }
-        message.setSendermessage(sender.getFirstName());
+        message.setSendermessage(sender.getUsername());
         message.setTime(new Date());
         messages.add(message);
         chatRoom.setMessages(messages);
 
         // Sauvegarder la salle de discussion mise à jour
         ChatRoom savedChatRoom = chatRepository.save(chatRoom);
+
 
         // Logging
         LOGGER.debug("Message added to chat room: {}", savedChatRoom.getId());
@@ -117,7 +127,7 @@ public class ChatServiceImpl {
 
     public ChatRoom addMediaMessage(Message message, int chatId, MultipartFile image, String fileType, String userId, MediaType mediaType) throws ChatNotFoundException, UserNotFoundException {
         // Récupérer l'utilisateur expéditeur
-        UserCourzelo sender = userRepo.findUserCourzeloById(userId);
+        UserCourzelo sender = userRepository.findUserCourzeloById(userId);
         if (sender == null) {
             throw new UserNotFoundException("User not found with ID: " + userId);
         }
@@ -130,7 +140,7 @@ public class ChatServiceImpl {
         ChatRoom chatRoom = chatOptional.orElseThrow(ChatNotFoundException::new);
 
         // Assurer que le message a un expéditeur et une heure valide
-        message.setSendermessage(sender.getFirstName());
+        message.setSendermessage(sender.getUsername());
         message.setTime(new Date());
 
         // Ajouter le média au message

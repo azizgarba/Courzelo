@@ -9,7 +9,7 @@ import tn.esprit.courzelo.Repositories.ForumRepo.AnswerRepository;
 import tn.esprit.courzelo.Repositories.ForumRepo.QuestionForumRepo;
 import tn.esprit.courzelo.Repositories.ForumRepo.VoteRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.ForumEntities.Answer;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
@@ -24,7 +24,7 @@ import java.util.List;
 public class AnswerServiceImpl {
     AnswerRepository answerRepository ;
     QuestionForumRepo questionForumRepository ;
-    UserRepo userRepo ;
+    UserRepository userRepository;
     ModuleRepo moduleRepo ;
     VoteRepo voteRepo;
     private MongoOperations mongoOperations;
@@ -42,7 +42,7 @@ public class AnswerServiceImpl {
 
     public Answer createAnswer(Answer answer,String userId, String questionId) {
         QuestionForum question = questionForumRepository.findQuestionForumById(questionId);
-        UserCourzelo u = userRepo.findUserCourzeloById(userId);
+        UserCourzelo u = userRepository.findUserCourzeloById(userId);
         Date now = new Date();
         if ( question !=null && u!= null) {
 

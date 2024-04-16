@@ -1,4 +1,22 @@
 package tn.esprit.courzelo.entities.UserCorzelo;
-public enum Role {
-    Admin,Teacher,Student,Moderator,Recruiter
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Document(collection = "roles")
+public class Role {
+    @Id
+    private String id;
+    @Indexed
+    private ERole name;
+
 }

@@ -30,130 +30,41 @@
                     </div>
                 </li>
 
+                <style>
+                    .dropdown:hover .dropdown-menu {
+                        display: block;
+                    }
+                </style>
+
                 <li class="dropdown notification-list topbar-dropdown">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" (click)="resetNotificationCount3()">
                         <i class="fe-bell noti-icon"></i>
-                        <span class="badge bg-danger rounded-circle noti-icon-badge">9</span
-              >
-            </a>
-            <div class="dropdown-menu dropdown-menu-end dropdown-lg">
-              <!-- item-->
-              <div class="dropdown-item noti-title">
-                <h5 class="m-0">
-                  <span class="float-end">
-                    <a href="" class="text-dark">
-                      <small>Clear All</small>
-                    </a> </span
-                  >Notification
-                </h5>
-              </div>
-  
-              <div class="noti-scroll" data-simplebar>
-                <!-- item-->
-                <a
-                  href="javascript:void(0);"
-                  class="dropdown-item notify-item active"
-                >
-                  <div class="notify-icon">
-                    <img
-                      src="../../../../assets/images/users/user-1.jpg"
-                      class="img-fluid rounded-circle"
-                      alt=""
-                    />
-                  </div>
-                  <p class="notify-details">Samiir Pessiron</p>
-                  <p class="text-muted mb-0 user-msg">
-                    <small>Life Sucks</small>
-                  </p>
-                </a>
-  
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <div class="notify-icon bg-primary">
-                    <i class="mdi mdi-comment-account-outline"></i>
-                  </div>
-                  <p class="notify-details">
-                    Caleb Flakelar commented on Admin
-                    <small class="text-muted">1 min ago</small>
-                  </p>
-                </a>
-  
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <div class="notify-icon">
-                    <img
-                      src="../../../../assets/images/users/user-4.jpg"
-                      class="img-fluid rounded-circle"
-                      alt=""
-                    />
-                  </div>
-                  <p class="notify-details">Karen Robinson</p>
-                  <p class="text-muted mb-0 user-msg">
-                    <small>Wow ! this admin looks good and awesome design</small>
-                  </p>
-                </a>
-  
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <div class="notify-icon bg-warning">
-                    <i class="mdi mdi-account-plus"></i>
-                  </div>
-                  <p class="notify-details">
-                    New user registered.
-                    <small class="text-muted">5 hours ago</small>
-                  </p>
-                </a>
-  
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <div class="notify-icon bg-info">
-                    <i class="mdi mdi-comment-account-outline"></i>
-                  </div>
-                  <p class="notify-details">
-                    Caleb Flakelar commented on Admin
-                    <small class="text-muted">4 days ago</small>
-                  </p>
-                </a>
-  
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <div class="notify-icon bg-secondary">
-                    <i class="mdi mdi-heart"></i>
-                  </div>
-                  <p class="notify-details">
-                    Carlos Crouch liked
-                    <b>Admin</b>
-                    <small class="text-muted">13 days ago</small>
-                  </p>
-                </a>
-              </div>
-  
-              <!-- All-->
-              <a
-                href="javascript:void(0);"
-                class="dropdown-item text-center text-primary notify-item notify-all"
-              >
-                View all
-                <i class="fe-arrow-right"></i>
-              </a>
-            </div>
-          </li>
-  
-          <li class="dropdown notification-list topbar-dropdown">
-            <a
-              class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="false"
-              aria-expanded="false"
-            >
-              <img
-                src="../../../../assets/images/users/user-1.jpg"
-                alt="user-image"
-                class="rounded-circle"
-              />
-              <span class="pro-user-name ms-1">
+                        <span *ngIf="roles.includes('Teacher')" class="badge bg-danger rounded-circle noti-icon-badge">{{ notificationCount3 }}</span>
+                        <span *ngIf="roles.includes('Student')" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
+                    </a>
+                    <div *ngIf="roles.includes('Teacher')" class="dropdown-menu dropdown-menu-end dropdown-lg" style="max-height: 1000px;width: 1000%;">
+                        <!-- item-->
+                        <div class="slimscroll" style="max-height: 1000px;">
+                            <!-- item-->
+                            <a class="dropdown-item notify-item" style="width: 100%; overflow: visible;">
+                                <div class="notify-icon bg-warning">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details" style="width: 50%; white-space: normal; overflow: visible;">
+                                    {{greeting2 }}
+                                    <small class="text-muted">1 second ago</small>
+                                </p>
+                            </a>
+                            <!-- item-->
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="../../../../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle" />
+                        <span class="pro-user-name ms-1">
                 Samir <i class="mdi mdi-chevron-down"></i>
               </span>
                     </a>
@@ -178,7 +89,7 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="auth-logout.html" class="dropdown-item notify-item">
+                        <a (click)="logout()" class="dropdown-item notify-item">
                             <i class="fe-log-out"></i>
                             <span>Logout</span>
                         </a>
@@ -191,6 +102,8 @@
                     </a>
                 </li>
             </ul>
+
+
 
             <!-- LOGO -->
             <div class="logo-box">
@@ -577,7 +490,58 @@
                  
                 </a>
 
+
+
                         </li>
+                        <!--notifMyyyyy-->
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a routerLink="/forumChat" class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" (click)="resetNotificationCount()">
+                                <i class="fa fa-comment noti-icon"></i>
+                                <span *ngIf="userIdReciver==idUser" class="badge bg-danger rounded-circle noti-icon-badge">{{ notificationCount }}</span>
+                                <span *ngIf="userIdReciver!=idUser" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
+                            </a>
+                            <div *ngIf="userIdReciver==idUser" class="dropdown-menu dropdown-menu-end dropdown-lg" style="max-height: 1000px;width: 1000%;">
+                                <!-- item-->
+                                <h6 class="dropdown-item-text">Notifications ({{ notificationCount }})</h6>
+                                <div class="slimscroll" style="max-height: 230px;">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-success">
+                                            <i class="mdi mdi-comment-account-outline"></i>
+                                        </div>
+                                        <p class="notify-details">{{greeting}}
+                                            <small class="text-muted">1 second ago</small> </p>
+                                    </a>
+                                    <!-- item-->
+                                </div>
+                            </div>
+                        </li>
+                        <!--notifMyyyyy-->
+                        <!--notiff2 -->
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a routerLink="/acceuilncentives" class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false" (click)="resetNotificationCount2()">
+                                <i class=" fe-gift"></i>
+                                <span *ngIf="roles.includes('Teacher')" class="badge bg-danger rounded-circle noti-icon-badge">{{ notificationCount2 }}</span>
+                                <span *ngIf="roles.includes('Student')" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
+                            </a>
+                            <div *ngIf="roles.includes('Teacher')" class="dropdown-menu dropdown-menu-end dropdown-lg">
+                                <!-- item-->
+                                <h6 class="dropdown-item-text">Notifications ({{ notificationCount2 }})</h6>
+                                <div class="slimscroll" style="max-height: 230px;">
+                                    <!-- item-->
+                                    <a *ngIf="prime2!==null" routerLink="/forumIncentives" class="dropdown-item notify-item">
+                                        <div class="notify-icon bg-success">
+                                            <i class="mdi mdi-comment-account-outline"></i>
+                                        </div>
+                                        <p class="notify-details">{{prime2 }}
+                                            <small class="text-muted">1 second ago</small> </p>
+                                    </a>
+                                    <!-- item-->
+                                </div>
+                            </div>
+                        </li>
+                        <!---notif2-->
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="mdi mdi-card-bulleted-settings-outline me-1"></i> Job Offers

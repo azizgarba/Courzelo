@@ -9,18 +9,15 @@ import tn.esprit.courzelo.Repositories.ForumRepo.QuestionForumRepo;
 import tn.esprit.courzelo.Repositories.ForumRepo.RateQuestionRepo;
 import tn.esprit.courzelo.Repositories.ForumRepo.VoteRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.ForumEntities.Answer;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 import tn.esprit.courzelo.entities.ForumEntities.RateQuestion;
 import tn.esprit.courzelo.entities.ForumEntities.Votes;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
-import java.util.stream.Collectors;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import java.util.*;
 
@@ -30,7 +27,7 @@ public class QuestionForumImpl  {
     QuestionForumRepo questionForumRepo ;
     AnswerRepository answerRepository;
     ModuleRepo moduleRepo ;
-    UserRepo userRepo ;
+    UserRepository userRepository;
     RateQuestionRepo rateQuestionRepo;
     VoteRepo voteRepo;
 
@@ -39,7 +36,7 @@ public class QuestionForumImpl  {
     public QuestionForum AddQuestion(QuestionForum questionForum, String idUser , String idModule ) {
        Module module =moduleRepo.findModuleById(idModule);
         Date now = new Date();
-        UserCourzelo u= userRepo.findUserCourzeloById(idUser);
+        UserCourzelo u= userRepository.findUserCourzeloById(idUser);
         if(module!=null && u!= null){
             questionForum.setModule(module);
             questionForum.setStudent(u);

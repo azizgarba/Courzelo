@@ -1,14 +1,16 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit, ChangeDetectorRef, NgZone } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { Observable, Subscription, catchError, map, of } from 'rxjs';
 import { ChatRoom } from 'src/app/Models/ForumEntities/ChatRoom';
+import { Incentives } from 'src/app/Models/ForumEntities/Incentives';
 import { Media } from 'src/app/Models/ForumEntities/Media';
 import { Message } from 'src/app/Models/ForumEntities/Message';
 import { UserCourzelo } from 'src/app/Models/UserCorzelo/UserCourzelo';
 import { WebSocketAPI } from 'src/app/Services/ForumService/WebSocketAPI';
 import { ChatConsumerServiceService } from 'src/app/Services/ForumService/chat-consumer-service.service';
 import { ConsumerQuestionServiceService } from 'src/app/Services/ForumService/consumer-question-service.service';
+import { VoteConsumerService } from 'src/app/Services/ForumService/vote-consumer.service';
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +21,11 @@ export class ChatComponent   {
       //notif
       webSocketAPI!: WebSocketAPI;
       greeting: any;
+      greeting2: any;
       name!: "you recieve a message ";
+      prime2!:any;
+      public notificationCount3Subject!: Subscription;
+      public notificationCountSubject !: Subscription;
     //
  
   pollingInterval: any;
@@ -49,12 +55,26 @@ export class ChatComponent   {
   userStorage:any
   dataUri!:any ; 
   scrollTop!: number;
+  listIncentives:Incentives[]=[];
+  public approved= false ;
+  sourceLanguage: string = 'en-GB';
+  targetLanguage: string = 'en-GB';
+  recognition: any;
+  showVolumeUp = null;
+  idUser!: string;
+  roles: string[] = [];
+  username!:string
+  userIdSender!:string;
 
-  constructor(private cdr: ChangeDetectorRef,private chatService:ChatConsumerServiceService,private questionService:ConsumerQuestionServiceService,private route:Router)
+  constructor(private voteService:VoteConsumerService,private cdr: ChangeDetectorRef,private chatService:ChatConsumerServiceService,private questionService:ConsumerQuestionServiceService,private route:Router, private ngZone: NgZone)
     {
       this.chatForm = new FormGroup({
         replymessage: new FormControl(),
       });
+      this.recognition = new (window as any).webkitSpeechRecognition();
+    this.recognition.interimResults = true;
+    this.recognition.continuous = true;
+    this.recognition.addEventListener("result", this.handleSpeechRecognition);
   }
   ngAfterViewInit() {
     setTimeout(() => {
@@ -70,13 +90,37 @@ export class ChatComponent   {
   }
 
   ngOnInit(){
+    //session
+    this.cdr.detectChanges();
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+    }
+    console.log("*********roles",this.roles)
+    //
     //scroll
-       //scroll
-     
+       //incetive
+       //this.pollingInterval =setInterval(() => { 
+        // this.userIdSender = sessionStorage.getItem('UserIdSender') as string;
+        // console.log("**************sensennn*", this.userIdSender);
+        // this.voteService.getIncentivesByTeacher(this.userIdSender ).subscribe((data) => {
+        // this.listIncentives = data;
+        // this.approved = this.listIncentives.every(a => a.teacher.approved);
+        // //this.cdr.detectChanges();
+        // console.log("***************ggggapprouved 1",this.approved)
+        // });
+    // },1000) 
+    console.log("***************ggggapprouved 1",this.approved)
       //
    
      // notif
-     this.webSocketAPI = new WebSocketAPI(new ChatComponent(this.cdr,this.chatService,this.questionService,this.route));
+     this.webSocketAPI = new WebSocketAPI(new ChatComponent(this.voteService,this.cdr,this.chatService,this.questionService,this.route,this.ngZone));
 
      // Écouter un événement ou utiliser un callback pour savoir quand la connexion est établie
      this.webSocketAPI.onConnect(() => {
@@ -87,6 +131,7 @@ export class ChatComponent   {
      
      // Établir la connexion WebSocket
      this.webSocketAPI._connect();
+   
   
      
      //
@@ -123,26 +168,29 @@ export class ChatComponent   {
       this.id = parseInt(idFromSessionStorage, 10);
       this.idnew = parseInt(idFromSessionStorage, 10);
       this.chatService
-      .getChatRoomsByUser()
+      .getChatRoomsBySenderOrReciver(this.idUser,this.idUser)
       .subscribe((data) => {
         // console.log(data);
         this.chatData = data;
         this.chatList = this.chatData;
+        console.log("****************chatList",this.chatList)
     
        
       });
+   
+    
       this.pollingInterval =setInterval(() => {
       this.chatService.getChatById(this.idnew).subscribe(
         (data)=>{this.chatRoom=data
         
           this.messageList = this.chatRoom.messages;
           this.senderId=this.userStorage;
-          this.reeiver1=this.chatRoom.receiver.firstName;
-          this.sender1=this.chatRoom.sender.firstName;
+          this.reeiver1=this.chatRoom.receiver.username;
+          this.sender1=this.chatRoom.sender.username;
         
      
        
-        console.log("msg111**************",this.chatRoom.sender.firstName)  }
+        console.log("msg111**************",this.chatRoom.sender.username)  }
        
       )
     
@@ -155,7 +203,7 @@ export class ChatComponent   {
     
     //la list de chat pour le user en session
     this.chatService
-    .getChatRoomsByUser()
+    .getChatRoomsBySenderOrReciver(this.idUser,this.idUser)
     .subscribe((data) => {
       // console.log(data);
       this.chatData = data;
@@ -170,16 +218,18 @@ export class ChatComponent   {
       
         this.messageList = this.chatRoom.messages;
         this.senderId=this.userStorage;
-        this.reeiver1=this.chatRoom.receiver.firstName;
-        this.sender1=this.chatRoom.sender.firstName;
+        this.reeiver1=this.chatRoom.receiver.username;
+        this.sender1=this.chatRoom.sender.username;
       
    
      
-      console.log("msg***************",this.chatRoom.sender.firstName)  }
+      console.log("msg***************",this.chatRoom.sender.username)  }
      
     )},1000
-    )
     
+    )
+   
+  
   }
     //this.usernameChatSender= sessionStorage.getItem('chatUser');
    
@@ -206,21 +256,31 @@ export class ChatComponent   {
 
 
   markDone() {
-    this.isDone = true; // Set the task state to 'done'
+    //this.isDone = true;
+    //this.approved=true // Set the task state to 'done'
   }
+  notificationCount = 0;
+  notificationCount2 = 0;
+  notificationCount3 = 0;
   sendMessage() {
     this.messageObj.replymessage = this.chatForm.value.replymessage;
     //local stoarge 
     //this.messageObj.sendermessage = this.sendermessage;
     if (this.messageObj.replymessage.length > 1) {
       this.chatService
-        .sendMessage(this.messageObj, this.id)
+        .sendMessage(this.messageObj, this.id,this.idUser)
         .subscribe((data) => {
           //console.log(data);
           this.chatForm.reset();
-          this.sendMessageSocket(this.messageObj.replymessage)
-          this.handleMessage11(this.messageObj.replymessage)
+          //this.sendMessageSocket(this.messageObj.replymessage)
+          //this.handleMessage11(this.messageObj.replymessage)
+          //this.handleMessage13(this.messageObj.replymessage)
           console.log("greeeet",this.greeting);
+              // Incrémentez le compteur de notifications chaque fois qu'un message est envoyé
+    
+       
+      
+
 
           // for displaying the messageList by the chatId
           this.chatService.getChatById(this.id).subscribe((data: any) => {
@@ -230,8 +290,8 @@ export class ChatComponent   {
       
               this.messageList = this.chatData .messages;
               this.senderId=this.userStorage;
-              this.reeiver1=this.chatData .receiver.firstName;
-              this.sender1=this.chatData .sender.firstName;
+              this.reeiver1=this.chatData .receiver.username;
+              this.sender1=this.chatData .sender.username;
               this.cdr.detectChanges();
           });
         });
@@ -244,23 +304,24 @@ export class ChatComponent   {
         
           this.messageList = this.chatRoom.messages;
           this.senderId=this.userStorage;
-          this.reeiver1=this.chatRoom.receiver.firstName;
-          this.sender1=this.chatRoom.sender.firstName;
+          this.reeiver1=this.chatRoom.receiver.username;
+          this.sender1=this.chatRoom.sender.username;
         
      
        
-        console.log("msg111**************",this.chatRoom.sender.firstName)  }
+        console.log("msg111**************",this.chatRoom.sender.username)  }
        
       )
     }
     getChatBy2Users(id2:string){
-      this.chatService.getChatRoomByUse1AndUser2(id2).subscribe(
+      this.chatService.getChatRoomByUse1AndUser2(id2,this.idUser).subscribe(
         (data) => {
          
             this.chatId = data.id;
             sessionStorage.setItem('chatId', this.chatId.toString());
-            sessionStorage.setItem('UserSession', data.sender.id);
-            sessionStorage.setItem('UserSession', data.sender.firstName);
+            sessionStorage.setItem('UserIdSender', data.sender.id);
+            sessionStorage.setItem('UserSession', data.sender.username);
+            sessionStorage.setItem('UserIdReciver', data.receiver.id);
             console.log("***************** the chat id ", this.chatId);
             this.chatService.setId(this.chatId);
             // Setting user session
@@ -268,6 +329,28 @@ export class ChatComponent   {
             this.route.navigate(['/forumChat']);
     
   })}
+  getChatBy2UsersOpp(id2:string){
+    this.chatService.getChatRoomByUse1AndUser1(id2,this.idUser).subscribe(
+      (data) => {
+       
+          this.chatId = data.id;
+          sessionStorage.setItem('chatId', this.chatId.toString());
+          sessionStorage.setItem('UserIdSender', data.sender.id);
+          sessionStorage.setItem('UserSession', data.sender.username);
+          sessionStorage.setItem('UserIdReciver', data.receiver.id);
+          console.log("***************** the chat id ", this.chatId);
+          console.log("***************** the chat id  useeeeeeeeeeeer22", id2);
+          console.log("***************** the chat id  useeeeeeeeeeeer111", this.idUser);
+          this.chatService.setId(this.chatId);
+          // Setting user session
+          this.questionService.setuser(data.sender);
+          this.route.navigate(['/forumChat']);
+  
+})}
+  resetNotificationCount() {
+    this.notificationCount = 0;
+  }
+  
 
   sendMedia(event: any) {
     const idFromSessionStorage1 = sessionStorage.getItem('chatId');
@@ -280,7 +363,7 @@ export class ChatComponent   {
           this.idnew ,
           event.target.files[0],
           event.target.files[0]?.type,
-          '65d3909015939e88eb26bd3c'
+          this.idUser
         )
         .subscribe((data) => {
           // for displaying the messageList by the chatId
@@ -326,6 +409,7 @@ connect(){
   console.log("connexion*******")
 }
 
+
 disconnect(){
   this.webSocketAPI._disconnect();
 }
@@ -343,9 +427,105 @@ sendMessageSocket(m:any) {
 
 handleMessage11(message:any){
   console.log('Message recieve!!!!!!!!!!: ', message);
+
   this.greeting = message;
+  if (this.greeting ) {
+    this.notificationCountSubject = this.chatService.getnotificationCount().subscribe(notificationCount => {
+      this.notificationCount = notificationCount;}) ;
+    this.notificationCount++;
+  }
+    this.chatService.setnotificationCount(this.notificationCount);
+  this.chatService.setgreeting(this.greeting);
+  
+}
+handleMessage13(message:any){
+  console.log(' message negative here attention please from chatController!!!!!!!!!!: ', message);
+  this.greeting2 = message;
+  if (this.greeting2 ) {
+    this.notificationCount3Subject = this.chatService.getnotificationCount3().subscribe(notificationCount3 => {
+      this.notificationCount3 = notificationCount3;}) ;
+    this.notificationCount3++;
+  }
+  this.chatService.setnotificationCount3(this.notificationCount3);
+this.chatService.setgreeting2(this.greeting2);
+
+    
+console.log("greeeetnajoooooooooooooooooo",this.greeting2);
+
+}
+ ApprouvedExolication(){
+  //SENDER
+  this.userIdSender = sessionStorage.getItem('UserIdSender') as string;
+  console.log("**************sensennn*", this.userIdSender);
+  this.voteService.AddIncentives(this.userIdSender).subscribe({
+    next: () => {
+      console.log("**********************",this.approved)
+      this.voteService.getIncentivesByTeacher(this.userIdSender).subscribe((data) => {
+        this.listIncentives = data;
+        this.approved = this.listIncentives.every(a => a.teacher.approved);
+        //this.cdr.detectChanges();
+        console.log("***************approuved 1ssssssssss",this.approved)
+       // this.handleMessage12(this.prime2)
+       
+        //console.log("***************approuved 1 la valeur de prime",this.prime2)
+     
+      
+
+        //this.connect();
+      });
+  
+    }
+  });
+}
+handleMessage12(message:any){
+  console.log('Message recieve from prim explication nooo ***!!!!!!!!!!: ', message);
+  this.prime2 = message ;
+  
+  console.log('Message recieve from prim explication nooo paruum ***!!!!!!!!!!: ', this.prime2);
+  
+  if (this.prime2!= null) {
+    this.ngZone.run(() => {
+      this.notificationCount2++;
+      console.log('Notification count after increment def: ', this.notificationCount2);
+      this.cdr.detectChanges();
+      this.chatService.setnotificationCount2(this.notificationCount2);
+      this.chatService.setprime2(this.prime2);
+    });
+  }
+
 }
 
+
+resetNotificationCount2() {
+  this.notificationCount2 = 0;
+}
+voiceInput() {
+  if (this.recognition && this.recognition.isListening) {
+    this.recognition.stop();
+    this.recognition.isListening = false;
+  } else {
+    this.recognition.lang = this.sourceLanguage;
+    this.recognition.start();
+    this.recognition.isListening = true;
+  }
+}
+
+handleSpeechRecognition = (e: any) => {
+  const text = Array.from(e.results)
+    .map((result: any) => result[0])
+    .map((result: any) => result.transcript)
+    .join("");
+
+  //this.replymessage = text;
+  console.log("texttttttttttttt",this.replymessage)
+  this.chatForm.get('replymessage')?.setValue(text);
+  //  this.chatForm.get('replymessage')?.setValue(text);
+};
+speak(text: String, language: string){
+  let utterance = new SpeechSynthesisUtterance(text as string );
+  utterance.lang = language;
+  speechSynthesis.speak(utterance);
+}
    
  
 }
