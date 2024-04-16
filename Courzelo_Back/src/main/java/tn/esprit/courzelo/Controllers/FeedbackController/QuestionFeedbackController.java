@@ -48,7 +48,7 @@ public class QuestionFeedbackController {
     @PostMapping("/add")
     public ResponseEntity<QuestionFeedback> addQuestionFeedback(@RequestBody QuestionFeedback questionFeedback){
         try{
-            questionFeedbackService.addQuestionFeedback(questionFeedback, questionFeedback.getTypeOption());
+            questionFeedbackService.addQuestionFeedback(questionFeedback);
             return ResponseEntity.ok(questionFeedback);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

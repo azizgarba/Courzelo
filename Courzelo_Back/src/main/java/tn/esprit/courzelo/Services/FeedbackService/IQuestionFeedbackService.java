@@ -12,7 +12,7 @@ public interface IQuestionFeedbackService {
     // get question feedback by id
     public QuestionFeedback getQuestionFeedbackById(String id);
     // add question feedback
-    public void addQuestionFeedback(QuestionFeedback questionFeedback, TypeOption typeOption);
+    public void addQuestionFeedback(QuestionFeedback questionFeedback);
     // delete question feedback
     public void deleteQuestionFeedback(String id);
     // update question feedback

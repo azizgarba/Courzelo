@@ -37,9 +37,9 @@ public class QuestionFeedbackServiceImpl implements IQuestionFeedbackService{
     }
 
     @Override
-    public void addQuestionFeedback(QuestionFeedback questionFeedback, TypeOption typeOption) {
+    public void addQuestionFeedback(QuestionFeedback questionFeedback) {
         try{
-            questionFeedback.setTypeOption(typeOption);
+
             questionFeedbackRepo.save(questionFeedback);
         } catch (Exception e){
             log.error(e.getMessage());

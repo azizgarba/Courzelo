@@ -10,8 +10,10 @@ public interface IFeedbackService {
     public List<Feedback> getAllFeedbacks();
     // get feedback by id
     public Feedback getFeedbackById(String id);
-    // add feedback
+    // add feedbackmodule
     public void addFeedback(Feedback feedback, TypeFeedback typeFeedback);
+    // add feedbackTeacher
+    public void addFeedbackTeacher(Feedback feedback);
     // delete feedback
     public void deleteFeedback(String id);
     // update feedback

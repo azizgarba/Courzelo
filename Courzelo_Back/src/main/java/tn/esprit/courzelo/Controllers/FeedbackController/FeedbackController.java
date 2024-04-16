@@ -53,6 +53,16 @@ public class FeedbackController {
             return ResponseEntity.badRequest().build();
         }
     }
+    //add feedback teacher
+    @PostMapping("/addTeacher")
+    public ResponseEntity<Feedback> addFeedbackTeacher(@RequestBody Feedback feedback){
+        try{
+            feedbackService.addFeedbackTeacher(feedback);
+            return ResponseEntity.ok(feedback);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
     //delete feedback
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteFeedback( @PathVariable("id") String id){

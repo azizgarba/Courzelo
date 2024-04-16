@@ -39,6 +39,19 @@ public class FeedbackServiceImpl implements IFeedbackService{
     public void addFeedback(Feedback feedback, TypeFeedback  typeFeedback) {
         try{
             feedback.setTypeFeedback(typeFeedback);
+            feedback.setTypeFeedback(TypeFeedback.Module);
+            feedbackRepo.save(feedback);
+
+        } catch (Exception e){
+            log.error(e.getMessage());
+
+        }
+    }
+
+    @Override
+    public void addFeedbackTeacher(Feedback feedback) {
+        try{
+            feedback.setTypeFeedback(TypeFeedback.Teacher);
             feedbackRepo.save(feedback);
 
         } catch (Exception e){
@@ -64,7 +77,7 @@ public class FeedbackServiceImpl implements IFeedbackService{
             feedbackRepo.findById(id).ifPresent(feedback1 -> {
                 feedback1.setDescription(feedback.getDescription());
                 feedback1.setTypeFeedback(feedback.getTypeFeedback());
-                feedback1.setQuestionFeedback(feedback.getQuestionFeedback());
+                feedback1.setQuestionFeedbacks(feedback.getQuestionFeedbacks());
                 feedback1.setTeacher( feedback.getTeacher());
                 feedback1.setStudent(feedback.getStudent());
                 feedback1.setModule(feedback.getModule());

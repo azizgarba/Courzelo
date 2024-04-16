@@ -22,6 +22,13 @@ import { DeleteConfirmationModelPopupComponent } from './Components/Recruitement
 import { CandidancyComponent } from './Components/RecruitementComponents/candidancy/candidancy.component';
 import { CandidancyFormComponent } from './Components/RecruitementComponents/candidancy-form/candidancy-form.component';
 import { UpdateCandidancyComponent } from './Components/RecruitementComponents/update-candidancy/update-candidancy.component';
+import { ViewQuestionFeedbackComponent } from './Components/FeedBackComponents/view-question-feedback/view-question-feedback.component';
+import { AddQuestionFeedbackComponent } from './Components/FeedBackComponents/add-question-feedback/add-question-feedback.component';
+import { AddFeedbackModuleComponent } from './Components/FeedBackComponents/add-feedback-module/add-feedback-module.component';
+import { ViewFeedbackModuleComponent } from './Components/FeedBackComponents/view-feedback-module/view-feedback-module.component';
+import { AddFeedbackTeacherComponent } from './Components/FeedBackComponents/add-feedback-teacher/add-feedback-teacher.component';
+import { ViewFeedbackTeacherComponent } from './Components/FeedBackComponents/view-feedback-teacher/view-feedback-teacher.component';
+import { ViewFeedbacksComponent } from './Components/FeedBackComponents/view-feedbacks/view-feedbacks.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +46,13 @@ import { UpdateCandidancyComponent } from './Components/RecruitementComponents/u
     CandidancyComponent,
     CandidancyFormComponent,
     UpdateCandidancyComponent,
+    ViewQuestionFeedbackComponent,
+    AddQuestionFeedbackComponent,
+    AddFeedbackModuleComponent,
+    ViewFeedbackModuleComponent,
+    AddFeedbackTeacherComponent,
+    ViewFeedbackTeacherComponent,
+    ViewFeedbacksComponent,
   ],
   imports: [
     BrowserModule,

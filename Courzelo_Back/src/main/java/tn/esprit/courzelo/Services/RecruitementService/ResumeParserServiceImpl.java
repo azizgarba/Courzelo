@@ -219,7 +219,7 @@ public class ResumeParserServiceImpl implements IResumeParserService{
             if (isTechnicalSkill(token) || isSpeciality(token)) {
                 namedEntities.add(token);
             }
-            // Add more custom rules for other types of named entities as needed
+
         }
 
         return namedEntities;
