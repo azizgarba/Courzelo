@@ -20,6 +20,7 @@ export class AddFeedbackModuleComponent implements OnInit {
     this.contactForm = this.fb.group({
       description: ["", Validators.required],
       selectedModule: ["", Validators.required], // Add a form control for the selected module
+      courseContent: ["", Validators.required],
     });
   }
   onSubmit() {
@@ -35,6 +36,7 @@ export class AddFeedbackModuleComponent implements OnInit {
   saveFeedback() {
     if (this.contactForm.valid) {
       // Initialize TypeFeedback entity with "Module"
+      console.log(this.contactForm.value.CourseContent);
       const feedbackData = {
         ...this.contactForm.value,
         type: TypeFeedback.Module,

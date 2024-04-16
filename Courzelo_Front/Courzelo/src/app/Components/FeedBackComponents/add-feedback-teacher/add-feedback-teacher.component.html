@@ -12,8 +12,14 @@
                 </div>
                 <div class="form-group">
                     <select formControlName="selectedModule" class="form-control" required>
-                        <option value="">Select Module *</option>
+                        <option value="">Select Teacher</option>
                         <option *ngFor="let module of teachers" [value]="module">{{ module }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select formControlName="courseContent" class="form-control" required>
+                        <option value="">Select Satisfaction Rating *</option>
+                        <option *ngFor="let rating of [1, 2, 3, 4, 5]" [value]="rating">{{ rating }}</option>
                     </select>
                 </div>
                 <div class="form-group">

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.courzelo.Services.FeedbackService.IFeedbackService;
 import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
+import tn.esprit.courzelo.entities.FeedBackEntities.TypeFeedback;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Tag(name = "Feedback")
 @RequestMapping("/feedback")
 public class FeedbackController {
-    @Autowired
+
     IFeedbackService feedbackService;
     //get all feedbacks
     @GetMapping("/all")
@@ -44,20 +45,21 @@ public class FeedbackController {
         }
     }
     //add feedback
-    @PostMapping("/add")
-    public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback){
+    @PostMapping("/add/{idUser}")
+    public Feedback addFeedback(@RequestBody Feedback feedback, @PathVariable("idUser") String idUser){
         try{
-            feedbackService.addFeedback(feedback, feedback.getTypeFeedback());
-            return ResponseEntity.ok(feedback);
+            feedbackService.addFeedback(feedback,idUser);
+            return feedback;
         }catch (Exception e){
-            return ResponseEntity.badRequest().build();
+            return feedback;
         }
+
     }
     //add feedback teacher
-    @PostMapping("/addTeacher")
-    public ResponseEntity<Feedback> addFeedbackTeacher(@RequestBody Feedback feedback){
+    @PostMapping("/addTeacher/{idUser}")
+    public ResponseEntity<Feedback> addFeedbackTeacher(@RequestBody Feedback feedback,@PathVariable("idUser") String idUser){
         try{
-            feedbackService.addFeedbackTeacher(feedback);
+            feedbackService.addFeedbackTeacher(feedback,idUser);
             return ResponseEntity.ok(feedback);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

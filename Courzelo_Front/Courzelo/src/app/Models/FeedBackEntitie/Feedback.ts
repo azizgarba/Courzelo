@@ -6,6 +6,7 @@ export class Feedback {
   id!: number;
   description!: string;
   typeFeedback!: TypeFeedback;
+  CourseContent!: number;
   student!: UserCourzelo;
   teacher!: UserCourzelo;
   module!: Module;

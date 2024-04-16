@@ -39,7 +39,7 @@ export class ViewFeedbackModuleComponent implements OnInit {
       this.feedbackModules &&
       this.feedbackModules.length > 0 &&
       this.feedbackModules.some(
-        (feedback: Feedback) => feedback.typeFeedback === TypeFeedback.Module
+        (feedback: Feedback) => feedback.typeFeedback.toString() == "Module"
       )
     );
   }

@@ -10,7 +10,7 @@ import { FeedbackService } from "src/app/Services/FeedBackServices/feedback.serv
 })
 export class AddFeedbackTeacherComponent implements OnInit {
   contactForm!: FormGroup;
-  teachers: string[] = ["Teacher A", "Teacher B", "Teacher C"]; // Define your list of modules here
+  teachers: string[] = ["Aziz", "Alexis", "John"]; // Define your list of modules here
   constructor(
     private fb: FormBuilder,
     private feedbackService: FeedbackService
@@ -20,6 +20,7 @@ export class AddFeedbackTeacherComponent implements OnInit {
     this.contactForm = this.fb.group({
       description: ["", Validators.required],
       selectedModule: ["", Validators.required], // Add a form control for the selected module
+      courseContent: ["", Validators.required],
     });
   }
   onSubmit() {

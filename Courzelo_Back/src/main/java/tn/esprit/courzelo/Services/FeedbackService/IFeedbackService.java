@@ -11,9 +11,9 @@ public interface IFeedbackService {
     // get feedback by id
     public Feedback getFeedbackById(String id);
     // add feedbackmodule
-    public void addFeedback(Feedback feedback, TypeFeedback typeFeedback);
+    public Feedback addFeedback(Feedback feedback,String idUser);
     // add feedbackTeacher
-    public void addFeedbackTeacher(Feedback feedback);
+    public void addFeedbackTeacher(Feedback feedback,String idUser);
     // delete feedback
     public void deleteFeedback(String id);
     // update feedback

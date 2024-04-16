@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Feedback } from "src/app/Models/FeedBackEntitie/Feedback";
+import { EmailServiceService } from "src/app/Services/FeedBackServices/email-service.service";
 import { FeedbackService } from "src/app/Services/FeedBackServices/feedback.service";
 declare var Morris: any;
 @Component({
@@ -12,8 +13,12 @@ export class ViewFeedbacksComponent implements OnInit {
   moduleFeedback: any;
   teacherFeedback: any;
   chartData: any;
+  feedbackformail: any;
 
-  constructor(private feedbackService: FeedbackService) {}
+  constructor(
+    private feedbackService: FeedbackService,
+    private emailService: EmailServiceService
+  ) {}
 
   ngOnInit() {
     this.fetchFeedbacks();
@@ -55,5 +60,50 @@ export class ViewFeedbacksComponent implements OnInit {
       data: this.chartData,
       labels: ["value"],
     });
+  }
+  sendEmailToTeacher() {
+    this.feedbackService.getAll().subscribe(
+      (data) => {
+        this.feedbackformail = data;
+        console.log(this.feedbackformail); // Make sure data is available here
+        const highSatisfactionFeedbacks = this.feedbackformail.filter(
+          (feedback: Feedback) =>
+            feedback.CourseContent >= 4 ||
+            feedback.typeFeedback.toString() == "Teacher"
+        );
+        const highSatisfactionCount = highSatisfactionFeedbacks.length;
+        if (highSatisfactionCount >= 3) {
+          highSatisfactionFeedbacks.forEach((feedback: Feedback) => {
+            this.sendEmail(
+              feedback.teacher.email,
+              "High satisfaction feedback",
+              "Message for high satisfaction feedback"
+            );
+          });
+        } else {
+          this.teacherFeedback.forEach((feedback: Feedback) => {
+            this.sendEmail(
+              feedback.teacher.email,
+              "Low satisfaction feedback",
+              "Message for low satisfaction feedback"
+            );
+          });
+        }
+      },
+      (error) => {
+        console.log("An error occurred while fetching feedbacks", error);
+      }
+    );
+  }
+
+  sendEmail(recipient: string, subject: string, message: string) {
+    this.emailService.sendEmail(recipient, subject, message).subscribe(
+      (response) => {
+        console.log("Email sent successfully", response);
+      },
+      (error) => {
+        console.log("An error occurred while sending the email", error);
+      }
+    );
   }
 }
