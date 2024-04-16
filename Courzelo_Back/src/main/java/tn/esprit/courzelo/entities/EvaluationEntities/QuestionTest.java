@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,11 +20,12 @@ import java.util.List;
 public class QuestionTest {
     @Id
     private String id;
-    @Indexed
-    private int number;
+
     @Indexed
     private String description;
- @DBRef
-        private List<QAnswer> answers;
-    private List<String> correctAnswers;
+    private  String correctAnswer;
+    @DBRef
+    private Set<QAnswer> answers;
+
+
 }

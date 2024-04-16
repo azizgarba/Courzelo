@@ -1,5 +1,7 @@
 package tn.esprit.courzelo.entities.EvaluationEntities;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,7 @@ import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,27 +24,35 @@ import java.util.List;
 @Document(collection = "FinalQuizTest")
 public class Test {
     @Id
-    private  String id;
+    public  String id;
     @Indexed
-    private Type type;
+    public Type type;
     @Indexed
-    private String duration;
+    @NotBlank
+    public String name;
     @Indexed
-    private Date date;
+    public String description;
     @Indexed
-    private int mark;
+    public String duration;
     @Indexed
-    private int nbQst;
+    public Date date;
     @Indexed
-    private int rank;
+    public int mark;
+    @Indexed
+    public int nbQst = 20;
+    @Indexed
+    public int rank;
     @DBRef
-    private List<QuestionTest> questions;
+    @Size(min = 1)
+    public List<QuestionTest> questions;
     @DBRef
-    private Module module;
+    public Module module;
     @DBRef
-    private UserCourzelo student;
+    public UserCourzelo student;
     @DBRef
-    private UserCourzelo teacher;
+    public UserCourzelo teacher;
     @DBRef
-    private List<Evaluation> evaluations;
+    public List<Evaluation> evaluations;
+
+
 }

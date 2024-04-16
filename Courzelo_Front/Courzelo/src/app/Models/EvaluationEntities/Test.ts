@@ -1,20 +1,20 @@
 import { QuestionTest } from "./QuestionTest";
-import { User } from "./UserCourzelo";
+import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
 
 export class Test{
-    id!:number;
+    id!:string;
     name!:string;
     description!:string;
     grade!:number;
     rank!: number;
     date!:Date;
     duration!:number;
-    Questions!:Array<QuestionTest>;
+    questions!:Array<QuestionTest>;
     type!:TestType;
-    Teacher!:User;
+    teacher!:UserCourzelo;
 }
 export enum TestType{
-    FinalTest,
-    QuizTest,
-    RevisionTest
+    QuizTest = 'QuizTest',
+    FinalTest = 'FinalTest',
+    RevisionTest ='RevisionTest'
 }

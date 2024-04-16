@@ -33,4 +33,6 @@ public class Class {
     private List<UserCourzelo> students;
     @DBRef
     private List<UserCourzelo> teachers;
+    @DBRef
+    private List<Module> modules;
 }

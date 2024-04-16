@@ -1,5 +1,6 @@
 package tn.esprit.courzelo.entities.UserCorzelo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import tn.esprit.courzelo.entities.EvaluationEntities.Evaluation;
+import tn.esprit.courzelo.entities.EvaluationEntities.Test;
 import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
 import tn.esprit.courzelo.entities.ForumEntities.Answer;
 import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
@@ -57,13 +60,13 @@ import java.util.List;
         @Indexed
         private float scoreXp;
         @Indexed
-        private String badge;
+        private List<badgeType> badges;
         @Indexed
         private String resume;
         @Indexed
         private Speciality speciality;
         @Indexed
-        private String level;
+        private int level =1 ;
         @Indexed
         private boolean approved=false;
         @Indexed
@@ -83,7 +86,7 @@ import java.util.List;
         @DBRef
         private List<Feedback> feedback;
         @DBRef
-        private List<Class> classes;
+        private Class classe;
         @DBRef
         private List<Project> projects;
         @DBRef
@@ -94,6 +97,7 @@ import java.util.List;
         private List<Answer> answers;
         @DBRef
         private List<Votes> votes;
+
 
         }
 

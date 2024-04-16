@@ -30,7 +30,7 @@ export class UserCourzelo{
     nbPrimeVoteForBadge!:number;
     PaymentDay!: Date;
     Hobbies!:string;
-   
+    badges:badgeType[]=[]
     questionForums:QuestionForum[]=[]
 
 }
@@ -47,4 +47,7 @@ export enum Speciality{
     Spring,
     DotNet,
     Reseau
+}
+export enum badgeType{
+    GOLD,SILVER,BRONZE,DIMOND
 }
