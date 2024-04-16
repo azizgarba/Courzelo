@@ -11,17 +11,31 @@ import { EvaluationService } from 'src/app/Services/EvaluationServices/evalServi
 export class GradesComponent implements OnInit {
   evaluations! : Evaluation[] 
   EvaluationData!: Evaluation;
-
+  idUser!: string;
+  roles: string[] = [];
+  username!:string
   constructor(private evaluationService: EvaluationService ) { }
 
   ngOnInit() {
+   
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+      console.log('id nouha********************:', this.idUser);
+    }
     this.loadGrades();
+    this.ModuleGrade();
   }
   loadGrades(): void {
-    this.evaluationService.getAllEvaluationsByStudent("65e8948961747f0e353cfe85").subscribe(
+    this.evaluationService.getAllEvaluationsByStudent( this.idUser).subscribe(
       (data: Evaluation[]) => {
         this.evaluations = data;
-        this.ModuleGrade(); 
       },
       (error) => {
         console.error('Error fetching modules: ', error);

@@ -14,14 +14,27 @@ export class RewardsStatisticsComponent {
   moduleEvaluations: any[] = [];
   strengths !: string[];
   weaknesses !: string[];
-
+  idUser!: string;
+  roles: string[] = [];
+  username!:string
   constructor(private evaluationService: EvaluationService) {}
 
   ngOnInit(): void {
-    this.loadStudentPerformanceStatistics('65e8948961747f0e353cfe85'); // Remplacez 'student-id' par l'identifiant réel de l'étudiant
- this.loadStudentStatistics('65e8948961747f0e353cfe85');
- this.loadStudentstrengths('65e8948961747f0e353cfe85');
- this.loadStudentweaknesses('65e8948961747f0e353cfe85');
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+      console.log('id nouha********************:', this.idUser);
+    }
+    this.loadStudentPerformanceStatistics(this.idUser); // Remplacez 'student-id' par l'identifiant réel de l'étudiant
+ this.loadStudentStatistics(this.idUser);
+ this.loadStudentstrengths(this.idUser);
+ this.loadStudentweaknesses(this.idUser);
   }
 
   loadStudentPerformanceStatistics(studentId: string): void {

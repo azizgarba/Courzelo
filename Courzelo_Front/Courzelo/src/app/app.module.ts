@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms'; // Import FormsModule here
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ModalConfirmationComponent } from './Components/Forum/modal-confirmation/modal-confirmation.component';
-//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IncentivesComponent } from './Components/Forum/incentives/incentives.component';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -121,6 +121,7 @@ import { RevisionComponent } from './components/EvaluationComponent/revision/rev
     BrowserAnimationsModule,
         MatCardModule,
         MatProgressBarModule,
+        
         
         
 

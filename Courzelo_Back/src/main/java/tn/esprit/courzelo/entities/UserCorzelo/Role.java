@@ -19,4 +19,11 @@ public class Role {
     @Indexed
     private ERole name;
 
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id='" + id + '\'' +
+                ", name=" + name +
+                '}';
+    }
 }

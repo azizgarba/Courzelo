@@ -78,6 +78,9 @@ export class EvaluationService {
 getStudentById(studentId: string): Observable<UserCourzelo> {
     return this.http.get<UserCourzelo>(`${this.baseUrl}/getStudent/${studentId}`);
 }
+calculfinals() : Observable<Evaluation[]>{
+  return this.http.get<Evaluation[]>(`${this.baseUrl}/finals`);
+}
 
 getStudentSilverBadges( studentId: string): Observable<number> {
   return this.http.get<number>(`${this.baseUrl}/SilverBadges/${studentId}`);

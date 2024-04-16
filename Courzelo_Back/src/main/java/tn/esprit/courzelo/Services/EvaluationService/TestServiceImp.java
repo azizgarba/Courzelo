@@ -6,7 +6,7 @@ import tn.esprit.courzelo.Repositories.EvaluationRepo.QAnswerRepo;
 import tn.esprit.courzelo.Repositories.EvaluationRepo.QuestionTestRepo;
 import tn.esprit.courzelo.Repositories.EvaluationRepo.TestRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.EvaluationEntities.QAnswer;
 import tn.esprit.courzelo.entities.EvaluationEntities.QuestionTest;
@@ -26,7 +26,7 @@ public class TestServiceImp implements ITestService{
     private QAnswerRepo qAnswerRepo ;
     private QAnswerServiceImp qAnswerServiceImp ;
     private  QuestionTestServiceImpl questionTestService ;
-private UserRepo userRepo;
+private UserRepository userRepo;
 
     @Override
     public List<Test> retrieveAllTests() {

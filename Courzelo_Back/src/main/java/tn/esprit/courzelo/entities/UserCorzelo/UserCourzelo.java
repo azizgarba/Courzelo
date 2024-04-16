@@ -106,8 +106,46 @@ import java.util.Set;
                 this.password = password;
         }
 
-
+        @Override
+        public String toString() {
+                return "UserCourzelo{" +
+                        "id='" + id + '\'' +
+                        ", firstName='" + firstName + '\'' +
+                        ", username='" + username + '\'' +
+                        ", lastName='" + lastName + '\'' +
+                        ", email='" + email + '\'' +
+                        ", password='" + password + '\'' +
+                        ", sexe='" + sexe + '\'' +
+                        ", date_of_birth=" + date_of_birth +
+                        ", date_of_creation=" + date_of_creation +
+                        ", nbMaxHeurePerWeek=" + nbMaxHeurePerWeek +
+                        ", nbHourPerWeek=" + nbHourPerWeek +
+                        ", roles=" + roles +
+                        ", companyName='" + companyName + '\'' +
+                        ", descriptionRecruiter='" + descriptionRecruiter + '\'' +
+                        ", scoreXp=" + scoreXp +
+                        ", badges=" + badges +
+                        ", resume='" + resume + '\'' +
+                        ", speciality=" + speciality +
+                        ", level=" + level +
+                        ", approved=" + approved +
+                        ", validVoteCount=" + validVoteCount +
+                        ", canVote=" + canVote +
+                        ", nbVoteForIncentives=" + nbVoteForIncentives +
+                        ", nbPrimeVoteForBadges=" + nbPrimeVoteForBadges +
+                        ", PaymentDay=" + PaymentDay +
+                        ", CentreOffIntrest='" + CentreOffIntrest + '\'' +
+                        ", overAll_average=" + overAll_average +
+                        ", feedback=" + feedback +
+                        ", classe=" + classe +
+                        ", projects=" + projects +
+                        ", chatRoom=" + chatRoom +
+                        ", questionForums=" + questionForums +
+                        ", answers=" + answers +
+                        ", votes=" + votes +
+                        '}';
         }
+}
 
 
 

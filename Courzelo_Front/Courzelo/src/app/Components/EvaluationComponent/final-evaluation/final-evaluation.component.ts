@@ -10,26 +10,59 @@ import html2canvas from 'html2canvas';
 })
 export class FinalEvaluationComponent implements OnInit {
   finalEvaluation!: Evaluation; // Propriété pour stocker l'évaluation finale de l'étudiant
-  evaluations! : Evaluation[] 
+  evaluations! : Evaluation[]
+  finalevaluations! : Evaluation[] 
+
   EvaluationData!: Evaluation;
+  idUser!: string;
+   roles: string[] = [];
+   username!:string
   constructor(private evaluationService: EvaluationService) { }
   avatarColor: string = '';
   ngOnInit(): void {
+
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+    }
+    this.loadGrades();
+  
     this.loadFinalGrade();
     this.generateRandomColor();
-     this.loadGrades();
+     console.log("***********final ev",this.finalEvaluation)
   }
 
-  loadFinalGrade(): void {
-    this.evaluationService.getStudentfinalGrade("65e8948961747f0e353cfe85").subscribe(
-      (data: Evaluation) => {
+
+
+
+  calculFinals(): void {
+    this.evaluationService.calculfinals().subscribe(
+      (data: Evaluation[]) => {
+
         // Stockez l'évaluation finale de l'étudiant dans `finalEvaluation`
-        this.finalEvaluation = data;
+        this.finalevaluations = data;
         // Maintenant, vous pouvez utiliser `finalEvaluation` dans votre template HTML pour afficher les informations
       },
       (error) => {
         console.error('Error fetching final grade: ', error);
         // Vous pouvez ajouter une logique pour gérer l'erreur, par exemple afficher un message à l'utilisateur
+      }
+    );
+  }
+
+  loadFinalGrade(): void {
+    this.evaluationService.getStudentfinalGrade(this.idUser).subscribe(
+      (data: Evaluation) => {
+        this.finalEvaluation = data;
+      },
+      (error) => {
+        console.error('Error fetching final grade: ', error);
       }
     );
   }
@@ -85,7 +118,7 @@ downloadReport(): void {
 }
 
 loadGrades(): void {
-  this.evaluationService.getAllEvaluationsByStudent("65e8948961747f0e353cfe85").subscribe(
+  this.evaluationService.getAllEvaluationsByStudent(this.idUser).subscribe(
     (data: Evaluation[]) => {
       this.evaluations = data;
       

@@ -16,7 +16,9 @@ export class AddTestComponent {
   newTest: Test = new Test();
   testQuestions: QuestionTest[] = [];
   moduleId!: string; // Déclaration d'une variable pour stocker le moduleId
-
+  idUser!: string;
+  roles: string[] = [];
+  username!:string
   constructor(
     private router: Router,
     private testService: TestServiceService,
@@ -26,6 +28,17 @@ export class AddTestComponent {
   }
 }
   ngOnInit(): void {
+
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+    }
     // Écoutez les modifications des paramètres d'URL
     this.activatedRoute.params.subscribe(params => {
       this.moduleId = params['moduleId']; // Récupérez le moduleId à partir des paramètres d'URL
@@ -82,10 +95,9 @@ saveTest() {
 
     // Ajouter les questions au test
     this.newTest.questions = this.testQuestions;
-    const  teacherId = '660c80b6cc3ca76113ddc366' ;
 
     // Enregistrer le test dans la base de données
-    this.testService.addTest(this.moduleId ,teacherId , this.newTest).subscribe(
+    this.testService.addTest(this.moduleId ,this.idUser , this.newTest).subscribe(
       (response) => {
         console.log('Test saved successfully:', response);
         this.resetForm();

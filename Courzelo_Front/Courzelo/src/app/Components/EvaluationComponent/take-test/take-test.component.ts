@@ -11,7 +11,7 @@ import { QuestionTest } from 'src/app/Models/EvaluationEntities/QuestionTest';
 import { Evaluation } from 'src/app/Models/EvaluationEntities/Evaluation';
 import { Time } from '@angular/common';
 import { UserCourzelo } from 'src/app/Models/UserCorzelo/UserCourzelo';
-import * as $ from 'jquery'; // Importation de jQuery
+
 
 @Component({
   selector: 'app-take-test',
@@ -31,8 +31,23 @@ export class TakeTestComponent implements OnInit{
    timerInterval: any;
    timeLeft!: number ;
    teacher!: UserCourzelo;
-   studentName: string = "Nouha abdelkader";
+  // studentName: string = "Nouha abdelkader";
+   idUser!: string;
+   roles: string[] = [];
+   username!:string
   ngOnInit(): void {
+    //
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+    }
+    //
     
     this.activatedRoute.queryParams.subscribe(params => {
       const quizTestData = params['quizTestData'];
@@ -83,7 +98,7 @@ cancelSelection(): void {
 
   submitTest(): void {
     console.log('selected answers??:', this.selectedAnswers);
-    const studentId = '65e8948961747f0e353cfe85';  // Remplacez par la logique pour obtenir l'ID de l'étudiant
+    const studentId =this.idUser;  // Remplacez par la logique pour obtenir l'ID de l'étudiant
     
 
     if (Object.keys(this.selectedAnswers).length === this.questions.length) {

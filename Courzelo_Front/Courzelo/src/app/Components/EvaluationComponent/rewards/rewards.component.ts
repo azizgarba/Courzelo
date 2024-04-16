@@ -15,16 +15,28 @@ export class RewardsComponent {
    dimondBadge !: number;
    bronzeBadge !: number;
    goldBadge !: number;
-
+   idUser!: string;
+   roles: string[] = [];
+   username!:string
   constructor(private evaluationService: EvaluationService ) { }
 
   ngOnInit() {
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+    }
     this.StudentRewards();
   }
 
   StudentRewards() {
    
-        this.evaluationService.getStudentById("65e8948961747f0e353cfe85").subscribe(
+        this.evaluationService.getStudentById(  this.idUser).subscribe(
           (data: UserCourzelo) => {
             this.userData = data;
             console.log('user data:', this.userData);

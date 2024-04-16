@@ -8,20 +8,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.courzelo.Services.EvaluationService.ITestService;
-import tn.esprit.courzelo.entities.EvaluationEntities.Evaluation;
-import tn.esprit.courzelo.entities.EvaluationEntities.QAnswer;
 import tn.esprit.courzelo.entities.EvaluationEntities.QuestionTest;
 import tn.esprit.courzelo.entities.EvaluationEntities.Test;
 
 import java.util.List;
-import java.util.Map;
 import java.util.NoSuchElementException;
 
 @RestController
 @AllArgsConstructor
 @Tag(name = "Test")
 @RequestMapping("/Tests")
-public class TestController {
+public class TestsController {
     private ITestService iTestService;
     @Operation(description = "Add Test")
     @PostMapping("/add/{moduleId}/{teacherId}")

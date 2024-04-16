@@ -1,13 +1,17 @@
 package tn.esprit.courzelo.Services.EvaluationService;
 
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.EvaluationRepo.EvaluationRepo;
 import tn.esprit.courzelo.Repositories.EvaluationRepo.TestRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.RoleRepository;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
 import tn.esprit.courzelo.entities.EvaluationEntities.*;
+import tn.esprit.courzelo.entities.UserCorzelo.ERole;
 import tn.esprit.courzelo.entities.UserCorzelo.Role;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 import tn.esprit.courzelo.entities.UserCorzelo.badgeType;
@@ -16,6 +20,7 @@ import java.util.*;
 
 import static tn.esprit.courzelo.entities.EvaluationEntities.EvaluationType.FinalEvaluation;
 import static tn.esprit.courzelo.entities.EvaluationEntities.EvaluationType.ModuleEvaluation;
+import static tn.esprit.courzelo.entities.UserCorzelo.ERole.Student;
 
 @AllArgsConstructor
 @Service
@@ -23,7 +28,9 @@ public class EvaluationServiceImpl implements IEvaluationService{
     private TestRepo testRepo ;
     private ModuleRepo moduleRepo ;
     private EvaluationRepo evaluationRepo;
-    private UserRepo studentRepo;
+    private UserRepository studentRepo;
+    private RoleRepository roleRepo;
+    private static final Logger LOGGER = LoggerFactory.getLogger(EvaluationServiceImpl.class);
 
     @Override
     public List<Evaluation> retrieveAllEvaluations() {
@@ -293,7 +300,13 @@ int silverBadges =0;
 
     @Override
     public List<Evaluation> finalsEvaluations() {
-      List<UserCourzelo> students =studentRepo.findAllByRole(Role.Student) ;
+        Role userRole = roleRepo.findByName(ERole.Student).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+      Set<Role> Roles = new HashSet<>();
+      Roles.add(userRole);
+        System.out.println(Roles);
+
+      List<UserCourzelo> students =studentRepo.findAllByRoles(userRole);
+        System.out.println(students);
         List<Evaluation> finals = new ArrayList<>() ;
       for (UserCourzelo student : students)
       {
