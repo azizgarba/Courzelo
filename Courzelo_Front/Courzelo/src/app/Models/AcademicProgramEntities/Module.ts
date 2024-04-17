@@ -13,7 +13,9 @@ export class Module{
     nbHeureTotal!:number;
     Image!:string;
     coeff!:number ;
-    program!:EducationalProgram;
+    
+    
+    program:EducationalProgram|undefined;
 
     questionForums:QuestionForum[]=[]
     tests: Test[]=[]

@@ -3,10 +3,10 @@ import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
 import { Level } from "./Level";
 
 export class Class{
-    id!:number;
+    id:number |undefined;
     name!:string;
     level!: Level; 
-    Schedule!:Array<Session>;
-    Students!:Array<UserCourzelo>;
+    Schedule:Array<Session> | undefined;
+    Students:Array<UserCourzelo> |undefined;
     
 }

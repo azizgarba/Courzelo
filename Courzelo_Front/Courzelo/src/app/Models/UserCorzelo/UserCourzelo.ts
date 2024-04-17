@@ -4,16 +4,17 @@ import { QuestionForum } from "../ForumEntities/QuestionForum";
 
 export class UserCourzelo{
 
-    id!: string;  
+    id: string |undefined;  
     username!: string;  
+      
     firstName!: string;
     lastName!: string;
     email!: string;
     password!: string;
     image!: string;
     sexe!:string;
-    dateOfBirth!:Date;
-    dateOfCreation!:Date;
+    dateOfBirth:Date |undefined;
+    dateOfCreation:Date | undefined;
     nbHoursMaxPerWeek!:number;
     nbHoursPerWeek = 0;
     role!:ERole;
@@ -29,7 +30,7 @@ export class UserCourzelo{
     canVote : boolean = true;
     nbVoteForIncentives!:number;
     nbPrimeVoteForBadge!:number;
-    PaymentDay!: Date;
+    PaymentDay: Date |undefined;
     Hobbies!:string;
     badges:badgeType[]=[]
     questionForums:QuestionForum[]=[]

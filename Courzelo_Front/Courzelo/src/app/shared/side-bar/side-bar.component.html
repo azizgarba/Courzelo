@@ -1,6 +1,3 @@
-<!-- Begin page -->
-<div id="wrapper">
-
 
     <!-- Topbar Start -->
 <div class="navbar-custom">
@@ -87,7 +84,7 @@
     <li class="dropdown notification-list topbar-dropdown">
         <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
             <i class="fe-bell noti-icon"></i>
-            <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+            <span class="badge bg-danger rounded-circle noti-icon-badge">{{ notifs.length }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-end dropdown-lg">
 
@@ -96,7 +93,7 @@
                 <h5 class="m-0">
                     <span class="float-end">
                         <a href="" class="text-dark">
-                            <small>Clear All</small>
+                            <small></small>
                         </a>
                     </span>Notification
                 </h5>
@@ -105,16 +102,18 @@
             <div class="noti-scroll" data-simplebar>
 
                 <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                    <div class="notify-icon">
+
+                <a href="javascript:void(0);" class="dropdown-item notify-item active" *ngFor="let p of notifs">
+                    <div class="notify-icon" >
                         <img src="../../assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                    <p class="notify-details">Cristina Pride</p>
+                    <p class="notify-details" data-bs-toggle="modal"
+                    data-bs-target="#details-modal" (click)="initializeEvent(p)">New Event : {{ p.event.name }}</p>
                     <p class="text-muted mb-0 user-msg">
-                        <small>Hi, How are you? What about our next meeting</small>
+                        <small>{{ p.event.description }}</small>
                     </p>
                 </a>
 
-                <!-- item-->
+                <!-- item
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon bg-primary">
                         <i class="mdi mdi-comment-account-outline"></i>
@@ -124,7 +123,7 @@
                     </p>
                 </a>
 
-                <!-- item-->
+                
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon">
                         <img src="../../assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
@@ -134,7 +133,6 @@
                     </p>
                 </a>
 
-                <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon bg-warning">
                         <i class="mdi mdi-account-plus"></i>
@@ -144,7 +142,7 @@
                     </p>
                 </a>
 
-                <!-- item-->
+            
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon bg-info">
                         <i class="mdi mdi-comment-account-outline"></i>
@@ -152,9 +150,9 @@
                     <p class="notify-details">Caleb Flakelar commented on Admin
                         <small class="text-muted">4 days ago</small>
                     </p>
-                </a>
+                </a>-->
 
-                <!-- item-->
+                <!-- item
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="notify-icon bg-secondary">
                         <i class="mdi mdi-heart"></i>
@@ -163,7 +161,7 @@
                         <b>Admin</b>
                         <small class="text-muted">13 days ago</small>
                     </p>
-                </a>
+                </a>-->
             </div>
 
             <!-- All-->
@@ -338,9 +336,9 @@
         </li>
 
         <li>
-            <a href="apps-chat.html">
+            <a routerLink="/sessions">
                 <i class="mdi mdi-forum"></i>
-                <span> Schedule </span>
+                <span> Sessions </span>
             </a>
         </li>
 
@@ -843,4 +841,50 @@
 </div>
 <!-- Left Sidebar End -->
 
-</div>
+<div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title" id="myCenterModalLabel">Event Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <div class="modal-body px-4 pb-4 pt-0">
+                <form class="needs-validation" name="event-form" id="form-event" [formGroup]="addform">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Event Name : {{ event.name }}</label><br>
+                                <label class="form-label">Event Location : {{ event.location }} </label><br>
+                                <label class="form-label">Event Date : {{ formatDate(event.date) }}</label><br>
+                                <label class="form-label">Event Description : {{ event.description }}</label><br>
+                                <label class="form-label">Event Price : {{ event.price }}</label><br>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Are You Interested</label>
+                                <select class="form-select" name="status" id="event-category" required formControlName="status">
+                                    <option value="Interested" selected>Interested</option>
+                                    <option value="Maybe">Maybe</option>
+                                    <option value="Not Interested">Not Interested</option>
+                                    
+                                </select>
+                                <div class="invalid-feedback">Please select an option</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        
+                        <div class="col-md-6 col-8 text-end">
+                            <button type="button" class="btn btn-light me-1" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" id="btn-save-event" (click)="AddRsvp()">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+

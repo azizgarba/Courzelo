@@ -64,8 +64,19 @@
                               }
                             ]
                         }
+                      ],
+                      "outputHashing": "all"
                     },
-                    "defaultConfiguration": "production"
+                    "development": {
+                      "buildOptimizer": false,
+                      "optimization": false,
+                      "vendorChunk": true,
+                      "extractLicenses": false,
+                      "sourceMap": true,
+                      "namedChunks": true
+                    }
+                  },
+                  "defaultConfiguration": "production"
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
@@ -86,22 +97,23 @@
                     }
                 },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "polyfills": [
-                            "zone.js",
-                            "zone.js/testing"
-                        ],
-                        "tsConfig": "tsconfig.spec.json",
-                        "assets": [
-                            "src/favicon.ico",
-                            "src/assets"
-                        ],
-                        "styles": [
-                            "src/styles.css"
-                        ],
-                        "scripts": []
-                    }
+                  "builder": "@angular-devkit/build-angular:karma",
+                  "options": {
+                    "polyfills": [
+                      "zone.js",
+                      "zone.js/testing"
+                    ],
+                    "tsConfig": "tsconfig.spec.json",
+                    "assets": [
+                      "src/favicon.ico",
+                      "src/assets"
+                    ],
+                    "styles": [
+                      "node_modules/angular-calendar/css/angular-calendar.css",
+                      "src/styles.css"
+                    ],
+                    "scripts": []
+                  }
                 }
             }
         }

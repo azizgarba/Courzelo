@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import tn.esprit.courzelo.entities.EvaluationEntities.Evaluation;
 import tn.esprit.courzelo.entities.EvaluationEntities.Test;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.List;
 
@@ -55,5 +56,8 @@ public class Module {
 
     @DBRef
     private Level level;
+ // added for the EDT
+    @DBRef
+    private List<UserCourzelo> Teachers;
 
 }
