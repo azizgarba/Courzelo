@@ -35,12 +35,18 @@ public class Module {
     private String image;
     @Indexed
     private Float couef;
+    @Indexed
+    private Semestre semestre;
     @DBRef
     private List<Course> courses;
+    @DBRef
+    private List<Class> classes;
  @DBRef
  private List<Evaluation> evaluation;
+
+
  @DBRef
-    private List<EducationalProgram> educationalPrograms;
+    private EducationalProgram educationalProgram;
  @DBRef
     private List<QuestionForum> questionForums;
 }

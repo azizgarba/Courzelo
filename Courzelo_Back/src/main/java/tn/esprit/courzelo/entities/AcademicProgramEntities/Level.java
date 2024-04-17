@@ -1,5 +1,6 @@
 package tn.esprit.courzelo.entities.AcademicProgramEntities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +23,6 @@ public class Level {
     @Indexed
     private String name;
     @DBRef
+
     private List<Class> classes;
 }

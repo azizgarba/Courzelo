@@ -1,5 +1,6 @@
+import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
 import { QuestionTest } from "./QuestionTest";
-import { User } from "./UserCourzelo";
+
 
 export class Test{
     id!:number;
@@ -11,7 +12,7 @@ export class Test{
     duration!:number;
     Questions!:Array<QuestionTest>;
     type!:TestType;
-    Teacher!:User;
+    Teacher!:UserCourzelo;
 }
 export enum TestType{
     FinalTest,

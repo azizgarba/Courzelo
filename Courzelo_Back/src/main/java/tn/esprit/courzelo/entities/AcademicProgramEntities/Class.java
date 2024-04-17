@@ -1,5 +1,8 @@
 package tn.esprit.courzelo.entities.AcademicProgramEntities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +20,17 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Document(collection = "Class")
 public class Class {
     @Id
     private  String id;
     @Indexed
     private String name;
+    @DBRef
+    @JsonIgnore
+    private List<Module> modules;
+
     @DBRef
     private Level level;
     @DBRef
@@ -33,4 +41,7 @@ public class Class {
     private List<UserCourzelo> students;
     @DBRef
     private List<UserCourzelo> teachers;
+
+
+
 }

@@ -16,6 +16,7 @@ import tn.esprit.courzelo.entities.ForumEntities.ChatRoom;
 import tn.esprit.courzelo.entities.ForumEntities.Votes;
 import tn.esprit.courzelo.entities.ForumEntities.QuestionForum;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
+import tn.esprit.courzelo.entities.ProjectEntities.GroupProject;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
 
 import java.util.Date;
@@ -27,7 +28,6 @@ import java.util.List;
 @Document(collection = "UserCourzelo")
 @JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums", "answers", "votes"})
         public class UserCourzelo {
-
         @Id
         private  String id;
         @Indexed
@@ -80,6 +80,8 @@ import java.util.List;
         private String CentreOffIntrest;
         @Indexed
         private Float overAll_average;
+        @Indexed
+        private boolean disponibility;
         @DBRef
         private List<Feedback> feedback;
         @DBRef
@@ -94,8 +96,17 @@ import java.util.List;
         private List<Answer> answers;
         @DBRef
         private List<Votes> votes;
+        @DBRef
+        private Module module;
+        @DBRef
+        private List<GroupProject> groupProjectsAsMember;
 
+
+        public UserCourzelo(String id) {
+                this.id = id;
+                // Initialize other fields if needed
         }
+}
 
 
 

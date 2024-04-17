@@ -1,7 +1,8 @@
 
 import { QuestionForum } from "../ForumEntities/QuestionForum";
+import { Class } from "./Class";
 import { EducationalProgram } from "./EducationalProgram";
-
+import { Semestre } from "./Semestre";
 
 export class Module{
     id!:string;
@@ -10,11 +11,11 @@ export class Module{
     nbHeurePerWeek!:number;
     nbHeureTotal!:number;
     Image!:string;
-    coef!:number ;
+    couef!:number ;
     program!:EducationalProgram;
-
-    questionForums:QuestionForum[]=[]
-
+    semestre!:Semestre;
+    questionForums:QuestionForum[]=[];
+    classes: Class[] = [];
     
     
 }

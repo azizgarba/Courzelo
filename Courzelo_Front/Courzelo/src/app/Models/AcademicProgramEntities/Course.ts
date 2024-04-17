@@ -1,3 +1,4 @@
+import { Filecalss } from "./Filecalss";
 import { Module } from "./Module";
 
 export class Course{
@@ -5,4 +6,5 @@ export class Course{
     name!:string;
     description!:string;
     module!:Module;
+    file!:Filecalss;
 }
