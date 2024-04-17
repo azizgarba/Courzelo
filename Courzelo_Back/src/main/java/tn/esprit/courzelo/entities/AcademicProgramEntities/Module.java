@@ -35,7 +35,7 @@ public class Module {
     @Indexed
     private String image;
     @Indexed
-    private Float couef;
+    private Float coeff;
     @Indexed
     private Semestre semestre;
     @DBRef
@@ -52,8 +52,7 @@ public class Module {
     private List<QuestionForum> questionForums;
  @DBRef
        private List<Test> tests ;
-    @DBRef
-    private List<Class> classes ;
+
     @DBRef
     private Level level;
 

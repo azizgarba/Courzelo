@@ -3,21 +3,22 @@ package tn.esprit.courzelo.Services.AcedemicModuleService.Class;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ClassRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.LevelRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.RoleRepository;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
-import tn.esprit.courzelo.entities.AcademicProgramEntities.Course;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Level;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
+import tn.esprit.courzelo.entities.UserCorzelo.ERole;
 import tn.esprit.courzelo.entities.UserCorzelo.Role;
 import tn.esprit.courzelo.entities.UserCorzelo.Speciality;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -27,8 +28,9 @@ import java.util.List;
 public class ClassServiceImpl implements IClassService {
     private final  ClassRepo classRepo;
     private final LevelRepo levelRepo;
-    private final UserRepo userRepo;
+    private final UserRepository userRepo;
     private final ModuleRepo moduleRepo;
+    private final RoleRepository roleRepo;
     @Override
     public List<Class> GetClasses() {
         return classRepo.findAll();
@@ -49,8 +51,13 @@ public class ClassServiceImpl implements IClassService {
         Module selectedModule = moduleRepo.findByName(moduleName);
 
         if (selectedModule != null) {
-            List<UserCourzelo> matchingTeachers = userRepo.findUserCourzeloByRoleAndSpecialityAndModule(
-                    Role.Teacher, Speciality.valueOf(selectedModule.getName().toUpperCase()), selectedModule.getName()
+            Role userRole = roleRepo.findByName(ERole.Student).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            Set<Role> Roles = new HashSet<>();
+            Roles.add(userRole);
+
+            System.out.println(Roles);
+            List<UserCourzelo> matchingTeachers = userRepo.findUserCourzeloByRolesAndSpecialityAndModule(
+                    userRole, Speciality.valueOf(selectedModule.getName().toUpperCase()), selectedModule.getName()
             );
             // Rechercher le premier enseignant disponible
             UserCourzelo availableTeacher = findAvailableTeacher(matchingTeachers, selectedModule);

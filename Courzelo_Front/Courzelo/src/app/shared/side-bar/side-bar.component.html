@@ -178,8 +178,8 @@
     <li class="dropdown notification-list topbar-dropdown">
         <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
             <img src="../../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
-            <span class="pro-user-name ms-1">
-                Nowak <i class="mdi mdi-chevron-down"></i> 
+            <span (click)="logout()" class="pro-user-name ms-1">
+                Logout <i class="mdi mdi-chevron-down"></i> 
             </span>
         </a>
         <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -323,7 +323,7 @@
         
         <li>
             <a href="index.html">
-                <i class="mdi mdi-view-dashboard"></i>
+                <i   routerLink="/admin" class="mdi mdi-view-dashboard"></i>
                 <span> Dashboard </span>
             </a>
         </li>
@@ -347,16 +347,43 @@
         <li>
             <a href="#email" data-bs-toggle="collapse">
                 <i class="mdi mdi-email"></i>
-                <span> Forum </span>
+                <span> Academic Program </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="email">
                 <ul class="nav-second-level">
                     <li>
-                        <a href="email-inbox.html">Inbox</a>
+                        <a routerLink="/Level"> add Level</a>
                     </li>
                     <li>
-                        <a href="email-templates.html">Email Templates</a>
+                        <a routerLink="/Class">class</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getalllevels">Levels</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getallmodules">Modules</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getallclasses">All Classes</a>
+                    </li>
+                    <li>
+                        <a routerLink="/addclass">Add Classes</a>
+                    </li>
+                    <li>
+                        <a routerLink="/addmodule">Add module</a>
+                    </li>
+                    <li>
+                        <a routerLink="/addcourse">Add course</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getallacourses">All courses</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getprogram">All programs</a>
+                    </li>
+                    <li>
+                        <a routerLink="/getallprojects">All projects</a>
                     </li>
                 </ul>
             </div>

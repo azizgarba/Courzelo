@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.ProjectRepo.GroupProjectRepo;
 import tn.esprit.courzelo.Repositories.ProjectRepo.ProjectRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
-import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
-import tn.esprit.courzelo.entities.AcademicProgramEntities.Level;
+import tn.esprit.courzelo.Repositories.UserRepo.RoleRepository;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.ProjectEntities.GroupProject;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
+import tn.esprit.courzelo.entities.UserCorzelo.ERole;
 import tn.esprit.courzelo.entities.UserCorzelo.Role;
 import tn.esprit.courzelo.entities.UserCorzelo.Speciality;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
@@ -22,7 +22,8 @@ import java.util.*;
 public class GroupProjectServiceImpl implements GroupProjectService {
     private final GroupProjectRepo groupProjectRepo;
     private final ProjectRepo projectRepo;
-    private final UserRepo userRepo;
+    private final UserRepository userRepo;
+    private final RoleRepository roleRepo;
     @Override
     public List<GroupProject> Getgroups() {
         return groupProjectRepo.findAll();
@@ -68,10 +69,17 @@ public class GroupProjectServiceImpl implements GroupProjectService {
 
         // Retrieve students with matching specialities
         List<UserCourzelo> students = new ArrayList<>();
+
         for (Speciality speciality : project.getSpecialities()) {
-            List<UserCourzelo> studentsForSpeciality = userRepo.findBySpeciality(speciality);
+            Role userRole = roleRepo.findByName(ERole.Student).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            System.out.println("****************" + userRole);
+            Set<Role> Roles = new HashSet<>();
+            Roles.add(userRole);
+            List<UserCourzelo> students1= userRepo.findAllByRoles(userRole);
+            List<UserCourzelo> studentsForSpeciality = userRepo.findUserCourzeloBySpecialityAndRoles(speciality,userRole);
             students.addAll(studentsForSpeciality);
         }
+        System.out.println("****************" + students);
 
         // Create a new group
         GroupProject group = new GroupProject();
@@ -87,7 +95,7 @@ public class GroupProjectServiceImpl implements GroupProjectService {
             while (iterator.hasNext() && assignedStudents < requiredStudents) {
                 UserCourzelo student = iterator.next();
                 if (student.getSpeciality() == speciality) { // Changed from .equals to ==
-                    group.addStudent(student);
+                    group = addStudent(student,group);
                     iterator.remove(); // Remove assigned student from the list
                     assignedStudents++;
                 }
@@ -109,6 +117,23 @@ public class GroupProjectServiceImpl implements GroupProjectService {
     public List<GroupProject> getProjectsForUser(String studentId) {
         return groupProjectRepo.findByStudentsId(studentId);
     }
+    public GroupProject addStudent(UserCourzelo student, GroupProject group) {
+
+        Role userRole = roleRepo.findByName(ERole.Student).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        System.out.println("****************" + userRole);
+        Set<Role> Roles = new HashSet<>();
+        Roles.add(userRole);
+        List<UserCourzelo> students= userRepo.findAllByRoles(userRole);
+        students.add(student);
+        /*if (student.getRoles() == Roles) {
+            students.add(student);
+        } else {
+            throw new IllegalArgumentException("Only users with role 'Student' can be added to the group.");
+        }*/
+        group.setStudents(students);
+        return group;
+    }
+
 }
 
 

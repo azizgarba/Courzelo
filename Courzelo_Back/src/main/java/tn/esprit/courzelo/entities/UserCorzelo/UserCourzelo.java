@@ -103,21 +103,23 @@ import java.util.Set;
         private List<Answer> answers;
         @DBRef
         private List<Votes> votes;
-        public UserCourzelo(String username, String email, String password) {
-                this.username = username;
-                this.email = email;
-                this.password = password;
         @DBRef
         private Module module;
         @DBRef
         private List<GroupProject> groupProjectsAsMember;
+        public UserCourzelo(String username, String email, String password) {
+                this.username = username;
+                this.email = email;
+                this.password = password;
 
 
-        // public UserCourzelo(String id) {
-        //         this.id = id;                 NEED TO CHECK THIS!!!!!!
-        //         // Initialize other fields if needed
-        // }
+
+
 }
+        public UserCourzelo(String id) {
+                this.id = id;
+                // Initialize other fields if needed
+        }
 
 
         @Override

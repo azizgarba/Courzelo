@@ -49,13 +49,13 @@ public class ProjectController {
 
 
     // Static method to mock user retrieval
-    private UserCourzelo retrieveUserByIdStatically(String userId) {
+  /*  private UserCourzelo retrieveUserByIdStatically(String userId) {
         // Assuming userId is the unique identifier for the user
         if (userId.equals("65fd917e1016964e8d5650d7")) {
             return new UserCourzelo("65fd917e1016964e8d5650d7"); // Replace with your actual user object creation logic
         }
         // If user is not found, return null
         return null;
-    }
+    }*/
 
 }

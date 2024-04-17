@@ -1,3 +1,5 @@
+<app-side-bar></app-side-bar>
+<router-outlet></router-outlet>
 <div class="container">
     <div class="card-container">
       <div class="row">
@@ -30,7 +32,7 @@
               <button class="btn btn-outline-info" (click)="showMore(project)">Show More</button>
               <button class="btn btn-outline-warning" (click)="updateProject(project)" >Update</button>
               <button class="btn btn-outline-danger" (click)="deleteProject(project)">Delete</button>
-              <button type="button" class="btn btn-outline-success" >Generate Group</button>
+              <button type="button" class="btn btn-outline-success" (click)="assignStudentsToGroup(project.id)" >Generate Group</button>
             </div>
         
           </div>

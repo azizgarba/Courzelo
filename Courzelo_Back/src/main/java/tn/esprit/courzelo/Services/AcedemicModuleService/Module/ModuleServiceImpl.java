@@ -4,20 +4,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ClassRepo;
-import tn.esprit.courzelo.Repositories.ModuleRepo.EducationalProgramRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
-import tn.esprit.courzelo.Services.AcedemicModuleService.Module.IModuleservice;
+import tn.esprit.courzelo.Repositories.UserRepo.RoleRepository;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.*;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
+import tn.esprit.courzelo.entities.UserCorzelo.ERole;
 import tn.esprit.courzelo.entities.UserCorzelo.Role;
 import tn.esprit.courzelo.entities.UserCorzelo.Speciality;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +24,8 @@ import java.util.stream.Collectors;
 public class ModuleServiceImpl  implements IModuleservice {
     private final ModuleRepo moduleRepo ;
     private final ClassRepo classRepo ;
-    private final UserRepo userRepo ;
+    private final UserRepository userRepo ;
+    private final RoleRepository roleRepo;
 
     @Override
     public List<Module> getAllModules() {
@@ -46,9 +45,12 @@ public class ModuleServiceImpl  implements IModuleservice {
 
     @Override
     public void assignTeachersToClass(Class moduleClass, Module selectedModule) {
+        Role userRole = roleRepo.findByName(ERole.Teacher).orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+        Set<Role> Roles = new HashSet<>();
+        Roles.add(userRole);
         // The logic for assigning teachers to the class based on the added module
-        List<UserCourzelo> matchingTeachers = userRepo.findUserCourzeloByRoleAndSpecialityAndModule(
-                Role.Teacher, Speciality.valueOf(selectedModule.getName().toUpperCase()), selectedModule.getName()
+        List<UserCourzelo> matchingTeachers = userRepo.findUserCourzeloByRolesAndSpecialityAndModule(
+                userRole, Speciality.valueOf(selectedModule.getName().toUpperCase()), selectedModule.getName()
         );
 
 

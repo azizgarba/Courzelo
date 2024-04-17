@@ -1,57 +1,32 @@
-.update-level-container {
-    max-width: 400px;
-    margin: 140px auto; /* Center the container horizontally */
-    padding: 40px;
-    border: 15px solid #ccc;
-    border-radius: 20px; /* Adjust border radius to your preference */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff; /* Set background color if needed */
-  }
-  
-  .update-level-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px; /* Add some bottom margin for spacing */
-    box-sizing: border-box;
-    border: 1px solid #ccc; /* Add a border for better visual separation */
-    border-radius: 4px;
-  }
-  
-  /* Style the select element */
-  select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .update-level-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .update-level-button:hover {
-    background-color: #45a049;
-  }
+/* Adjust the sidebar width and set a fixed position */
+app-side-bar {
+  width: 250px; /* Adjust the width according to your design */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%; /* Make it full height */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* Give the main content some left margin to accommodate the sidebar */
+.all-tests-container {
+  margin-left: 250px; /* Adjust the margin based on your sidebar width */
+}
+
+/* Add padding to the main content to ensure it's not hidden behind the sidebar */
+.container-fluid {
+  padding-top: 120px;}
+/* Ajoutez ces styles à votre fichier CSS pour définir les couleurs des boutons */
+
+.btn-success-custom {
+background-color: #87CEEB; /* Bleu pastel */
+border-color: #87CEEB; /* Couleur de la bordure */
+color: #fff; /* Couleur du texte */
+}
+
+.btn-danger-custom {
+background-color: #FFD700; /* Jaune pastel */
+border-color: #FFD700; /* Couleur de la bordure */
+color: #fff; /* Couleur du texte */
+}
   

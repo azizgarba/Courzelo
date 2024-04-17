@@ -39,6 +39,32 @@ import { ViewFeedbackTeacherComponent } from "./Components/FeedBackComponents/vi
 import { ViewFeedbacksComponent } from "./Components/FeedBackComponents/view-feedbacks/view-feedbacks.component";
 import { EvGuideComponent } from "./Components/EvaluationComponent/ev-guide/ev-guide.component";
 
+import { GetlevelComponent } from './Components/AcademicProgram/level/getlevel/getlevel.component';
+import { UpdatelevelComponent } from './Components/AcademicProgram/level/updatelevel/updatelevel/updatelevel.component';
+import { GetallclassComponent } from './Components/AcademicProgram/class/getallClass/getallclass/getallclass.component';
+import { UpdateclassComponent } from './Components/AcademicProgram/class/updatclass/updateclass/updateclass.component';
+import { ModuleComponent } from './Components/AcademicProgram/module/module.component';
+import { GetallmoduleComponent } from './Components/AcademicProgram/module/getallmodule/getallmodule.component';
+import { UpdatemoduleComponent } from './Components/AcademicProgram/module/updatemodule/updatemodule.component';
+import { UpdatecourseComponent } from './Components/AcademicProgram/course/updatecourse/updatecourse.component';
+import { CourseComponent } from './Components/AcademicProgram/course/course.component';
+import { GetallcoursesComponent } from './Components/AcademicProgram/course/getallcourses/getallcourses.component';
+import { AcedemicProgramComponent } from './Components/AcademicProgram/acedemic-program/acedemic-program.component';
+import { GetproandaccessmoduleComponent } from './Components/AcademicProgram/acedemic-program/getproandaccessmodule/getproandaccessmodule.component';
+import { EtcoursesymoduleComponent } from './Components/AcademicProgram/course/etcoursesymodule/etcoursesymodule.component';
+import { FilecomponentComponent } from './Components/AcademicProgram/class/filecomponent/filecomponent.component';
+import { ViewfileComponent } from './Components/AcademicProgram/class/viewfile/viewfile.component';
+import { ProjectComponent } from './Components/ProjectCompnents/project/project.component';
+import { GetallprojectComponent } from './Components/ProjectCompnents/getallproject/getallproject.component';
+import { GetallprojectbyuserComponentComponent } from './Components/ProjectCompnents/user/getallprojectbyuser-component/getallprojectbyuser-component.component';
+import { LandingPageComponent } from './shared/HomeLandingPage/landing-page/landing-page.component';
+import { TaskjiraComponent } from './Components/ProjectCompnents/user/taskjira/taskjira.component';
+import { DocumentationsComponent } from './Components/ProjectCompnents/user/documentations/documentations.component';
+import { LevelComponent } from "./Components/AcademicProgram/level/level.component";
+import { ClassComponent } from "./Components/AcademicProgram/class/class.component";
+
+
+
 const routes: Routes = [
   { path: "forumQuestion", component: QuestionComponent },
   { path: "forumAnswers/:id", component: AnswerComponent },
@@ -65,7 +91,6 @@ const routes: Routes = [
   { path: "revision", component: RevisionComponent },
   { path: "forumQuestion", component: QuestionComponent },
   { path: "forumAnswers", component: AnswerComponent },
-  { path: "forumChat", component: ChatComponent },
   { path: "jobOffer", component: JobOfferComponent },
   { path: "addjobOffer", component: AddjobOfferComponent },
   { path: "updatejobOffer/:id", component: UpdatejobOfferComponent },
@@ -79,6 +104,30 @@ const routes: Routes = [
   { path: "viewFeedbackTeacher", component: ViewFeedbackTeacherComponent },
   { path: "viewfeedbacks", component: ViewFeedbacksComponent },
   { path: "evguide", component: EvGuideComponent },
+  {path:'Level', component:LevelComponent},//admin
+  {path:'Class', component:ClassComponent},//admin
+  {path:'getalllevels', component:GetlevelComponent},//admin
+  {path:'updatelevels/:id', component:UpdatelevelComponent},//admin
+  {path:'updateclass/:id', component:UpdateclassComponent},//admin
+  {path:'getallmodules', component:GetallmoduleComponent},//admin
+  {path:'getallclasses', component:GetallclassComponent},//admin
+  {path:'addclass', component:ClassComponent},//admin
+  {path:'addmodule', component:ModuleComponent},//admin
+  {path:'updatemodule/:id', component:UpdatemoduleComponent},//admin
+  {path:'updatecourse/:id', component:UpdatecourseComponent},//admin
+  {path:'addcourse', component:CourseComponent},//admin
+  {path:'getallacourses', component:GetallcoursesComponent},//admin
+  {path:'getprogram', component:AcedemicProgramComponent},//user
+  { path: 'courses/:moduleId', component: EtcoursesymoduleComponent},//user thabtou
+  { path: 'getprogaccesstocourse', component: GetproandaccessmoduleComponent},//admin
+  { path: 'fileupload/:courseId', component: FilecomponentComponent},//user _____
+  { path: 'file/:courseId', component: ViewfileComponent},//user
+  {path:'addProject', component:ProjectComponent}, //teacher
+  { path: 'getallprojects', component: GetallprojectComponent },//teacher
+  { path: 'getallprojectsbyuser', component: GetallprojectbyuserComponentComponent },
+  { path: 'HomePage', component: LandingPageComponent },
+  { path: 'progress/:id', component: TaskjiraComponent },//user--------
+  { path: 'Documentation', component: DocumentationsComponent },// home page project
 ];
 
 @NgModule({

@@ -48,7 +48,7 @@ export class ProjetserviceService {
 
    
     getProjectsForUser(studentId: string): Observable<GroupProject[]> {
-      return this.http.get<GroupProject[]>(`${baseUrl}/userproject/660dcc131016964e8d565111`);
+      return this.http.get<GroupProject[]>(`${baseUrl}/userproject/${studentId}`);
     }
 
 

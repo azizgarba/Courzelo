@@ -7,12 +7,8 @@ import tn.esprit.courzelo.Repositories.ProjectRepo.GroupProjectRepo;
 import tn.esprit.courzelo.Repositories.ProjectRepo.ProjectRepo;
 
 import tn.esprit.courzelo.Repositories.ProjectRepo.TasksRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
-import tn.esprit.courzelo.entities.AcademicProgramEntities.Level;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
 import tn.esprit.courzelo.entities.ProjectEntities.Tasks;
-import tn.esprit.courzelo.entities.UserCorzelo.Role;
-import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.*;
 

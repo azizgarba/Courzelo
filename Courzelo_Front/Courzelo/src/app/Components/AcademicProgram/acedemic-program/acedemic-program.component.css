@@ -1,46 +1,31 @@
-.container[_ngcontent-oxc-c16] {
-  max-width: 600px;
-  margin: 150px auto;
-  padding: 63px;
-  border: #1e5d95;
+/* Adjust the sidebar width and set a fixed position */
+app-side-bar {
+  width: 250px; /* Adjust the width according to your design */
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%; /* Make it full height */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-.text-info {
-  color: #17a2b8; /* Bootstrap primary color, adjust as needed */
+/* Give the main content some left margin to accommodate the sidebar */
+.all-tests-container {
+  margin-left: 250px; /* Adjust the margin based on your sidebar width */
 }
 
-.form-group {
-  margin-bottom: 20px; /* Adjust as needed */
+/* Add padding to the main content to ensure it's not hidden behind the sidebar */
+.container-fluid {
+  padding-top: 120px;}
+/* Ajoutez ces styles à votre fichier CSS pour définir les couleurs des boutons */
+
+.btn-success-custom {
+background-color: #87CEEB; /* Bleu pastel */
+border-color: #87CEEB; /* Couleur de la bordure */
+color: #fff; /* Couleur du texte */
 }
 
-.table {
-  margin-top: 20px; /* Adjust as needed */
-}
-
-.center-msg {
-  text-align: center;
-  margin-top: 20px; /* Adjust as needed */
-}
-
-
-p {
-  margin-top: 99px;
-  margin-bottom: 1rem;
-  margin-left: 140px;
-}
-.table>:not(:last-child)>:last-child>* {
-  border-bottom-color: #2d7fd1;
-}
-
-th {
-  font-weight: 700;
-  color: royalblue;
-}
-.form-group[_ngcontent-fdo-c16] {
-  margin-bottom: 29px;
-  margin: 204px;
-}
-label {
-  display: inline-block;
-  margin: 54px;
+.btn-danger-custom {
+background-color: #FFD700; /* Jaune pastel */
+border-color: #FFD700; /* Couleur de la bordure */
+color: #fff; /* Couleur du texte */
 }

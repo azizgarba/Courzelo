@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.RecruitementRepo.JobOfferRepo;
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
 import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.RecruitementEntities.JobOffer;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;

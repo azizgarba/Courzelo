@@ -12,6 +12,18 @@ import { ProjetserviceService } from 'src/app/Services/ProjectServices/projetser
   styleUrls: ['./project.component.css']
 })
 export class ProjectComponent {
+  idUser!: string;
+  roles:any ={} ;
+  ngOnInit( ){
+    let user = sessionStorage.getItem('auth-user');
+    if (user) {
+      let userData = JSON.parse(user);
+      this.idUser = userData.id;
+      //this.username = userData.username;
+      this.roles = userData.roles;
+   
+    }
+  }
   projectForm: FormGroup;
   submitted = false;
   difficultyValues = Object.values(Difficulty);

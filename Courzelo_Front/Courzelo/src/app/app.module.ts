@@ -70,6 +70,38 @@ import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatIconModule } from "@angular/material/icon";
 import { IncentivesComponent } from "./Components/Forum/incentives/incentives.component";
 import { EvGuideComponent } from './Components/EvaluationComponent/ev-guide/ev-guide.component';
+import { AcedemicProgramComponent } from './Components/AcademicProgram/acedemic-program/acedemic-program.component';
+import { ModuleComponent } from './Components/AcademicProgram/module/module.component';
+import { ClassComponent } from './Components/AcademicProgram/class/class.component';
+import { LevelComponent } from './Components/AcademicProgram/level/level.component';
+import { CourseComponent } from './Components/AcademicProgram/course/course.component';
+import { ProjectComponent } from './Components/ProjectCompnents/project/project.component';
+import { UpdatelevelComponent } from './Components/AcademicProgram/level/updatelevel/updatelevel/updatelevel.component';
+import { GetlevelComponent } from './Components/AcademicProgram/level/getlevel/getlevel.component';
+import { UpdateclassComponent } from './Components/AcademicProgram/class/updatclass/updateclass/updateclass.component';
+import { GetallclassComponent } from './Components/AcademicProgram/class/getallClass/getallclass/getallclass.component';
+import { UpdatemoduleComponent } from './Components/AcademicProgram/module/updatemodule/updatemodule.component';
+import { GetallmoduleComponent } from './Components/AcademicProgram/module/getallmodule/getallmodule.component';
+import { GetallcoursesComponent } from './Components/AcademicProgram/course/getallcourses/getallcourses.component';
+import { UpdatecourseComponent } from './Components/AcademicProgram/course/updatecourse/updatecourse.component';
+import { GetproandaccessmoduleComponent } from './Components/AcademicProgram/acedemic-program/getproandaccessmodule/getproandaccessmodule.component';
+import { EtcoursesymoduleComponent } from './Components/AcademicProgram/course/etcoursesymodule/etcoursesymodule.component';
+import { FilecomponentComponent } from './Components/AcademicProgram/class/filecomponent/filecomponent.component';
+import { ViewfileComponent } from './Components/AcademicProgram/class/viewfile/viewfile.component';
+import { GetallprojectComponent } from './Components/ProjectCompnents/getallproject/getallproject.component';
+import { UpdateprojectComponent } from './Components/ProjectCompnents/updateproject/updateproject.component';
+import { ProjectDetailsComponentComponent } from './Components/ProjectCompnents/getallproject/project-details-component/project-details-component.component';
+import { GroupGenerateComponentComponent } from './Components/ProjectCompnents/group-generate-component/group-generate-component.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { GetallprojectbyuserComponentComponent } from './Components/ProjectCompnents/user/getallprojectbyuser-component/getallprojectbyuser-component.component';
+import { LandingPageComponent } from './shared/HomeLandingPage/landing-page/landing-page.component';
+import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
+import { TaskjiraComponent } from './Components/ProjectCompnents/user/taskjira/taskjira.component';
+//import { FilterByStatusPipe } from './Models/ProjectEntities/FilterByStatusPipe';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DocumentationsComponent } from './Components/ProjectCompnents/user/documentations/documentations.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,6 +152,33 @@ import { EvGuideComponent } from './Components/EvaluationComponent/ev-guide/ev-g
     ViewFeedbacksComponent,
     IncentivesComponent,
     EvGuideComponent,
+    AcedemicProgramComponent,
+    ModuleComponent,
+    ClassComponent,
+    LevelComponent,
+    CourseComponent,
+    ProjectComponent,
+    UpdatelevelComponent,
+    
+    GetlevelComponent,
+    UpdateclassComponent,
+    GetallclassComponent,
+    UpdatemoduleComponent,
+    GetallmoduleComponent,
+    GetallcoursesComponent,
+    UpdatecourseComponent,
+    GetproandaccessmoduleComponent,
+    EtcoursesymoduleComponent,
+    FilecomponentComponent,
+    ViewfileComponent,
+    GetallprojectComponent,
+    UpdateprojectComponent,
+    ProjectDetailsComponentComponent,
+    GroupGenerateComponentComponent,
+    GetallprojectbyuserComponentComponent,
+    LandingPageComponent,
+    TaskjiraComponent,
+    DocumentationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -144,6 +203,12 @@ import { EvGuideComponent } from './Components/EvaluationComponent/ev-guide/ev-g
     BrowserAnimationsModule,
     MatCardModule,
     MatProgressBarModule,
+    MatSnackBarModule,
+ 
+    NoopAnimationsModule,
+   FullCalendarModule,
+   DragDropModule
+    
   ],
   providers: [authInterceptorProviders, AuthGuard, DatePipe],
   bootstrap: [AppComponent],

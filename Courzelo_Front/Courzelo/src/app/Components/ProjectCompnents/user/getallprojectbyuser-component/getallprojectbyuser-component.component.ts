@@ -23,11 +23,15 @@ export class GetallprojectbyuserComponentComponent implements OnInit  {
   id!: string;
   tasks: Tasks[]= [];
   selectedProject!: any;
+  idUser!: string;
+  roles: string[] = [];
+  username!:string
   // Calendar options object
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     plugins: [dayGridPlugin],
     events: [] // Initialize empty events array
+    
     
   };
 
@@ -39,6 +43,17 @@ export class GetallprojectbyuserComponentComponent implements OnInit  {
   ) { }
 
   ngOnInit(): void {
+    let user = sessionStorage.getItem('auth-user');
+    console.log('User from sessionStorage:', user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log('Parsed user data:', userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log('Roles:', this.roles);
+      console.log('id nouha********************:', this.idUser);
+    }
     this.selectedProject = {};
     // Fetch the student ID from the route parameters
     this.route.paramMap.subscribe(params => {
@@ -53,7 +68,7 @@ export class GetallprojectbyuserComponentComponent implements OnInit  {
     this.selectedProject = project;
   }
   loadProjects(): void {
-    this.project = this.groupProjectService.getProjectsForUser(this.studentId);
+    this.project = this.groupProjectService.getProjectsForUser(this.idUser);
     this.project.subscribe(projects => {
       this.populateCalendar(projects);
     });

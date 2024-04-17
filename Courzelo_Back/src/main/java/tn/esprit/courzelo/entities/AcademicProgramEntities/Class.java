@@ -24,7 +24,7 @@ import java.util.List;
 @Document(collection = "Class")
 public class Class {
     @Id
-    private  String id;
+    private String id;
     @Indexed
     private String name;
     @DBRef
@@ -41,6 +41,4 @@ public class Class {
     private List<UserCourzelo> students;
     @DBRef
     private List<UserCourzelo> teachers;
-    @DBRef
-    private List<Module> modules;
 }

@@ -1,6 +1,5 @@
 package tn.esprit.courzelo.Services.FeedbackService;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.FeedbackRepo.FeedbackRepo;
 
-import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
 import tn.esprit.courzelo.entities.FeedBackEntities.TypeFeedback;
 import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
@@ -24,7 +23,7 @@ public class FeedbackServiceImpl implements IFeedbackService{
 @Autowired
     FeedbackRepo feedbackRepo;
 @Autowired
-    UserRepo userRepo;
+UserRepository userRepo;
     //UserCourzelo userCourzeloo;
     @Override
     public List<Feedback> getAllFeedbacks() {
