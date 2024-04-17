@@ -68,6 +68,8 @@ import { FinalEvaluationComponent } from "./Components/EvaluationComponent/final
 import { RevisionComponent } from "./Components/EvaluationComponent/revision/revision.component";
 import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
 import { MatIconModule } from "@angular/material/icon";
+import { IncentivesComponent } from "./Components/Forum/incentives/incentives.component";
+import { EvGuideComponent } from './Components/EvaluationComponent/ev-guide/ev-guide.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +118,8 @@ import { MatIconModule } from "@angular/material/icon";
     AddFeedbackTeacherComponent,
     ViewFeedbackTeacherComponent,
     ViewFeedbacksComponent,
+    IncentivesComponent,
+    EvGuideComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
-<!--<app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>    NEED TO FIX-->
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
 <div class="content-page">
     <div class="content">
 
@@ -37,7 +37,7 @@
                                 <p class="text-muted">
                                     <i class="fas fa-star fa-lg" style="color: yellow; margin-right: 10px;"></i>
                                     <!-- Icône de favori en jaune, plus grande, avec un espace à droite -->
-                                    <!--<i>{{p.date | date : "MMMM d, yyyy, h:mm a"}}</i>     need to fix !!!!!-->
+                                    <i>{{p.date | date : "MMMM d, yyyy, h:mm a"}}</i>
                                 </p>
                             </div>
                         </div>
@@ -66,9 +66,8 @@
                                 <tbody *ngFor="let p of listIncentives">
                                     <tr>
                                         <td>{{p.incentivesType}}</td>
-                                        <!--<td>{{p.dateOFObtaining | date : "MMMM d, yyyy, h:mm a"}}</td> NEED TO FIX-->
-                                        <!--<td>{{p.deliberationDate | date : "MMMM d, yyyy, h:mm a"}}</td> NEED TO FIX-->
-                                    </tr>
+                                        <td>{{p.dateOFObtaining | date : "MMMM d, yyyy, h:mm a"}}</td>
+                                        <td>{{p.deliberationDate | date : "MMMM d, yyyy, h:mm a"}}</td>
                                 </tbody>
                             </table>
                         </div>

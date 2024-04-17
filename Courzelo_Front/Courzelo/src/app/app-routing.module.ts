@@ -37,6 +37,7 @@ import { AddFeedbackTeacherComponent } from "./Components/FeedBackComponents/add
 import { ViewFeedbackModuleComponent } from "./Components/FeedBackComponents/view-feedback-module/view-feedback-module.component";
 import { ViewFeedbackTeacherComponent } from "./Components/FeedBackComponents/view-feedback-teacher/view-feedback-teacher.component";
 import { ViewFeedbacksComponent } from "./Components/FeedBackComponents/view-feedbacks/view-feedbacks.component";
+import { EvGuideComponent } from "./Components/EvaluationComponent/ev-guide/ev-guide.component";
 
 const routes: Routes = [
   { path: "forumQuestion", component: QuestionComponent },
@@ -77,6 +78,7 @@ const routes: Routes = [
   { path: "viewFeedbackModule", component: ViewFeedbackModuleComponent },
   { path: "viewFeedbackTeacher", component: ViewFeedbackTeacherComponent },
   { path: "viewfeedbacks", component: ViewFeedbacksComponent },
+  { path: "evguide", component: EvGuideComponent },
 ];
 
 @NgModule({
