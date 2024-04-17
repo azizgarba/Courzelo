@@ -9,6 +9,7 @@ import tn.esprit.courzelo.Services.FeedbackService.IFeedbackService;
 import tn.esprit.courzelo.entities.FeedBackEntities.Feedback;
 import tn.esprit.courzelo.entities.FeedBackEntities.TypeFeedback;
 
+import java.io.Console;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,7 @@ public class FeedbackController {
             return ResponseEntity.ok(feedbacks);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
+
         }
     }
     //get feedback by id

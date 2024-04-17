@@ -46,10 +46,10 @@ import { EmptyComponentComponent } from "./empty-component/empty-component.compo
 import { AcceuilPrimComponent } from "./Components/Forum/acceuil-prim/acceuil-prim.component";
 import { NavBarOUTComponent } from "./shared/nav-bar-out/nav-bar-out.component";
 
-import { AddTestComponent } from "./components/EvaluationComponent/add-test/add-test.component";
-import { AddQuestionComponent } from "./components/EvaluationComponent/add-question/add-question.component";
-import { CommonModule } from "@angular/common";
-import { AllTestsComponent } from "./components/EvaluationComponent/all-tests/all-tests.component";
+import { AddTestComponent } from "./Components/EvaluationComponent/add-test/add-test.component";
+import { AddQuestionComponent } from "./Components/EvaluationComponent/add-question/add-question.component";
+import { CommonModule, DatePipe } from "@angular/common";
+import { AllTestsComponent } from "./Components/EvaluationComponent/all-tests/all-tests.component";
 import { EditTestComponent } from "src/app/Components/EvaluationComponent/edit-test/edit-test.component";
 import { TakeTestComponent } from "src/app/Components/EvaluationComponent/take-test/take-test.component";
 import { AllModulesComponent } from "src/app/Components/EvaluationComponent/all-modules/all-modules.component";
@@ -59,13 +59,15 @@ import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { RewardsComponent } from "src/app/Components/EvaluationComponent/rewards/rewards.component";
-import { RewardsStatisticsComponent } from "./components/EvaluationComponent/rewards-statistics/rewards-statistics.component";
+import { RewardsStatisticsComponent } from "./Components/EvaluationComponent/rewards-statistics/rewards-statistics.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { SuccesComponent } from "./components/EvaluationComponent/succes/succes.component";
-import { FinalEvaluationComponent } from "./components/EvaluationComponent/final-evaluation/final-evaluation.component";
-import { RevisionComponent } from "./components/EvaluationComponent/revision/revision.component";
+import { SuccesComponent } from "./Components/EvaluationComponent/succes/succes.component";
+import { FinalEvaluationComponent } from "./Components/EvaluationComponent/final-evaluation/final-evaluation.component";
+import { RevisionComponent } from "./Components/EvaluationComponent/revision/revision.component";
+import { NgbRatingModule } from "@ng-bootstrap/ng-bootstrap";
+import { MatIconModule } from "@angular/material/icon";
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,8 @@ import { RevisionComponent } from "./components/EvaluationComponent/revision/rev
   ],
   imports: [
     BrowserModule,
+    MatIconModule,
+    NgbRatingModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -137,7 +141,7 @@ import { RevisionComponent } from "./components/EvaluationComponent/revision/rev
     MatCardModule,
     MatProgressBarModule,
   ],
-  providers: [authInterceptorProviders, AuthGuard],
+  providers: [authInterceptorProviders, AuthGuard, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

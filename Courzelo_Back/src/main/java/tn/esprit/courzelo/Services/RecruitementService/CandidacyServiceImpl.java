@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.RecruitementRepo.CandidacyRepo;
 import tn.esprit.courzelo.Repositories.RecruitementRepo.JobOfferRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.RecruitementEntities.Candidacy;
 import tn.esprit.courzelo.entities.RecruitementEntities.JobOffer;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,8 @@ public class CandidacyServiceImpl implements ICandidacyService  {
     CandidacyRepo candidacyRepo;
     @Autowired
     JobOfferRepo jobOfferRepo;
+    @Autowired
+    UserRepository userRepo;
     @Override
     public List<Candidacy> getAllCandidacy() {
         try{
@@ -40,12 +44,14 @@ public class CandidacyServiceImpl implements ICandidacyService  {
     }
 
     @Override
-    public void addCandidacy(Candidacy candidacy,String jobOfferId) {
+    public void addCandidacy(Candidacy candidacy,String jobOfferId,String userId){
         try{
+            UserCourzelo userCourzelo = userRepo.findUserCourzeloById(userId);
             JobOffer jobOffer = jobOfferRepo.findById(jobOfferId).orElseThrow(() -> new RuntimeException("Job offer not found"));
             List<JobOffer> jobOffers = new ArrayList<>();
             jobOffers.add(jobOffer);
             candidacy.setJobOffers(jobOffers);
+            candidacy.setStudent(userCourzelo);
             candidacyRepo.save(candidacy);
         } catch (Exception e){
             log.error(e.getMessage());

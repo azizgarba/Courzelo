@@ -17,13 +17,13 @@ import java.util.List;
 
 @Service
 @Slf4j
-@AllArgsConstructor
+
 
 public class FeedbackServiceImpl implements IFeedbackService{
     private static final Logger LOGGER = LoggerFactory.getLogger(FeedbackServiceImpl.class);
-
+@Autowired
     FeedbackRepo feedbackRepo;
-
+@Autowired
     UserRepo userRepo;
     //UserCourzelo userCourzeloo;
     @Override
@@ -31,7 +31,7 @@ public class FeedbackServiceImpl implements IFeedbackService{
         try{
             return feedbackRepo.findAll();
         } catch (Exception e){
-            log.error(e.getMessage());
+            log.error(e.getMessage()+"laaaaaaaaaaaa");
             return null;
         }
     }
@@ -69,7 +69,7 @@ public class FeedbackServiceImpl implements IFeedbackService{
     @Override
     public void addFeedbackTeacher(Feedback feedback,String idUser) {
         UserCourzelo student = userRepo.findUserCourzeloById(idUser);
-        UserCourzelo teacher = userRepo.findUserCourzeloById("661e7080bb52aa5103c13180");
+        UserCourzelo teacher = userRepo.findUserCourzeloById(idUser);
         try{
             feedback.setTypeFeedback(TypeFeedback.Teacher);
             feedback.setStudent(student);

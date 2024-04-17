@@ -19,6 +19,9 @@ export class CandidancyFormComponent {
     experience: new FormControl("", Validators.required),
     resume: new FormControl("", Validators.required),
   });
+  idUser!: string;
+  roles: string[] = [];
+  username!: string;
 
   constructor(
     private candidacyService: CandidancyService,
@@ -27,13 +30,25 @@ export class CandidancyFormComponent {
     this.jobId = this.route.snapshot.paramMap.get("jobId");
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    let user = sessionStorage.getItem("auth-user");
+    console.log("User from sessionStorage:", user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log("Roles:", this.roles);
+      console.log("id nouha********************:", this.idUser);
+    }
+  }
 
   onSubmit() {
     if (this.candidacyForm.valid) {
       const candidacy = this.candidacyForm.value;
       this.candidacyService
-        .createCandidancy(candidacy, this.jobId)
+        .createCandidancy(candidacy, this.jobId, this.idUser)
         .subscribe((response) => {
           console.log(response);
         });

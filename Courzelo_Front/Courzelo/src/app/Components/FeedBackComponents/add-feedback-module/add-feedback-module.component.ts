@@ -11,6 +11,9 @@ import { FeedbackService } from "src/app/Services/FeedBackServices/feedback.serv
 export class AddFeedbackModuleComponent implements OnInit {
   contactForm!: FormGroup;
   modules: string[] = ["Module A", "Module B", "Module C"]; // Define your list of modules here
+  idUser!: string;
+  roles: string[] = [];
+  username!: string;
   constructor(
     private fb: FormBuilder,
     private feedbackService: FeedbackService
@@ -22,6 +25,17 @@ export class AddFeedbackModuleComponent implements OnInit {
       selectedModule: ["", Validators.required], // Add a form control for the selected module
       courseContent: ["", Validators.required],
     });
+    let user = sessionStorage.getItem("auth-user");
+    console.log("User from sessionStorage:", user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log("Roles:", this.roles);
+      console.log("id nouha********************:", this.idUser);
+    }
   }
   onSubmit() {
     if (this.contactForm.valid) {
@@ -43,7 +57,7 @@ export class AddFeedbackModuleComponent implements OnInit {
       };
 
       // Save feedback to the database
-      this.feedbackService.create(feedbackData).subscribe(
+      this.feedbackService.create(feedbackData, this.idUser).subscribe(
         (response) => {
           console.log(response);
           alert("Feedback submitted successfully!");

@@ -47,10 +47,10 @@ public class CandidancyController {
         }
     }
     //add candidancy
-    @PostMapping("/add/{jobOfferId}")
-    public ResponseEntity<String> addCandidacy( @RequestBody Candidacy candidacy, @PathVariable String jobOfferId){
+    @PostMapping("/add/{jobOfferId}/{userId}")
+    public ResponseEntity<String> addCandidacy( @RequestBody Candidacy candidacy, @PathVariable String jobOfferId, @PathVariable String userId){
         try{
-            candidacyService.addCandidacy(candidacy, jobOfferId);
+            candidacyService.addCandidacy(candidacy, jobOfferId, userId);
             return ResponseEntity.ok("Candidacy added successfully");
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

@@ -1,5 +1,5 @@
-<app-nav-bar></app-nav-bar>
-<router-outlet></router-outlet>
+<!--<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>    NEED TO FIX-->
 <div class="content-page">
     <div class="content">
 
@@ -37,7 +37,7 @@
                                 <p class="text-muted">
                                     <i class="fas fa-star fa-lg" style="color: yellow; margin-right: 10px;"></i>
                                     <!-- Icône de favori en jaune, plus grande, avec un espace à droite -->
-                                    <i>{{p.date | date : "MMMM d, yyyy, h:mm a"}}</i>
+                                    <!--<i>{{p.date | date : "MMMM d, yyyy, h:mm a"}}</i>     need to fix !!!!!-->
                                 </p>
                             </div>
                         </div>
@@ -50,7 +50,8 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">Les primes </h4>
                             <p class="text-muted font-14 mb-3">
-                                les primes que vous avez obtenu à partir des votes et des explications directes avec Vos etudiants en chat
+                                les primes que vous avez obtenu à partir des votes et des explications directes avec Vos
+                                etudiants en chat
                             </p>
 
                             <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
@@ -65,8 +66,8 @@
                                 <tbody *ngFor="let p of listIncentives">
                                     <tr>
                                         <td>{{p.incentivesType}}</td>
-                                        <td>{{p.dateOFObtaining | date : "MMMM d, yyyy, h:mm a"}}</td>
-                                        <td>{{p.deliberationDate | date : "MMMM d, yyyy, h:mm a"}}</td>
+                                        <!--<td>{{p.dateOFObtaining | date : "MMMM d, yyyy, h:mm a"}}</td> NEED TO FIX-->
+                                        <!--<td>{{p.deliberationDate | date : "MMMM d, yyyy, h:mm a"}}</td> NEED TO FIX-->
                                     </tr>
                                 </tbody>
                             </table>

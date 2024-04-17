@@ -60,12 +60,11 @@ public class JobOfferController {
         }
     }
     // add job offer
-    @PostMapping("/add")
-    public ResponseEntity<JobOffer> addJobOffer( @RequestBody JobOffer jobOffer){
+    @PostMapping("/add/{idUser}")
+    public ResponseEntity<JobOffer> addJobOffer( @RequestBody JobOffer jobOffer,@PathVariable("idUser") String idUser){
         try{
-            jobOffer.setRecruiter(null);
             jobOffer.setCandidacies(null);
-            jobOfferService.addJobOffer(jobOffer);
+            jobOfferService.addJobOffer(jobOffer,idUser);
             return ResponseEntity.ok(jobOffer);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();

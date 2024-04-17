@@ -28,8 +28,8 @@ export class CandidancyService {
   delete(id: any) {
     return this.http.delete(`${baseurldelete}/${id}`);
   }
-  createCandidancy(data: any, jobOfferId: any) {
-    const urladd = `http://localhost:8081/candidancy/add/${jobOfferId}`;
+  createCandidancy(data: any, jobOfferId: any, userId: string) {
+    const urladd = `http://localhost:8081/candidancy/add/${jobOfferId}/${userId}`;
     return this.http.post(urladd, data);
   }
   updateCandidacy(id: string, candidacy: any) {

@@ -17,6 +17,9 @@ export class JobOfferComponent implements OnInit {
   currentJobOffer: any;
   currentIndex = -1;
   message = "";
+  idUser!: string;
+  roles: string[] = [];
+  username!: string;
 
   constructor(
     private jobofferService: JobOfferService,
@@ -26,6 +29,17 @@ export class JobOfferComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    let user = sessionStorage.getItem("auth-user");
+    console.log("User from sessionStorage:", user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log("Roles:", this.roles);
+      console.log("id nouha********************:", this.idUser);
+    }
     this.message = "";
     this.retrieveJobOffers();
   }
@@ -106,7 +120,11 @@ export class JobOfferComponent implements OnInit {
       );
   }
   applyforjobOffer(jobOfferId: any, candidate: any) {
-    this.CandidateService.createCandidancy(candidate, jobOfferId).subscribe(
+    this.CandidateService.createCandidancy(
+      candidate,
+      jobOfferId,
+      this.idUser
+    ).subscribe(
       (response) => {
         console.log(response);
         this.message = "The job offer was applied successfully!";

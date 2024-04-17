@@ -127,7 +127,7 @@ public class AuthController {
 
         Set<ERole> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
-
+        System.out.println("roles : "+strRoles);
         if (strRoles == null) {
             Role userRole = roleRepository.findByName(ERole.Student)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));

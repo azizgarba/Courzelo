@@ -59,6 +59,11 @@ export class ViewFeedbacksComponent implements OnInit {
       element: "morris-donut-example",
       data: this.chartData,
       labels: ["value"],
+      onClick: (i: any, row: any) => {
+        if (row.labels == "Teacher") {
+          this.sendEmailToTeacher();
+        }
+      },
     });
   }
   sendEmailToTeacher() {

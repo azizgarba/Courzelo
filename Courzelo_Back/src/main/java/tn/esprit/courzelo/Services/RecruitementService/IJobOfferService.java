@@ -13,7 +13,7 @@ public interface IJobOfferService {
     //get job offer by title
     public JobOffer getJobOfferByTitle(String title);
     // add job offer
-    public void addJobOffer(JobOffer jobOffer);
+    public void addJobOffer(JobOffer jobOffer, String idUser);
     //delete job offer
     public void deleteJobOffer(String id);
     //update job offer

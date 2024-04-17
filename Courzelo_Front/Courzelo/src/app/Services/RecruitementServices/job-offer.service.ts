@@ -18,8 +18,8 @@ export class JobOfferService {
   get(id: any) {
     return this.http.get(`${baseurlgetbyid}/${id}`);
   }
-  create(data: any) {
-    return this.http.post(baseurladd, data);
+  create(data: any, userId: string) {
+    return this.http.post(`${baseurladd}/${userId}`, data);
   }
   update(id: any, data: any) {
     return this.http.put(`${baseurlupdate}/${id}`, data);

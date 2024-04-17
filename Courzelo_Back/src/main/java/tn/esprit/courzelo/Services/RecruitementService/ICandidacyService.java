@@ -10,7 +10,7 @@ public interface ICandidacyService {
     //get candidancy by id
     public Candidacy getCandidacyById(String id);
     //add candidancy
-    public void addCandidacy(Candidacy candidacy,String jobOfferId);
+    public void addCandidacy(Candidacy candidacy,String jobOfferId,String userId);
     //delete candidancy
     public void deleteCandidacy(String id);
     //update candidancy

@@ -1,8 +1,10 @@
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
 <!--<div class="my-card" *ngFor="let feedback of feedbackModules">
     <div *ngIf="feedback.typeFeedback === 'Module'">
-         Display feedback module here 
+        Display feedback module here
     </div>
-</div> -->
+</div>-->
 
 <div class="my-card" *ngIf="hasFeedbackModules()">
     <button class="btn btn-primary waves-effect waves-light" (click)="addFeedbackModule()">Add Feedback Module</button>

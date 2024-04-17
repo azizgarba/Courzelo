@@ -4,7 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.RecruitementRepo.JobOfferRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepo;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
 import tn.esprit.courzelo.entities.RecruitementEntities.JobOffer;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 import java.util.List;
 
@@ -18,6 +21,8 @@ public class JobOfferServiceImpl implements IJobOfferService{
     IResumeParserService resumeParserService;
     @Autowired
     IJobMatcherService jobMatcherService;
+    @Autowired
+    UserRepository userRepo;
     String path = "D:\\Esprit\\3eme\\documents internship\\test3.pdf";
     @Override
     public List<JobOffer> getAlljobOffer() {
@@ -53,8 +58,10 @@ public class JobOfferServiceImpl implements IJobOfferService{
     }
 
     @Override
-    public void addJobOffer(JobOffer jobOffer) {
+    public void addJobOffer(JobOffer jobOffer, String idUser) {
         try{
+        UserCourzelo userCourzelo = userRepo.findUserCourzeloById(idUser);
+        jobOffer.setRecruiter(userCourzelo);
         jobOfferRepo.save(jobOffer);
 
         } catch (Exception e){

@@ -15,10 +15,25 @@ export class AddjobOfferComponent implements OnInit {
     experience: "",
   };
   submitted = false;
+  idUser!: string;
+  roles: string[] = [];
+  username!: string;
 
   constructor(private jobOfferService: JobOfferService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    let user = sessionStorage.getItem("auth-user");
+    console.log("User from sessionStorage:", user);
+    if (user) {
+      let userData = JSON.parse(user);
+      console.log("Parsed user data:", userData);
+      this.idUser = userData.id;
+      this.username = userData.username;
+      this.roles = userData.roles;
+      console.log("Roles:", this.roles);
+      console.log("id nouha********************:", this.idUser);
+    }
+  }
 
   onSubmit() {
     console.log("Form Submitted!");
@@ -32,7 +47,7 @@ export class AddjobOfferComponent implements OnInit {
       experience: this.JobOffer.experience,
     };
 
-    this.jobOfferService.create(data).subscribe(
+    this.jobOfferService.create(data, this.idUser).subscribe(
       (response) => {
         console.log(response);
         this.submitted = true;
