@@ -1,20 +1,19 @@
 package tn.esprit.courzelo.entities.AcademicProgramEntities;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
+
 @Document(collection = "Course")
 public class Course {
     @Id
@@ -27,4 +26,12 @@ public class Course {
     private Module module;
     @DBRef
     private List<Ressources> ressources;
+
+    @DBRef
+    private Filecalss filecalss;
+
+
+
+
+
 }

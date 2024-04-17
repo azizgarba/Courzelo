@@ -43,11 +43,21 @@ export enum ERole{
    Recruiter
 }
 export enum Speciality{
-    DB,
-    Angular,
-    Spring,
-    DotNet,
-    Reseau
+    BD = 'BD',
+    Angular = 'Angular',
+    Spring = 'Spring',
+    DotNet = 'DotNet',
+    Reseau = 'Reseau',
+    IA = 'IA',
+    Mobile = 'Mobile',
+    Web = 'Web',
+    Cloud = 'Cloud',
+    DevOps = 'DevOps',
+    Security = 'Security',
+    Design = 'Design',
+    Management = 'Management',
+    Marketing = 'Marketing',
+    Finance = 'Finance',
 }
 export enum badgeType{
     GOLD,SILVER,BRONZE,DIMOND

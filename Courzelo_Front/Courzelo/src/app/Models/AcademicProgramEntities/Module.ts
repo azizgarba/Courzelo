@@ -1,8 +1,9 @@
 
 import { Test } from "../EvaluationEntities/Test";
 import { QuestionForum } from "../ForumEntities/QuestionForum";
+import { Class } from "./Class";
 import { EducationalProgram } from "./EducationalProgram";
-
+import { Semestre } from "./Semestre";
 
 export class Module{
     id!:string;
@@ -16,6 +17,11 @@ export class Module{
 
     questionForums:QuestionForum[]=[]
     tests: Test[]=[]
+    couef!:number ;
+    
+    semestre!:Semestre;
+    
+    classes: Class[] = [];
     
     
 }

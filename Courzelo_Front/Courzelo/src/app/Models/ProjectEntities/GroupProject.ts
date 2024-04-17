@@ -7,4 +7,5 @@ export class GroupProject{
     name!:string;
     Students!:Array<UserCourzelo>;
     project!:Project;
+    number!: number;
 }

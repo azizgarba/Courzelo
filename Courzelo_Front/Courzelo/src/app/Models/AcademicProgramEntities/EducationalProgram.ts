@@ -1,9 +1,10 @@
-import { Level } from "./Level";
+import { Class } from "./Class";
+
 
 export class EducationalProgram{
     id!:number;
     name!:string;
     year!:number;
     description!:string;
-    level!:Level;
+    class!:Class;
 }
