@@ -1,7 +1,6 @@
 package tn.esprit.courzelo.entities.UserCorzelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,10 +18,12 @@ import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
 import tn.esprit.courzelo.entities.ProjectEntities.Project;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "UserCourzelo")
 @JsonIgnoreProperties({"feedbackTeachers", "classes", "projects", "chatRoom", "questionForums", "answers", "votes"})
@@ -48,8 +49,9 @@ import java.util.List;
         private int nbMaxHeurePerWeek;
         @Indexed
         private int nbHourPerWeek=0;
-        @Indexed
-        private Role role;
+        //@Indexed
+        //private Set<ERole> roles = new HashSet<>();
+        //private Role role;
         @Indexed
         private String companyName;
         @Indexed
@@ -80,6 +82,7 @@ import java.util.List;
         private String CentreOffIntrest;
         @Indexed
         private Float overAll_average;
+
         @DBRef
         private List<Feedback> feedback;
         @DBRef
@@ -95,7 +98,7 @@ import java.util.List;
         @DBRef
         private List<Votes> votes;
 
-        }
+}
 
 
 

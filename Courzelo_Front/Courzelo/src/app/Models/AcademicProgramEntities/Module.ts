@@ -11,7 +11,7 @@ export class Module{
     nbHeureTotal!:number;
     Image!:string;
     coef!:number ;
-    program!:EducationalProgram;
+    program:EducationalProgram|undefined;
 
     questionForums:QuestionForum[]=[]
 

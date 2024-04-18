@@ -2,9 +2,9 @@ import { Session } from "../SessionEntities/Session";
 import { UserCourzelo } from "../UserCorzelo/UserCourzelo";
 
 export class Class{
-    id!:number;
+    id:number |undefined;
     name!:string;
-    Schedule!:Array<Session>;
-    Students!:Array<UserCourzelo>;
+    Schedule:Array<Session> | undefined;
+    Students:Array<UserCourzelo> |undefined;
     
 }
