@@ -5,8 +5,8 @@ import { Level } from "./Level";
 export class Class{
     id:number |undefined;
     name!:string;
-    level!: Level; 
-    Schedule:Array<Session> | undefined;
-    Students:Array<UserCourzelo> |undefined;
+    level!: Level | undefined; 
+    Schedule?:Array<Session> | undefined;
+    Students?:Array<UserCourzelo> |undefined;
     
 }

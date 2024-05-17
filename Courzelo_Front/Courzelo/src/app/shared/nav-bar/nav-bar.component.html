@@ -1,424 +1,171 @@
-<!-- Topbar Start -->
-<div class="navbar-custom">
+<!--Navbar Start-->
+<nav class="navbar topnav navbar-expand-lg fixed-top navbar-custom sticky sticky-dark navbar-transparent" id="nav-sticky">
   <div class="container-fluid">
-       <ul class="list-unstyled topnav-menu float-end mb-0">
-
-<!-- Begin page -->
-<div id="wrapper">
-  <!-- Topbar Start -->
-  <div class="navbar-custom">
-    <div class="container-fluid">
-      <ul class="list-unstyled topnav-menu float-end mb-0">
-        <li class="d-none d-lg-block">
-          <form class="app-search">
-            <div class="app-search-box">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search..." id="top-search" />
-                <button class="btn input-group-text" type="submit">
-                  <i class="fe-search"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </li>
-
-        <li class="dropdown d-inline-block d-lg-none">
-          <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#"
-            role="button" aria-haspopup="false" aria-expanded="false">
-            <i class="fe-search noti-icon"></i>
-          </a>
-          <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
-            <form class="p-3">
-              <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username" />
-            </form>
-          </div>
-        </li>
-
-        <style>
-          .dropdown:hover .dropdown-menu {
-            display: block;
-          }
-        </style>
-
-        <li class="dropdown notification-list topbar-dropdown">
-          <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button"
-            aria-haspopup="false" aria-expanded="false" (click)="resetNotificationCount3()">
-            <i class="fe-bell noti-icon"></i>
-            <span *ngIf="roles.includes('Teacher')" class="badge bg-danger rounded-circle noti-icon-badge">{{
-              notificationCount3 }}</span>
-            <span *ngIf="roles.includes('Student')" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
-          </a>
-          <div *ngIf="roles.includes('Teacher')" class="dropdown-menu dropdown-menu-end dropdown-lg"
-            style="max-height: 1000px;width: 1000%;">
-            <!-- item-->
-            <div class="slimscroll" style="max-height: 1000px;">
-              <!-- item-->
-              <a class="dropdown-item notify-item" style="width: 100%; overflow: visible;">
-                <div class="notify-icon bg-warning">
-                  <i class="mdi mdi-comment-account-outline"></i>
-                </div>
-                <p class="notify-details" style="width: 50%; white-space: normal; overflow: visible;">
-                  {{greeting2 }}
-                  <small class="text-muted">1 second ago</small>
-                </p>
-              </a>
-              <!-- item-->
-            </div>
-          </div>
-        </li>
-
-
-        <li class="dropdown notification-list topbar-dropdown">
-          <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#"
-            role="button" aria-haspopup="false" aria-expanded="false">
-            <img src="../../../../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle" />
-            <span class="pro-user-name ms-1">
-              Samir <i class="mdi mdi-chevron-down"></i>
-            </span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-end profile-dropdown">
-            <!-- item-->
-            <div class="dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome !</h6>
-            </div>
-
-            <!-- item-->
-            <a href="contacts-profile.html" class="dropdown-item notify-item">
-              <i class="fe-user"></i>
-              <span>My Account</span>
-            </a>
-
-            <!-- item-->
-            <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-              <i class="fe-lock"></i>
-              <span>Lock Screen</span>
-            </a>
-
-            <div class="dropdown-divider"></div>
-
-            <!-- item-->
-            <a (click)="logout()" class="dropdown-item notify-item">
-              <i class="fe-log-out"></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        </li>
-
-        <li class="dropdown notification-list">
-          <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-            <i class="fe-settings noti-icon"></i>
-          </a>
-        </li>
-      </ul>
-
-
-
       <!-- LOGO -->
-      <div class="logo-box">
-        <a href="index.html" class="logo logo-light text-center">
-          <span class="logo-sm">
-            <img src="../../../../assets/images/logo-sm.png" alt="" height="22" />
-          </span>
-          <span class="logo-lg">
-            <img src="../../../../assets/images/logo-light.png" alt="" height="16" />
-          </span>
-        </a>
-        <a href="index.html" class="logo logo-dark text-center">
-          <span class="logo-sm">
-            <img src="../../../../assets/images/logo-sm.png" alt="" height="22" />
-          </span>
-          <span class="logo-lg">
-            <img src="../../../../assets/images/logo-dark.png" alt="" height="16" />
-          </span>
-        </a>
-      </div>
-
-      <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
-        <li>
-          <!-- Mobile menu toggle (Horizontal Layout)-->
-          <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
-            <div class="lines">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </a>
-          <!-- End mobile menu toggle-->
-        </li>
-      </ul>
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-  <!-- end Topbar -->
-
-  <div class="topnav">
-    <div class="container-fluid">
-      <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
-        <div class="collapse navbar-collapse" id="topnav-menu-content">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link arrow-none" href="index.html" id="topnav-dashboard" role="button" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="mdi mdi-view-dashboard me-1"></i> Dashboard
-              </a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="all-Modules" id="topnav-ui" role="button"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mdi mdi-invert-colors me-1"></i>Academic Program 
-                <div class="arrow-down"></div>
-              </a>
-
-              <div class="dropdown-menu mega-dropdown-menu dropdown-mega-menu-xl" aria-labelledby="topnav-ui">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div>
-                      <a routerLink="/Documentation" class="dropdown-item">MY Projects </a>
-                      <a routerLink="/getprogaccesstocourse" class="dropdown-item">My Program </a>
-                      <a routerLink="/addProject" class="dropdown-item">Add new Project  </a>
-                      <a routerLink="/getallprojects" class="dropdown-item">Get All Projects </a>
-                     
-                    </div>
-                  </div>
-               
-               
-                </div>
-              </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-apps" role="button"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fe-grid me-1"></i>Schedule
-                <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-apps">
-                <a href="apps-calendar.html" class="dropdown-item">Calendar</a>
-                <a href="apps-chat.html" class="dropdown-item">Chat</a>
-
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Email
-                    <div class="arrow-down"></div>
+      <a class="logo text-uppercase" href="index.html">
+          <img src="assets/images/logo.png" alt="" class="logo-light" height="70" />
+          <img src="assets/images/logo.png" alt="" class="logo-dark" height="70" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="mdi mdi-menu"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ms-auto" id="mySidenav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link arrow-none" href="index.html" id="topnav-dashboard" role="button" aria-haspopup="true" routerLink="/sessionchat" aria-expanded="false">
+                      <i class="mdi mdi-view-dashboard me-1"></i> Session Chat
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-email">
-                    <a href="email-inbox.html" class="dropdown-item">Inbox</a>
-                    <a href="email-templates.html" class="dropdown-item">Email Templates</a>
-                  </div>
-                </div>
+              </li>
 
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-task" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tasks
-                    <div class="arrow-down"></div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle arrow-none" href="all-Modules" id="topnav-ui" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="mdi mdi-invert-colors me-1"></i> Academic Program 
+                      <div class="arrow-down"></div>
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-task">
-                    <a href="task-details.html" class="dropdown-item">Details</a>
-                    <a href="task-kanban-board.html" class="dropdown-item">Kanban Board</a>
+                  <div class="dropdown-menu mega-dropdown-menu dropdown-mega-menu-xl" aria-labelledby="topnav-ui">
+                      <div class="row">
+                          <div class="col-lg-4">
+                              <div>
+                                  <a routerLink="/Documentation" class="dropdown-item">MY Projects </a>
+                                  <a routerLink="/getprogaccesstocourse" class="dropdown-item">My Program </a>
+                                  <a routerLink="/addProject" class="dropdown-item">Add new Project  </a>
+                                  <a routerLink="/getallprojects" class="dropdown-item">Get All Projects </a>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item arrow-none" href="apps-projects.html" id="topnav-contact" role="button"
-                    aria-haspopup="true" aria-expanded="false">
-                    Projects
-                  </a>
-                </div>
+              </li>
 
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-contacts" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Contacts
-                    <div class="arrow-down"></div>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle arrow-none" href="Documentation" id="topnav-dashboard" role="button" aria-haspopup="true" aria-expanded="false">
+                      <i class="fe-grid me-1"></i> Project Management
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-contacts">
-                    <a href="contacts-list.html" class="dropdown-item">Members List</a>
-                    <a href="contacts-profile.html" class="dropdown-item">Profile</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle arrow-none" href="rewards" id="topnav-dashboard" role="button" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-trophy me-1"></i> Rewards
+                  </a>
+              </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="mdi mdi-lifebuoy me-1"></i> Evaluation
+                      <div class="arrow-down"></div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="topnav-components">
+                      <a routerLink="/evguide" class="dropdown-item">Guide</a>
+                      <div class="dropdown">
+                          <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-extendedui" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Grades
+                              <div class="arrow-down"></div>
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="topnav-extendedui">
+                              <a routerLink="/grades" class="dropdown-item">Modules grades</a>
+                              <a routerLink="/finalGrade" class="dropdown-item">Final grades</a>
+                          </div>
+                      </div>
+                      <a routerLink="/rewardsStat" class="dropdown-item">Performance</a>
+                      <a routerLink="/all-Modules" class="dropdown-item">Modules</a>
                   </div>
-                </div>
-              </div>
-            </li>
-
-
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="rewards" id="topnav-dashboard" role="button"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-trophy me-1"></i> Rewards
-
-              </a>
-
-            </li>
-
-
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="mdi mdi-lifebuoy me-1"></i> Evaluation
-                <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-components">
-                <a routerLink="/evguide" class="dropdown-item">Guide</a>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-extendedui" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Grades
-                    <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-extendedui">
-                    <a href="grades" class="dropdown-item">Modules grades</a>
-                    <a href="finalGrade" class="dropdown-item">Final grades</a>
-
-
-                  </div>
-
-                </div>
-                <a href="rewardsStat" class="dropdown-item">Performance</a>
-                <a href="all-Modules" class="dropdown-item">Modules</a>
-
-              </div>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a routerLink="/forumQuestion" class="nav-link arrow-none" href="index.html" id="topnav-dashboard"
-                role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="mdi mdi-cards-outline me-1"></i> Forum
-
-              </a>
-
-
-
-            </li>
-            <!--notifMyyyyy-->
-            <li class="dropdown notification-list topbar-dropdown">
-              <a routerLink="/forumChat" class="nav-link dropdown-toggle waves-effect waves-light"
-                data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"
-                (click)="resetNotificationCount()">
-                <i class="fa fa-comment noti-icon"></i>
-                <span *ngIf="userIdReciver==idUser" class="badge bg-danger rounded-circle noti-icon-badge">{{
-                  notificationCount }}</span>
-                <span *ngIf="userIdReciver!=idUser" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
-              </a>
-              <div *ngIf="userIdReciver==idUser" class="dropdown-menu dropdown-menu-end dropdown-lg"
-                style="max-height: 1000px;width: 1000%;">
-                <!-- item-->
-                <h6 class="dropdown-item-text">Notifications ({{ notificationCount }})</h6>
-                <div class="slimscroll" style="max-height: 230px;">
+              </li>
+              <li class="nav-item dropdown">
+                <a routerLink="/forumQuestion" class="nav-link arrow-none" href="index.html" id="topnav-dashboard"
+                  role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="mdi mdi-cards-outline me-1"></i> Forum
+  
+                </a>
+  
+  
+  
+              </li>
+              <!--notifMyyyyy-->
+              <li class="dropdown notification-list topbar-dropdown">
+                <a routerLink="/forumChat" class="nav-link dropdown-toggle waves-effect waves-light"
+                  data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"
+                  (click)="resetNotificationCount()">
+                  <i class="fa fa-comment noti-icon"></i>
+                  <span *ngIf="userIdReciver==idUser" class="badge bg-danger rounded-circle noti-icon-badge">{{
+                    notificationCount }}</span>
+                  <span *ngIf="userIdReciver!=idUser" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
+                </a>
+                <div *ngIf="userIdReciver==idUser" class="dropdown-menu dropdown-menu-end dropdown-lg"
+                  style="max-height: 1000px;width: 1000%;">
                   <!-- item-->
-                  <a href="javascript:void(0);" class="dropdown-item notify-item">
-                    <div class="notify-icon bg-success">
-                      <i class="mdi mdi-comment-account-outline"></i>
-                    </div>
-                    <p class="notify-details">{{greeting}}
-                      <small class="text-muted">1 second ago</small>
-                    </p>
-                  </a>
-                  <!-- item-->
+                  <h6 class="dropdown-item-text">Notifications ({{ notificationCount }})</h6>
+                  <div class="slimscroll" style="max-height: 230px;">
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                      <div class="notify-icon bg-success">
+                        <i class="mdi mdi-comment-account-outline"></i>
+                      </div>
+                      <p class="notify-details">{{greeting}}
+                        <small class="text-muted">1 second ago</small>
+                      </p>
+                    </a>
+                    <!-- item-->
+                  </div>
                 </div>
-              </div>
-            </li>
-            <!--notifMyyyyy-->
-            <!--notiff2 -->
-            <li class="dropdown notification-list topbar-dropdown">
-              <a routerLink="/acceuilncentives" class="nav-link dropdown-toggle waves-effect waves-light"
-                data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"
-                (click)="resetNotificationCount2()">
-                <i class=" fe-gift"></i>
-                <span *ngIf="roles.includes('Teacher')" class="badge bg-danger rounded-circle noti-icon-badge">{{
-                  notificationCount2 }}</span>
-                <span *ngIf="roles.includes('Student')" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
-              </a>
-              <div *ngIf="roles.includes('Teacher')" class="dropdown-menu dropdown-menu-end dropdown-lg">
-                <!-- item-->
-                <h6 class="dropdown-item-text">Notifications ({{ notificationCount2 }})</h6>
-                <div class="slimscroll" style="max-height: 230px;">
+              </li>
+              <!--notifMyyyyy-->
+              <!--notiff2 -->
+              <li *ngIf="roles.includes('Teacher')" class="dropdown notification-list topbar-dropdown">
+                <a routerLink="/acceuilncentives" class="nav-link dropdown-toggle waves-effect waves-light"
+                  data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"
+                  (click)="resetNotificationCount2()">
+                  <i class=" fe-gift"></i>
+                  <span *ngIf="roles.includes('Teacher')" class="badge bg-danger rounded-circle noti-icon-badge">{{
+                    notificationCount2 }}</span>
+                  <span *ngIf="roles.includes('Student')" class="badge bg-danger rounded-circle noti-icon-badge">0</span>
+                </a>
+                <div *ngIf="roles.includes('Teacher')" class="dropdown-menu dropdown-menu-end dropdown-lg">
                   <!-- item-->
-                  <a *ngIf="prime2!==null" routerLink="/forumIncentives" class="dropdown-item notify-item">
-                    <div class="notify-icon bg-success">
-                      <i class="mdi mdi-comment-account-outline"></i>
-                    </div>
-                    <p class="notify-details">{{prime2 }}
-                      <small class="text-muted">1 second ago</small>
-                    </p>
-                  </a>
-                  <!-- item-->
+                  <h6 class="dropdown-item-text">Notifications ({{ notificationCount2 }})</h6>
+                  <div class="slimscroll" style="max-height: 230px;">
+                    <!-- item-->
+                    <a *ngIf="prime2!==null" routerLink="/forumIncentives" class="dropdown-item notify-item" (click)="resetNotificationCount2()">
+                      <div class="notify-icon bg-success">
+                        <i class="mdi mdi-comment-account-outline"></i>
+                      </div>
+                      <p class="notify-details">{{prime2 }}
+                        <small class="text-muted">1 second ago</small>
+                      </p>
+                    </a>
+                    <!-- item-->
+                  </div>
                 </div>
-              </div>
-            </li>
-            <!---notif2-->
+              </li>
 
+              <li class="dropdown notification-list topbar-dropdown">
+                  <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                      <span class="pro-user-name ms-1">
+                           Logout <i class="mdi mdi-chevron-down"></i>
+                      </span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end profile-dropdown">
+                      <a class="dropdown-item notify-item" href="contacts-profile.html">
+                          <i class="fe-user"></i>
+                          <span>My Account</span>
+                      </a>
+                      <a class="dropdown-item notify-item" href="auth-lock-screen.html">
+                          <i class="fe-lock"></i>
+                          <span>Lock Screen</span>
+                      </a>
+                      <div class="dropdown-divider"></div>
 
+                      <!-- item-->
+                      <a (click)="logout()" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                      </a>
+                    
+                      
+                  </div>
+              </li>
+
+            
           </ul>
-          <li class="dropdown notification-list topbar-dropdown">
-            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button"
-              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-card-bulleted-settings-outline me-1"></i> Job Offers
-              <div class="arrow-down"></div>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="topnav-layout">
-              <!-- <a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a> -->
-              <a routerLink="/jobOffer" class="dropdown-item">View</a>
-              <a routerLink="/addjobOffer" class="dropdown-item">Add</a>
-              <!--<a (click)="opendialog($event)" class="dropdown-item">Add</a>-->
-            </div>
-          </li>
-          <li class="dropdown notification-list topbar-dropdown">
-            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button"
-              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-card-bulleted-settings-outline me-1"></i> Candidancy
-              <div class="arrow-down"></div>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="topnav-layout">
-              <!-- <a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a> -->
-              <a routerLink="/candicancy" class="dropdown-item">View</a>
-
-              <!--<a (click)="opendialog($event)" class="dropdown-item">Add</a>-->
-            </div>
-          </li>
-          <li class="dropdown notification-list topbar-dropdown">
-            <a routerLink="/feedback" class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout"
-              role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="mdi mdi-card-bulleted-settings-outline me-1"></i> Feedback
-              <div class="arrow-down"></div>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="topnav-layout">
-              <!-- <a href="layouts-horizontal.html" class="dropdown-item">Horizontal</a> -->
-              <a routerLink="/viewFeedbackModule" class="dropdown-item">Module</a>
-              <a routerLink="/viewFeedbackTeacher" class="dropdown-item">Teacher</a>
-              <a routerLink="/addQuestionfeedback" class="dropdown-item">Add</a>
-              <a routerLink="/viewfeedbacks" class="dropdown-item">View</a>
-
-              <!--<a (click)="opendialog($event)" class="dropdown-item">Add</a>-->
-            </div>
-
-          </li>
-          <!-- end navbar-->
-        </div>
-        <!-- end .collapsed-->
-      </nav>
-    </div>
-    <!-- end container-fluid -->
-  </div>
-
-</div>
-<!-- END wrapper -->
-<!-- Strat footer -->
-<footer class="footer">
-  <div class="container-fluid">
-    <div class="row">
-
-      <div class="col-md-6">
-        <div class="text-md-end footer-links d-none d-sm-block">
-          <a href="javascript:void(0);">About Us</a>
-          <a href="javascript:void(0);">Help</a>
-          <a href="javascript:void(0);">Contact Us</a>
-        </div>
       </div>
-    </div>
   </div>
-</footer>
-<router-outlet></router-outlet>
+</nav>
+<!-- Navbar End -->

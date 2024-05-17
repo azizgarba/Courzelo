@@ -11,6 +11,6 @@ export class Tasks {
     name!: string;
     project!:Project;
    
-    status!: status
+    status: status = status.ToDo
     
 }

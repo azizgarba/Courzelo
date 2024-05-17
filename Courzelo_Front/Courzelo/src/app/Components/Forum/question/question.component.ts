@@ -26,6 +26,8 @@ export class QuestionComponent implements OnInit{
  NaN: any;
  listModule:Mod[]=[];
  listQuestionModule:QuestionForum[]=[]
+
+avatarColor: string = '';
  //search  //search 
   searchValue = '';
   searchValueChangeSubscription!: Subscription;
@@ -65,6 +67,7 @@ export class QuestionComponent implements OnInit{
             });
         });
       }
+      
     )
     this.questionService.getAllModules().subscribe(
       (data)=>this.listModule=data
@@ -79,7 +82,7 @@ export class QuestionComponent implements OnInit{
     }) || new Subscription();
   this.fetchData();
 
-  
+  this.generateRandomColor();
   
     }
     
@@ -116,7 +119,10 @@ export class QuestionComponent implements OnInit{
       this.fetchData();
     }
 
-    
+    generateRandomColor(): void {
+      const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+      this.avatarColor = `#${randomColor}`;
+    }
     
    
  

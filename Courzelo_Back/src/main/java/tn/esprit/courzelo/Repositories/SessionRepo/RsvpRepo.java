@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface RsvpRepo extends MongoRepository<Rsvp, String> {
 
-    public List<Rsvp> findRsvpsByEvent(Event event);
+    //public List<Rsvp> findRsvpsByEvent(Event event);
 }

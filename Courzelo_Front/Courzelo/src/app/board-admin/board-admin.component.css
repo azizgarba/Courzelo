@@ -15,7 +15,7 @@ app-side-bar {
   
   /* Add padding to the main content to ensure it's not hidden behind the sidebar */
   .container-fluid {
-    padding: 60px;
+    padding: 0px;
   }
   /* Ajoutez ces styles à votre fichier CSS pour définir les couleurs des boutons */
   

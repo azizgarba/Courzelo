@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.courzelo.Repositories.SessionRepo.EventRepo;
 import tn.esprit.courzelo.Repositories.SessionRepo.RsvpRepo;
-import tn.esprit.courzelo.entities.AcademicProgramEntities.Module;
+
 import tn.esprit.courzelo.entities.SessionEntities.Event;
 import tn.esprit.courzelo.entities.SessionEntities.Rsvp;
 

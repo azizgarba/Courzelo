@@ -60,7 +60,7 @@ export class ChatComponent   {
   sourceLanguage: string = 'en-GB';
   targetLanguage: string = 'en-GB';
   recognition: any;
-  showVolumeUp = null;
+  showVolumeUp?:any;
   idUser!: string;
   roles: string[] = [];
   username!:string

@@ -30,7 +30,6 @@ export class SideBarComponent {
   rangeBadge!:number;
   
 
-  constructor(private voteService:VoteConsumerService,private userService: UserService,private tokenStorageService: TokenStorageService,private router:Router) { }
 
   ngOnInit(): void {
   
@@ -47,14 +46,19 @@ export class SideBarComponent {
         this.username = user.username;
       }
       
-  
+      this.ss.getNotifs().subscribe(
+        (data)=>{
+          this.notifs=data;
+          console.log(this.notifs);
+        }
+      )
     
       
   }
   logout(): void {
     this.tokenStorageService.signOut();
     //window.location.reload();
-    this.router.navigateByUrl('/login')
+    this.r.navigateByUrl('/login')
     
   }
 
@@ -84,7 +88,7 @@ export class SideBarComponent {
   event!:EventC;
   addform:FormGroup;
   rsvp!:Rsvp;
-  constructor(private r:Router,private ss: NotifService,private datePipe: DatePipe,private fb : FormBuilder){
+  constructor(private r:Router,private ss: NotifService,private datePipe: DatePipe,private fb : FormBuilder,private voteService:VoteConsumerService,private userService: UserService,private tokenStorageService: TokenStorageService){
     this.addform = fb.group({
       status : ['',Validators.required],
     });
@@ -121,13 +125,6 @@ export class SideBarComponent {
     return this.datePipe.transform(date, 'yyyy-MM-dd') || '';
   }
   notifs:Notif[]=[];
-  ngOnInit(){
-    this.ss.getNotifs().subscribe(
-      (data)=>{
-        this.notifs=data;
-        console.log(this.notifs);
-      }
-    )
-  }
+ 
 
 }

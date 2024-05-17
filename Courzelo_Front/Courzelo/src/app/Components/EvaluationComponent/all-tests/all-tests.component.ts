@@ -7,6 +7,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import {  EditTestComponent} from 'src/app/Components/EvaluationComponent/edit-test/edit-test.component';
+import { Evaluation } from 'src/app/Models/EvaluationEntities/Evaluation';
+import { EvaluationService } from 'src/app/Services/EvaluationServices/evalServices/evaluation.service';
 
 @Component({
     selector: 'app-all-tests',
@@ -16,6 +18,7 @@ import {  EditTestComponent} from 'src/app/Components/EvaluationComponent/edit-t
 export class AllTestsComponent implements OnInit {
   tests: Test[] = [];
   displayedTests: Test[] = [];
+  finalevaluations! : Evaluation[] 
 
   searchText: string = '';
   selectedSortOption: any;
@@ -23,7 +26,8 @@ export class AllTestsComponent implements OnInit {
         private testService: TestServiceService,
         private cdr: ChangeDetectorRef,
         private router: Router, 
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private evaluationService: EvaluationService
     ) {}
 
     ngOnInit(): void {
@@ -108,6 +112,22 @@ export class AllTestsComponent implements OnInit {
  
   navigateToAddTest() {
     this.router.navigate(['/add-test']); // Adjust the route path based on your configuration
+  }
+  
+
+  calculFinals(): void {
+    this.evaluationService.calculfinals().subscribe(
+      (data: Evaluation[]) => {
+
+        // Stockez l'évaluation finale de l'étudiant dans `finalEvaluation`
+        this.finalevaluations = data;
+        // Maintenant, vous pouvez utiliser `finalEvaluation` dans votre template HTML pour afficher les informations
+      },
+      (error) => {
+        console.error('Error fetching final grade: ', error);
+        // Vous pouvez ajouter une logique pour gérer l'erreur, par exemple afficher un message à l'utilisateur
+      }
+    );
   }
   
 }

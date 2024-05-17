@@ -39,7 +39,7 @@
               <td>{{ classItem?.nbHeurePerWeek || '1' }}</td>
               <td>{{ classItem?.nbHeureTotal || '1' }}</td>
               <td>{{ classItem?.semestre || 'N/A' }}</td>
-              <td>{{ classItem?.couef || '1' }}</td>
+              <td>{{ classItem?.coeff || '1' }}</td>
               <td>
                 <ul *ngIf="classItem.classes && classItem.classes.length > 0">
                   <li *ngFor="let classItem of classItem.classes">

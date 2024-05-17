@@ -14,7 +14,8 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Tag(name = "Class")
-public class ClassController {
+public class
+ClassController {
 
     private final IClassService ClassService ;
 

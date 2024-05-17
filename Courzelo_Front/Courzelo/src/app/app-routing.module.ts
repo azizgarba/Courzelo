@@ -62,6 +62,12 @@ import { TaskjiraComponent } from './Components/ProjectCompnents/user/taskjira/t
 import { DocumentationsComponent } from './Components/ProjectCompnents/user/documentations/documentations.component';
 import { LevelComponent } from "./Components/AcademicProgram/level/level.component";
 import { ClassComponent } from "./Components/AcademicProgram/class/class.component";
+import { SessionsComponent } from "./Components/SessionComponenets/sessions/sessions.component";
+import { ScheduleComponent } from "./Components/SessionComponenets/schedule/schedule.component";
+import { SessionChatComponent } from "./Components/SessionComponenets/session-chat/session-chat.component";
+import { EventBackComponent } from "./Components/EventComponent/event-back/event-back.component";
+import { HomeBarComponent } from "./home-bar/home-bar.component";
+import { CoursesclientComponent } from "./components/shared/coursesclient/coursesclient.component";
 
 
 
@@ -128,6 +134,13 @@ const routes: Routes = [
   { path: 'HomePage', component: LandingPageComponent },
   { path: 'progress/:id', component: TaskjiraComponent },//user--------
   { path: 'Documentation', component: DocumentationsComponent },// home page project
+  {path:'sessions', component:SessionsComponent},
+  {path:'schedule', component:ScheduleComponent},
+  {path:'sessionchat', component:SessionChatComponent},
+  {path: 'events', component:EventBackComponent},
+  {path: 'homeBar', component:HomeBarComponent},
+  { path: 'clientcourses/:moduleId', component: CoursesclientComponent }
+  
 ];
 
 @NgModule({

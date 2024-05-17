@@ -3,7 +3,8 @@ package tn.esprit.courzelo.Services.SessionService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import tn.esprit.courzelo.Repositories.AcademicProgramRepo.ClassRepo;
+
+import tn.esprit.courzelo.Repositories.ModuleRepo.ClassRepo;
 import tn.esprit.courzelo.Repositories.ModuleRepo.ModuleRepo;
 import tn.esprit.courzelo.Repositories.SessionRepo.SessionRepo;
 import tn.esprit.courzelo.entities.AcademicProgramEntities.Class;
@@ -22,8 +23,7 @@ import java.util.*;
 public class SessionServiceImpl implements ISessionService<Session>{
 
     private final SessionRepo repo;
-    private final ModuleRepo mrepo;
-    private final ClassRepo crepo;
+
     @Override
     public Session AddSession(Session session) {
         return repo.save(session);

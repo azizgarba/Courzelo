@@ -10,6 +10,8 @@
       </div><!-- end col-->
 
       <div class="col-md-8">
+        <button class="btn btn-secondary" (click)="calculFinals()"> load evaluation</button>
+
         <form class="d-flex flex-wrap align-items-center justify-content-sm-end">
           <label for="status-select" class="me-2">Sort By</label>
           <div class="me-sm-2">
@@ -20,6 +22,7 @@
               <option value="duration">Duration</option>
             </select>
           </div>
+
           <label for="inputPassword2" class="visually-hidden">Search</label>
           <div>
             <input type="search" class="form-control my-1 my-md-0" name="searchText" placeholder="Search..." [(ngModel)]="searchText" (input)="sortTests()">

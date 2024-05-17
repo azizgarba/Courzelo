@@ -215,7 +215,8 @@ UserCourzelo student = studentRepo.findById(studentId).orElseThrow();
 
     @Override
     public UserCourzelo findStudent(String studentId) {
-        return studentRepo.findById(studentId).orElseThrow();
+        return studentRepo.findById(studentId)
+                .orElseThrow(() -> new NoSuchElementException("Student not found with ID: " + studentId));
     }
 
 
@@ -320,6 +321,7 @@ int silverBadges =0;
     public Evaluation getFinalEvaluation(String studentId) {
         UserCourzelo student = studentRepo.findById(studentId).orElseThrow();
         Evaluation evaluation =evaluationRepo.findByStudentAndEvaluationType(student, FinalEvaluation);
+        LOGGER.info("*************"+evaluation);
         return evaluation;
     }
 

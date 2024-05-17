@@ -49,7 +49,7 @@ public class AuthController {
 
     JwtUtils jwtUtils;
 
-   // private String savedToken;
+    // private String savedToken;
    /* public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
                           RoleRepository roleRepository, PasswordEncoder encoder, JwtUtils jwtUtils) {
         super();
@@ -98,7 +98,7 @@ public class AuthController {
                             userDetails.getUsername(),
                             userDetails.getEmail() ,
                             jwtToken, roles
-                           ));
+                    ));
         } catch (Exception e) {
             // Gérer les exceptions et renvoyer une réponse d'erreur
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

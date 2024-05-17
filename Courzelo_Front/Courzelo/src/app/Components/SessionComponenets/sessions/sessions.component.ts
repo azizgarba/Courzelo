@@ -5,7 +5,7 @@ import { Class } from 'src/app/Models/AcademicProgramEntities/Class';
 import { Module } from 'src/app/Models/AcademicProgramEntities/Module';
 import { QuestionForum } from 'src/app/Models/ForumEntities/QuestionForum';
 import { Session, TypeSession } from 'src/app/Models/SessionEntities/Session';
-import { Role, Speciality, UserCourzelo } from 'src/app/Models/UserCorzelo/UserCourzelo';
+import {  Speciality, UserCourzelo } from 'src/app/Models/UserCorzelo/UserCourzelo';
 import { ConsumerSessionService } from 'src/app/Services/SessionService/consumer-session.service';
 
 @Component({
@@ -49,10 +49,11 @@ export class SessionsComponent {
     dateOfCreation:undefined,
     nbHoursMaxPerWeek: 10,
     nbHoursPerWeek : 0,
-    role: Role.Teacher,
+    //role: Role.Teacher,
     companyName: "esprit",
     descriptionRecruiter:'caedc',
     scoreXp: 30,
+    username : undefined,
     //resume!:
     level:1,
     overAllAverage:2,
@@ -64,13 +65,16 @@ export class SessionsComponent {
     nbPrimeVoteForBadge:10,
     PaymentDay: undefined,
     Hobbies:"string",
-    questionForums:[] }
+    questionForums:[] ,
+  badges:[],
+}
 
   this.class = {
     id:undefined,
     name:"string",
     Schedule: undefined,
     Students:undefined,
+    level : undefined
   }
   this.module = {
     id:"string",
@@ -79,10 +83,13 @@ export class SessionsComponent {
     nbHeurePerWeek:10,
     nbHeureTotal:10,
     Image:"string",
-    coef:2 ,
+    coeff:2 ,
     program:undefined,
+    tests: undefined,
+    questionForums:[],
+    semestre : undefined,
+    classes: []
 
-    questionForums:[]
   }
   this.s = { id: undefined,date : undefined, startTime:'15:30',endTime:'16:30',conferanceLink:'',Participants:[],type:TypeSession.Course,day:1,temp:1,teacher:this.teacher,
   aclass: this.class, module:this.module};

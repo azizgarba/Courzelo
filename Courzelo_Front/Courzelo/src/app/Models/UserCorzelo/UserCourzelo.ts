@@ -5,7 +5,7 @@ import { QuestionForum } from "../ForumEntities/QuestionForum";
 export class UserCourzelo{
 
     id: string |undefined;  
-    username!: string;  
+    username: string|undefined;  
       
     firstName!: string;
     lastName!: string;
@@ -17,7 +17,7 @@ export class UserCourzelo{
     dateOfCreation:Date | undefined;
     nbHoursMaxPerWeek!:number;
     nbHoursPerWeek = 0;
-    role!:ERole;
+    role?:ERole;
     companyName!:string;
     descriptionRecruiter!:string;
     scoreXp!:number;

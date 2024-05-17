@@ -54,7 +54,7 @@ export class AnswerComponent {
  idUser!: string;
  roles:any ={} ;
  canVote=true ;
- 
+ avatarColor: string = '';
   //@Output() notif=new EventEmitter(); // 1ére etape
    
   
@@ -62,6 +62,7 @@ export class AnswerComponent {
 
   ngOnInit(){
     //
+    this.generateRandomColor();
     //session
     let user = sessionStorage.getItem('auth-user');
     if (user) {
@@ -101,6 +102,7 @@ export class AnswerComponent {
     
 
     });
+  
 
   
  
@@ -143,7 +145,7 @@ export class AnswerComponent {
      // Établir la connexion WebSocket
      this.webSocketAPI._connect();
 
-    
+
   
   }
 
@@ -220,6 +222,7 @@ onSubmit() {
     }
   );
 }
+
 goToChat(): void {
   this.chatService.getChatRoomByUse1AndUser2(this.question.student.id,this.idUser).subscribe(
     (data) => {
@@ -580,7 +583,10 @@ handleMessage12(message:any){
   this.prime2 = message;
 }
 
-
+generateRandomColor(): void {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  this.avatarColor = `#${randomColor}`;
+}
 
 }
 

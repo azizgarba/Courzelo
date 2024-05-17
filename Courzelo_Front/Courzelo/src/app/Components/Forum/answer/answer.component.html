@@ -34,8 +34,12 @@
                     <div class="card ">
                         <div class="bg-picture card-body ">
                             <div class="d-flex align-items-top ">
-                                <img src="../assets/images/users/profile.jpg " class="flex-shrink-0 rounded-circle avatar-xl img-thumbnail float-start me-3 " alt="profile-image ">
-
+                             
+                                <div class="avatar-md">
+                                    <span class="avatar-title rounded-circle" [ngStyle]="{'background-color': avatarColor}">
+                                        {{question.student.username.charAt(0).toUpperCase() }}
+                                    </span>
+                                </div>
                                 <div class="flex-grow-1 overflow-hidden ">
                                     <h4 class="m-0 ">{{student}}</h4>
                                     <p class="text-muted "><i>{{module}}</i></p>
@@ -116,7 +120,11 @@
 
                         <div *ngFor="let p of listAnswers, let i=index " class="card-body ">
                             <div class="d-flex align-items-top mb-2 ">
-                                <img src="../assets/images/users/user-1.jpg " alt=" " class="flex-shrink-0 comment-avatar avatar-sm rounded me-2 ">
+                                <div class="avatar-md">
+                                    <span class="avatar-title rounded-circle" [ngStyle]="{'background-color': avatarColor}">
+                                        {{p.user.username.charAt(0).toUpperCase() }}
+                                    </span>
+                                </div>
                                 <div class="flex-grow-1 ">
                                     <h5 class="mt-0 "><a href="# " class="text-dark ">{{p.user.username}}</a><small class="ms-1 text-muted ">{{p.date | date : "MMMM d, yyyy, h:mm a"}}</small></h5>
                                     <p class="font-16">{{p.message}}</p>

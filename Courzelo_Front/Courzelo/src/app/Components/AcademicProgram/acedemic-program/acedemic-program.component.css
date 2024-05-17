@@ -9,9 +9,7 @@ app-side-bar {
 }
 
 /* Give the main content some left margin to accommodate the sidebar */
-.all-tests-container {
-  margin-left: 250px; /* Adjust the margin based on your sidebar width */
-}
+
 
 /* Add padding to the main content to ensure it's not hidden behind the sidebar */
 .container-fluid {

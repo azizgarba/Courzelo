@@ -10,10 +10,10 @@ import { AnswerComponent } from "./Components/Forum/answer/answer.component";
 import { ChatComponent } from "./Components/Forum/chat/chat.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ModalpopupComponentComponent } from "./Components/Forum/modalpopup-component/modalpopup-component.component";
-import { ReactiveFormsModule } from "@angular/forms";
+
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatSelectModule } from "@angular/material/select";
-import { FormsModule } from "@angular/forms"; // Import FormsModule here
+import { FormsModule,ReactiveFormsModule } from "@angular/forms"; // Import FormsModule here
 import { MdbModalModule } from "mdb-angular-ui-kit/modal";
 import { JobOfferComponent } from "./Components/RecruitementComponents/job-offer/job-offer.component";
 import { AddjobOfferComponent } from "./Components/RecruitementComponents/addjob-offer/addjob-offer.component";
@@ -102,6 +102,21 @@ import { TaskjiraComponent } from './Components/ProjectCompnents/user/taskjira/t
 //import { FilterByStatusPipe } from './Models/ProjectEntities/FilterByStatusPipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DocumentationsComponent } from './Components/ProjectCompnents/user/documentations/documentations.component';
+
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { EventBackComponent } from './Components/EventComponent/event-back/event-back.component';
+import { SessionsComponent } from "./Components/SessionComponenets/sessions/sessions.component";
+import { ScheduleComponent } from "./Components/SessionComponenets/schedule/schedule.component";
+import { SessionChatComponent } from "./Components/SessionComponenets/session-chat/session-chat.component";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HomeBarComponent } from './home-bar/home-bar.component';
+import { CoursesclientComponent } from './components/shared/coursesclient/coursesclient.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -179,6 +194,12 @@ import { DocumentationsComponent } from './Components/ProjectCompnents/user/docu
     LandingPageComponent,
     TaskjiraComponent,
     DocumentationsComponent,
+    SessionsComponent,
+    ScheduleComponent,
+    SessionChatComponent,
+    EventBackComponent,
+    HomeBarComponent,
+    CoursesclientComponent,
   ],
   imports: [
     BrowserModule,
@@ -204,10 +225,18 @@ import { DocumentationsComponent } from './Components/ProjectCompnents/user/docu
     MatCardModule,
     MatProgressBarModule,
     MatSnackBarModule,
- 
     NoopAnimationsModule,
    FullCalendarModule,
-   DragDropModule
+   DragDropModule,
+   MatToolbarModule,
+   CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    //MdbModalModule,
+    //session chat 
+
+
+    MatGridListModule,
+    MatSidenavModule,
+ 
     
   ],
   providers: [authInterceptorProviders, AuthGuard, DatePipe],

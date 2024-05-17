@@ -60,6 +60,7 @@ export class FinalEvaluationComponent implements OnInit {
     this.evaluationService.getStudentfinalGrade(this.idUser).subscribe(
       (data: Evaluation) => {
         this.finalEvaluation = data;
+        console.log("********",this.finalEvaluation)
       },
       (error) => {
         console.error('Error fetching final grade: ', error);

@@ -8,7 +8,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import tn.esprit.courzelo.entities.UserCorzelo.User;
+import tn.esprit.courzelo.Repositories.UserRepo.UserRepository;
+import tn.esprit.courzelo.entities.UserCorzelo.UserCourzelo;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class Rsvp {
     private String id;
 
     @DBRef
-    private User user;
+    private UserCourzelo user;
 
     @Indexed
     private Event event;

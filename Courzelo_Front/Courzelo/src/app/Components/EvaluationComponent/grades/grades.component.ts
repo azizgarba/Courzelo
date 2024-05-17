@@ -17,7 +17,6 @@ export class GradesComponent implements OnInit {
   constructor(private evaluationService: EvaluationService ) { }
 
   ngOnInit() {
-   
     let user = sessionStorage.getItem('auth-user');
     console.log('User from sessionStorage:', user);
     if (user) {
@@ -29,24 +28,27 @@ export class GradesComponent implements OnInit {
       console.log('Roles:', this.roles);
       console.log('id nouha********************:', this.idUser);
     }
+
     this.loadGrades();
-    this.ModuleGrade();
+
   }
   loadGrades(): void {
-    this.evaluationService.getAllEvaluationsByStudent( this.idUser).subscribe(
+    this.evaluationService.getAllEvaluationsByStudent(this.idUser).subscribe(
       (data: Evaluation[]) => {
         this.evaluations = data;
+        // Call ModuleGrade() inside the subscription callback
+        this.ModuleGrade();
       },
       (error) => {
         console.error('Error fetching modules: ', error);
       }
     );
-
   }
   ModuleGrade() {
     if (this.evaluations && Array.isArray(this.evaluations)) {
       for (const evaluation of this.evaluations) {
         console.log('Module id', evaluation.module.id);
+        
         console.log('student id', evaluation.student.id);
 
         this.evaluationService.moduleEvaluation(evaluation.module.id, evaluation.student.id).subscribe(

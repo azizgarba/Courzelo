@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute,  Router } from '@angular/router';
 
 import { ProjetserviceService } from 'src/app/Services/ProjectServices/projetservice.service';
 import { ProjectDetailsComponentComponent } from '../../getallproject/project-details-component/project-details-component.component';
@@ -92,6 +92,8 @@ export class GetallprojectbyuserComponentComponent implements OnInit  {
     });
   
     const projectId = project.project.id.toString();
+    console.log('Projectidddddddddddddddddddddd:', projectId);
+
     this.groupProjectService.setProjectId(projectId);
     console.log('Project ID:', projectId);
   

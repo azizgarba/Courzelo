@@ -13,7 +13,6 @@
 
 
 .container-fluid {
-  padding: 150px; /* Ajuster l'espacement interne du contenu */
   width: 100%; /* Assurer que le contenu occupe toute la largeur de l'écran */
 }
 

@@ -19,9 +19,9 @@ export class Module{
 
     questionForums:QuestionForum[]=[]
     tests: Test[]=[]
-    couef!:number ;
+    //couef!:number ;
     
-    semestre!:Semestre;
+    semestre:Semestre | undefined;
     
     classes: Class[] = [];
     

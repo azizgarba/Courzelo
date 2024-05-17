@@ -58,7 +58,11 @@
                     <div class="card">
                         <div class="bg-picture card-body">
                             <div class="d-flex align-items-top">
-                                <img src="../assets/images/users/profile.jpg" class="flex-shrink-0 rounded-circle avatar-xl img-thumbnail float-start me-3" alt="profile-image">
+                                <div class="avatar-md">
+                                    <span class="avatar-title rounded-circle" [ngStyle]="{'background-color': avatarColor}">
+                                        {{p.student.username.charAt(0).toUpperCase() }}
+                                    </span>
+                                </div>
 
                                 <div class="flex-grow-1 overflow-hidden">
                                     <h4 class="m-0">{{ p.student.username}}</h4>

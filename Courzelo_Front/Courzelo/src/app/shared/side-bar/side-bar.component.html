@@ -1,3 +1,6 @@
+<!-- Begin page -->
+<div id="wrapper">
+
 
     <!-- Topbar Start -->
 <div class="navbar-custom">
@@ -320,7 +323,7 @@
         <li class="menu-title">Navigation</li>
         
         <li>
-            <a href="index.html">
+            <a>
                 <i   routerLink="/admin" class="mdi mdi-view-dashboard"></i>
                 <span> Dashboard </span>
             </a>
@@ -329,16 +332,16 @@
         <li class="menu-title mt-2">Apps</li>
 
         <li>
-            <a href="apps-calendar.html">
+            <a routerLink="/events">
                 <i class="mdi mdi-calendar"></i>
-                <span> Users </span>
+                <span> events </span>
             </a>
         </li>
 
         <li>
-            <a routerLink="/sessions">
+            <a routerLink="/schedule">
                 <i class="mdi mdi-forum"></i>
-                <span> Sessions </span>
+                <span> Schedule </span>
             </a>
         </li>
 
@@ -417,9 +420,9 @@
         </li>
 
         <li>
-            <a href="apps-projects.html">
+            <a routerLink="/sessions">
                 <i class="mdi mdi-page-next"></i>
-                 <span> Reports </span>
+                 <span> Sessions </span>
             </a>    
         </li>
 
@@ -841,6 +844,8 @@
 </div>
 <!-- Left Sidebar End -->
 
+</div>
+
 <div class="modal fade" id="details-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -885,6 +890,3 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-
-

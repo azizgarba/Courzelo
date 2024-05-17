@@ -10,7 +10,7 @@ import { QuestionfeedbackService } from "src/app/Services/FeedBackServices/quest
 export class AddQuestionFeedbackComponent implements OnInit {
   QuestionFeedback = {
     description: "",
-    option: null, // Set option to null initially
+    option: TypeOption, // Set option to null initially
   };
   optionKeys: string[] = [];
   TypeOptionEnum = TypeOption; // Assign TypeOption directly

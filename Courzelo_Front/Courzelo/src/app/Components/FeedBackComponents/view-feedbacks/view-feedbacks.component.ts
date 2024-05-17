@@ -82,7 +82,7 @@ export class ViewFeedbacksComponent implements OnInit {
             this.sendEmail(
               feedback.teacher.email,
               "High satisfaction feedback",
-              "Message for high satisfaction feedback"
+              "you have high satisfaction feedback"
             );
           });
         } else {
@@ -90,7 +90,7 @@ export class ViewFeedbacksComponent implements OnInit {
             this.sendEmail(
               feedback.teacher.email,
               "Low satisfaction feedback",
-              "Message for low satisfaction feedback"
+              "you have low satisfaction feedback"
             );
           });
         }

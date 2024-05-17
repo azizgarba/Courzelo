@@ -26,7 +26,7 @@ public interface UserRepository extends MongoRepository<UserCourzelo,String> {
     List<UserCourzelo> findUserCourzeloByRolesAndSpecialityAndModule(Role role, Speciality speciality, String moduleName);
     //List<UserCourzelo> findByRole(Role role);
 
-   // List<UserCourzelo> findBySpecialityAAndRoles(Speciality speciality, Role role) ;
+    // List<UserCourzelo> findBySpecialityAAndRoles(Speciality speciality, Role role) ;
     List<UserCourzelo> findUserCourzeloBySpecialityAndRoles(Speciality speciality, Role role);
 
     //List<Project> findProjectsByRolesAndId(Role role, String studentId);
