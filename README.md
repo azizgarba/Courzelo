@@ -1,74 +1,82 @@
-# Learning Management System (LMS)
+<h1 align="center" id="title">courzelo</h1>
 
-## Overview
-This project is a comprehensive Learning Management System (LMS) built using Spring Boot for the backend, Angular for the frontend, and MongoDB for the database. It is designed to provide an engaging and efficient learning environment for students and educators alike.
+<p align="center"><img src="https://socialify.git.ci/azizgarba/Courzelo/image?issues=1&amp;language=1&amp;name=1&amp;stargazers=1&amp;theme=Dark" alt="project-image"></p>
 
-## Features
+<p id="description">This Learning Management System (LMS) is a robust platform developed with Spring Boot Angular and MongoDB designed to enhance the educational experience for students and educators. Key features include recruitment management interactive forums a reward system with XP and badges and comprehensive course management. The system supports user roles real-time notifications and detailed progress tracking making it an all-in-one solution for modern educational needs.</p>
 
-### Recruitment Management
-- **Job Listings**: Administrators can post job opportunities and internships.
-- **Application Tracking**: Track and manage applications submitted by students.
-- **Interview Scheduling**: Schedule and manage interviews with applicants.
+<h2>🚀 Demo</h2>
 
-### Interactive Forum
-- **Discussion Boards**: Create and participate in topic-specific discussion boards.
-- **Commenting and Replies**: Engage in discussions through comments and replies.
-- **Upvotes/Downvotes**: Users can upvote or downvote posts and comments to highlight valuable contributions.
+[https://drive.google.com/file/d/1x3X7ET2kCBGBmwt-TBIikM30Zg9ZOAWA/view?usp=drive\_link](https://drive.google.com/file/d/1x3X7ET2kCBGBmwt-TBIikM30Zg9ZOAWA/view?usp=drive_link)
 
-### Reward System
-- **Experience Points (XP)**: Students earn XP for completing various activities and participating in the LMS.
-- **Badges**: Achieve and display badges for reaching specific milestones and accomplishments.
-- **Leaderboards**: View and compete in leaderboards to encourage healthy competition among students.
+<h2>Project Screenshots:</h2>
 
-### Course Management
-- **Course Creation**: Instructors can create and manage courses, modules, and lessons.
-- **Quizzes and Assignments**: Design and grade quizzes and assignments to evaluate student performance.
-- **Progress Tracking**: Monitor student progress through detailed analytics and reports.
+<img src="" alt="project-screenshot" width="400" height="400/">
 
-### User Management
-- **Roles and Permissions**: Define roles (e.g., Admin, Instructor, Student) with specific permissions.
-- **Profile Management**: Users can manage their profiles, including personal information and achievements.
+  
+  
+<h2>🧐 Features</h2>
 
-### Notifications
-- **Real-Time Alerts**: Receive notifications for important updates and events.
-- **Email Notifications**: Automatic email notifications for key activities (e.g., assignment deadlines, new job postings).
+Here're some of the project's best features:
 
-## Tech Stack
-- **Backend**: Spring Boot
-- **Frontend**: Angular
-- **Database**: MongoDB
-- **Other Tools**: RESTful APIs, JWT for authentication
+*   Recruitment Management
+*   Interactive Forum
+*   Reward System
+*   Course Management
+*   User Management
+*   Notifications
 
-## Installation
+<h2>🛠️ Installation Steps:</h2>
 
-1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/azizgarba/Courzelo.git
-    ```
-2. **Navigate to the backend directory**:
-    ```sh
-    cd Courzelo/backend
-    ```
-3. **Build and run the Spring Boot application**:
-    ```sh
-    ./mvnw spring-boot:run
-    ```
-4. **Navigate to the frontend directory**:
-    ```sh
-    cd ../frontend
-    ```
-5. **Install Angular dependencies and start the application**:
-    ```sh
-    npm install
-    ng serve
-    ```
+<p>1. Clone the Repository</p>
 
-## Contributing
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for guidelines on how to contribute to this project.
+```
+git clone https://github.com/azizgarba/Courzelo.git
+```
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+<p>2. Navigate to the Backend Directory</p>
 
-## Contact
-For any inquiries or support, please contact:
-- **DevDynasty** - [DevDynasty-support@example.com](mailto:DevDynasty-support@example.com)
+```
+cd Courzelo/Courzelo_Back
+```
+
+<p>3. Build and Run the Spring Boot Application</p>
+
+```
+./mvnw spring-boot:run
+```
+
+<p>4. Navigate to the Frontend Directory</p>
+
+```
+cd ../Courzelo_Front
+```
+
+<p>5. Install Angular Dependencies</p>
+
+```
+npm install
+```
+
+<p>6. Start the Angular Application</p>
+
+```
+ng serve
+```
+
+<h2>🍰 Contribution Guidelines:</h2>
+
+We welcome contributions to the Courzelo project! To contribute please fork the repository create a new branch for your feature or bugfix make your changes with clear commit messages and submit a pull request. For more details please refer to the repository's CONTRIBUTING.md file. Thank you for your interest in improving Courzelo!
+
+  
+  
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+*   Angular
+*   Spring
+*   MangoDB
+
+<h2>🛡️ License:</h2>
+
+This project is licensed under the MIT License
