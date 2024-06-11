@@ -25,6 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EventBackComponent } from './Components/EventComponent/event-back/event-back.component';
 import { DatePipe } from '@angular/common';
+import { PlanningComponent } from './Components/SessionComponenets/planning/planning.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DatePipe } from '@angular/common';
     SessionsComponent,
     ScheduleComponent,
     SessionChatComponent,
-    EventBackComponent
+    EventBackComponent,
+    PlanningComponent
   ],
   imports: [
     BrowserModule,

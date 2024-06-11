@@ -79,6 +79,7 @@ export class EventBackComponent {
       { next : () => this.r.navigateByUrl('/events')}
     )
   }
+ 
   getInfos(e : EventC){
     this.editform.patchValue(e);
     this.event=e;

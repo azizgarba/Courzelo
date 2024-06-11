@@ -7,6 +7,7 @@ import { SessionsComponent } from './Components/SessionComponenets/sessions/sess
 import { ScheduleComponent } from './Components/SessionComponenets/schedule/schedule.component';
 import { SessionChatComponent } from './Components/SessionComponenets/session-chat/session-chat.component';
 import { EventBackComponent } from './Components/EventComponent/event-back/event-back.component';
+import { PlanningComponent } from './Components/SessionComponenets/planning/planning.component';
 
 const routes: Routes = [
   {path:'forumQuestion', component:QuestionComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path:'sessions', component:SessionsComponent},
   {path:'schedule', component:ScheduleComponent},
   {path:'sessionchat', component:SessionChatComponent},
-  {path: 'events', component:EventBackComponent}
+  {path: 'events', component:EventBackComponent},
+  {path: 'planning', component:PlanningComponent}
 
 
 ];

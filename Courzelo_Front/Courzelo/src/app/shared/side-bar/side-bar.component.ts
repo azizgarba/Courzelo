@@ -16,29 +16,6 @@ import { Router } from '@angular/router';
 })
 export class SideBarComponent {
 
-  /*public notif = "";
-
-  constructor(private webSocketService: WebSocketService){
-    const stompClient = new Client();
-    stompClient.webSocketFactory = () => {
-      // Create a wrapper function to cast the WebSocket instance to IStompSocket
-      return this.createWebSocket('ws://your-websocket-endpoint');
-    };
-    
-    stompClient.onConnect = () => {
-      // Subscribe to notification topic
-      stompClient.subscribe('/topic/notification', (notification: any) => {
-        // Update notifications attribute with the recent message sent from the server
-        this.notif = JSON.parse(notification.body).count;
-      });
-    };
-    
-    stompClient.activate();
-
-  }
-  private createWebSocket(url: string): IStompSocket {
-    return new WebSocket(url) as any;
-  }*/
   event!:EventC;
   addform:FormGroup;
   rsvp!:Rsvp;
