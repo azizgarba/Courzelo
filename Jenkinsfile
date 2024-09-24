@@ -1,12 +1,12 @@
 pipeline {
    agent any 
    stages {
-      stage('Build') {
+      stage('Maven Version') {  // Nom unique pour la première étape
         steps {
             sh "mvn -version"
         }
       }
-         stage('Build') {
+      stage('Java Version') {  // Nom unique pour la deuxième étape
         steps {
             sh "java -version"
         }
